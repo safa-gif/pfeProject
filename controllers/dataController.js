@@ -1,27 +1,5 @@
 const infos = require('../models/data');
-const db = require('../database/db.config')
 exports.findEvery =(req, res, next) => {
-    const piplene = db.collection('filtreData').aggregate(
-        [
-            {
-                "$match" :  {
-                    item_number : "Z64314M1"
-                }
-            },
-
-            {
-                "$count" : {
-                    "count" : 1
-                }
-            },
-            {
-                "$filter" : {
-                    semaine_prod : 2
-                }
-            }
-        ]
-       
-    )
     infos.find({},{_id: 0},(error, data) => {
         if(error)  {
             return next(error);
@@ -74,8 +52,8 @@ exports.createCommande = (req, res) => {
        customer_name: req.body.customer_name,
        order_number: req.body.order_number
    });
-   //save Cmd
-   info.save() 
+   //save nformation
+   infos.save() 
    .then(data => {
        res.send(data)
    })
