@@ -1,2 +1,2 @@
 # PFE
-pfe-prooject
+pfe-project
