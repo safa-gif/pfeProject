@@ -15,19 +15,24 @@ export class DataComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataItem>;
   dataSource: DataDataSource;
-
+   donnees: DataItem []= [];
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [ 'item_number', 'item_name', 'besoin_net', 'besoin_cumulee', 'semaine_prod'];
       
   constructor(private service: DataserviceService) {
+   
     this.dataSource = new DataDataSource();
-  }
-    readData: any;
-  ngOnInit(): void {
-    this.service.getAllData().subscribe((res)=> {
-      console.log(res,"===> res");
-      this.readData = res.data;
+    this.service.getAllData().subscribe( x => {
+      this.donnees =x;
+      console.log(this.donnees)
     })
+  }
+    // readData: any;
+  ngOnInit(): void {
+    // this.service.getAllData().subscribe((res)=> {
+    //   console.log(res,"===> res");
+    //   this.readData = res.data;
+    // })
   }
 
   ngAfterViewInit(): void {

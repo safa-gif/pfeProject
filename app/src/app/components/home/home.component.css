@@ -2,7 +2,7 @@
   height: 100%;
 }
 #sidenav-container{
-  background-color: rgb(52, 46, 58);
+  background-color: rgb(71, 49, 94);
 }
 .sidenav {
   width: 200px;
@@ -15,7 +15,7 @@
   background: inherit;
 }
 #toolbar {
-  background-color: rgb(107, 107, 211);
+  background-color: rgb(96, 89, 133);
 }
 .mat-toolbar.mat-primary {
   position: sticky;

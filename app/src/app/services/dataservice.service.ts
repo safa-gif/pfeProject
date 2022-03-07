@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DataItem } from '../components/data/data-datasource';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +13,9 @@ export class DataserviceService {
     apiURL = "http://localhost:2000/api/data";
 
     //retrive data from database
-    getAllData():Observable<any> 
+    getAllData():Observable<DataItem []> 
     {
-      return this.http.get(`${this.apiURL}`)   ;
+      return this.http.get<DataItem[]>(this.apiURL)
     }
 
 }
