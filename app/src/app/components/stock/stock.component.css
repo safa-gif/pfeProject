@@ -1,0 +1,11 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+#toolbar {
+  background-color: rgb(50, 50, 136);
+}
+.content  {
+  background-color:#CCD1E4;
+  width:100%;
+  margin: 0 auto;
+}

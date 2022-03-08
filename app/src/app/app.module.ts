@@ -18,13 +18,24 @@ import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { DataserviceService } from './services/dataservice.service';
-
+import { StockComponent } from './components/stock/stock.component';
+import { CommandeComponent } from './components/commande/commande.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { DateComponent } from './components/date/date.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DataComponent,
-    LoginComponent
+    LoginComponent,
+    StockComponent,
+    CommandeComponent,
+    ProfileComponent,
+    DateComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,11 @@ import { DataserviceService } from './services/dataservice.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+    MatCardModule, 
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     DataserviceService
