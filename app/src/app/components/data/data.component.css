@@ -1,3 +1,30 @@
+/* .container-fluid {
+  width:100%;
+  height: 100%;
+  margin: 0 auto;
+  
+}
+.search-container .container {
+  width:100%;
+  height:10vh;
+  background-color: #CCD1E4;
+}
+.search-container mat-form-field {
+  color:#CCD1E4;
+} */
+.container {
+  padding: 5px;
+  border: 1px solid #b6b6b6;
+  box-sizing: content-box;
+}
+.conatiner > div {
+  height: 50px;
+  width: 50px;
+}
+
 .full-width-table {
   width: 100%;
+}
+.full-width-form {
+  width:20%;
 }

@@ -3,24 +3,27 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { DataserviceService } from 'src/app/services/dataservice.service';
 
 // TODO: Replace this with your own data model type
 export interface DataItem {
+
   item_number: string;
   item_name: string;
-  besoin_net: number;
-  besoin_cumulee: number;
+  planning_date: Date;
   semaine_prod: number;
+  on_hand_balance: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataItem[] = [
 
-  {item_number: "Z125S5", item_name: 'Hydrogen xxxxxx', besoin_net: -12, besoin_cumulee: 42, semaine_prod: 8},
-  {item_number: "Z125S5", item_name: 'Oxygene xxxxxx', besoin_net: -102,  besoin_cumulee: 41,  semaine_prod: 9},
-  {item_number: "Z125S5", item_name: 'tabouret xxxxxx', besoin_net: -2, besoin_cumulee: 540 , semaine_prod: 10},
-  {item_number: "Z125S5", item_name: 'eau', besoin_net: -12,  besoin_cumulee: 32 , semaine_prod: 12},
-  {item_number: "Z125S5", item_name: 'Aliminum xxxxxx', besoin_net: -12,  besoin_cumulee: 112 , semaine_prod: 30},
+  // {item_number: "Z125S5", item_name: 'Hydrogen xxxxxx', besoin_net: -12, besoin_cumulee: 42, semaine_prod: 8},
+  // {item_number: "Z125S5", item_name: 'Oxygene xxxxxx', besoin_net: -102,  besoin_cumulee: 41,  semaine_prod: 9},
+  // {item_number: "Z125S5", item_name: 'tabouret xxxxxx', besoin_net: -2, besoin_cumulee: 540 , semaine_prod: 10},
+  // {item_number: "Z125S5", item_name: 'eau', besoin_net: -12,  besoin_cumulee: 32 , semaine_prod: 12},
+  // {item_number: "Z125S5", item_name: 'Aliminum xxxxxx', besoin_net: -12,  besoin_cumulee: 112 , semaine_prod: 30},
  
 ];
 
@@ -33,6 +36,7 @@ export class DataDataSource extends DataSource<DataItem> {
   data: DataItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
+  filter: string | undefined;
 
   constructor() {
     super();
@@ -89,9 +93,9 @@ export class DataDataSource extends DataSource<DataItem> {
       switch (this.sort?.active) {
         case 'item_number': return compare(a.item_number, b.item_number, isAsc);
         case 'item_name': return compare(a.item_name, b.item_name, isAsc);
-        case 'besoin_net': return compare(+a.besoin_net, +b.besoin_net, isAsc);
-        case 'besoin_cumulee': return compare(+a.besoin_cumulee, +b.besoin_cumulee, isAsc);
+        case 'planning_date': return compare(a.planning_date, b.planning_date, isAsc)
         case 'seamine_prod': return compare(+a.semaine_prod, +b.semaine_prod, isAsc);
+        case 'on_hand_balance': return compare(+a.on_hand_balance, +b.on_hand_balance, isAsc);
  
         default: return 0;
       }
@@ -100,6 +104,6 @@ export class DataDataSource extends DataSource<DataItem> {
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
+function compare(a: string | number | Date, b: string | number | Date, isAsc: boolean): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

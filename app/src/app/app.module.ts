@@ -26,6 +26,12 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {GridModule} from '@angular/flex-layout/grid';
+import {FlexModule} from '@angular/flex-layout/flex';
+import { MatTableExporterModule } from 'mat-table-exporter';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +60,10 @@ import {MatInputModule} from '@angular/material/input';
     FlexLayoutModule,
     MatCardModule, 
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    GridModule,
+    FlexModule,
+    MatTableExporterModule
   ],
   providers: [
     DataserviceService

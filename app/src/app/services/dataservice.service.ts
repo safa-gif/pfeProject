@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataItem } from '../components/data/data-datasource';
+import {SortDirection} from '@angular/material/sort';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class DataserviceService {
     //retrive data from database
     getAllData():Observable<DataItem []> 
     {
-      return this.http.get<DataItem[]>(this.apiURL)
+      return this.http.get<DataItem[]>(this.apiURL);
     }
 
 }
