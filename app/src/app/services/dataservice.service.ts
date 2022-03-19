@@ -11,7 +11,7 @@ export class DataserviceService {
   constructor(private http: HttpClient) { }
 
    //allows the connection between frontend and backend
-    apiURL = "http://localhost:2000/api/data";
+    apiURL = "http://localhost:2000/api/funct/aff";
 
     //retrive data from database
     getAllData():Observable<DataItem []> 

@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataserviceService } from 'src/app/services/dataservice.service';
 import { DataDataSource, DataItem } from './data-datasource';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-data',
@@ -12,14 +11,15 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./data.component.css']
 })
 export class DataComponent implements AfterViewInit {
-  @ViewChild(MatPaginator , {static: true}) paginator!: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  @ViewChild(MatPaginator ) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataItem>;
   dataSource: DataDataSource;
-  datSource = new DataDataSource();
-   donnees: DataItem []= [];
+  // datSource = new DataDataSource();
+  donnees: DataItem []= [];
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = [ 'item_number', 'item_name','planning_date', 'semaine_prod', 'on_hand_balance'];
+  displayedColumns = [ 'item_number', 'item_name','planning_date', 'semaine_cmd',
+  'semaine_prod','BesoinNet','BesoinBrut', 'on_hand_balance'];
       
   constructor(private service: DataserviceService) {
    
@@ -29,17 +29,24 @@ export class DataComponent implements AfterViewInit {
       console.log(this.donnees)
         })
   }
-  public getAllInfos(){
-    let res = this.service.getAllData();
-      res.subscribe(report => this.dataSource.data = report as DataItem [])
-  }
-  filterData($event: any) {
-    this.dataSource.filter = $event.target.value;
-  }
+  
+  // filterData($event: any) {
+  //   this.dataSource.filter = $event.target.value;
+  // }
   ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.getAllInfos();
     // this.service.getAllData().subscribe((res)=> {
     //   console.log(res,"===> res");
     // })
+    // this.datSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.table.dataSource = this.dataSource;
+  }
+  public getAllInfos(){
+    let res = this.service.getAllData();
+      res.subscribe(report => this.dataSource.donnees = report as DataItem [])
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

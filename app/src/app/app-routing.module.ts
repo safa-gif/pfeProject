@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommandeComponent } from './components/commande/commande.component';
 import { DateComponent } from './components/date/date.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { StockComponent } from './components/stock/stock.component';
 
@@ -14,7 +13,6 @@ const routes: Routes = [
   {path: 'stock', component:StockComponent},
   {path: 'date', component:DateComponent},
   {path: 'profile', component:ProfileComponent},
-  {path: 'login', component:LoginComponent},
 ];
 
 @NgModule({

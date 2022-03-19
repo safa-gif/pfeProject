@@ -21,7 +21,12 @@
   height: 50px;
   width: 50px;
 }
-
+.container-btn {
+  padding:10px;
+}
+.container-btn > button {
+  width: 100%;height:70%;
+}
 .full-width-table {
   width: 100%;
 }

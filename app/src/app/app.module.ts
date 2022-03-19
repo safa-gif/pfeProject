@@ -16,7 +16,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
 import { DataserviceService } from './services/dataservice.service';
 import { StockComponent } from './components/stock/stock.component';
 import { CommandeComponent } from './components/commande/commande.component';
@@ -37,7 +36,6 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     AppComponent,
     HomeComponent,
     DataComponent,
-    LoginComponent,
     StockComponent,
     CommandeComponent,
     ProfileComponent,

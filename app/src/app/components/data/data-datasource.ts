@@ -3,8 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { DataserviceService } from 'src/app/services/dataservice.service';
+// import { MatTableDataSource } from '@angular/material/table';
+// import { DataserviceService } from 'src/app/services/dataservice.service';
 
 // TODO: Replace this with your own data model type
 export interface DataItem {
@@ -13,17 +13,20 @@ export interface DataItem {
   item_name: string;
   planning_date: Date;
   semaine_prod: number;
+  semaine_cmd: number;
+  BesoinBrut : number,
+  BesoinNet: number,
   on_hand_balance: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataItem[] = [
 
-  // {item_number: "Z125S5", item_name: 'Hydrogen xxxxxx', besoin_net: -12, besoin_cumulee: 42, semaine_prod: 8},
-  // {item_number: "Z125S5", item_name: 'Oxygene xxxxxx', besoin_net: -102,  besoin_cumulee: 41,  semaine_prod: 9},
-  // {item_number: "Z125S5", item_name: 'tabouret xxxxxx', besoin_net: -2, besoin_cumulee: 540 , semaine_prod: 10},
-  // {item_number: "Z125S5", item_name: 'eau', besoin_net: -12,  besoin_cumulee: 32 , semaine_prod: 12},
-  // {item_number: "Z125S5", item_name: 'Aliminum xxxxxx', besoin_net: -12,  besoin_cumulee: 112 , semaine_prod: 30},
+  // {item_number: "Z125S5", item_name: 'Hydrogen xxxxxx', semaine_prod: 8},
+  // {item_number: "Z125S5", item_name: 'Oxygene xxxxxx',  semaine_prod: 9},
+  // {item_number: "Z125S5", item_name: 'tabouret xxxxxx', semaine_prod: 10},
+  // {item_number: "Z125S5", item_name: 'eau', semaine_prod: 12},
+  // {item_number: "Z125S5", item_name: 'Aliminum xxxxxx', semaine_prod: 30}
  
 ];
 
@@ -33,7 +36,7 @@ const EXAMPLE_DATA: DataItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class DataDataSource extends DataSource<DataItem> {
-  data: DataItem[] = EXAMPLE_DATA;
+  donnees: DataItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
   filter: string | undefined;
@@ -51,9 +54,9 @@ export class DataDataSource extends DataSource<DataItem> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
-      return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
+      return merge(observableOf(this.donnees), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
+          return this.getPagedData(this.getSortedData([...this.donnees ]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -70,12 +73,12 @@ export class DataDataSource extends DataSource<DataItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DataItem[]): DataItem[] {
+  private getPagedData(donnees: DataItem[]): DataItem[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-      return data.splice(startIndex, this.paginator.pageSize);
+      return donnees.splice(startIndex, this.paginator.pageSize);
     } else {
-      return data;
+      return donnees;
     }
   }
 
@@ -83,17 +86,21 @@ export class DataDataSource extends DataSource<DataItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DataItem[]): DataItem[] {
+  private getSortedData(donnees: DataItem[]): DataItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
-      return data;
+      return donnees;
     }
 
-    return data.sort((a, b) => {
+    return donnees.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'item_number': return compare(a.item_number, b.item_number, isAsc);
         case 'item_name': return compare(a.item_name, b.item_name, isAsc);
-        case 'planning_date': return compare(a.planning_date, b.planning_date, isAsc)
+        // case 'planning_date': return compare(a.planning_date, b.planning_date, isAsc);
+        case 'semaine_cmd': return compare(+a.semaine_cmd, +b.semaine_cmd, isAsc);
+        case 'BesoinNet': return compare(+a.BesoinNet, +b.BesoinNet, isAsc);
+        case 'BesoinBrut': return compare(+a.BesoinBrut, +b.BesoinBrut, isAsc);
+
         case 'seamine_prod': return compare(+a.semaine_prod, +b.semaine_prod, isAsc);
         case 'on_hand_balance': return compare(+a.on_hand_balance, +b.on_hand_balance, isAsc);
  
@@ -104,6 +111,6 @@ export class DataDataSource extends DataSource<DataItem> {
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number | Date, b: string | number | Date, isAsc: boolean): number {
+function compare(a: string | number , b: string | number , isAsc: boolean): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

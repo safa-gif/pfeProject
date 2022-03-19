@@ -5,7 +5,8 @@ const  app = express();
 const db = require('./database/db.config');
 const path = require('path');
 const DataRouter = require('./routes/dataroute');
-const UserRouter = require ('./routes/userroute')
+const UserRouter = require ('./routes/userroute');
+const FuncRouter = require('./routes/functionroute');
 
 //connecting to database
 app.connect(db);
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //using apis 
 app.use('/api/data',DataRouter);
 app.use('/api/user',UserRouter);
-
+app.use('/api/funct', FuncRouter)
 //connect backend to frontend
 app.use(cors({origin: "http://localhost:4200"}));
 
