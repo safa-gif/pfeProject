@@ -24,14 +24,16 @@
       </button>
       <span>Znautec</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="showSuccess()">
         <mat-icon>notifications</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>account_circle</mat-icon>
       </button>
     </mat-toolbar>
-
+    <br>
+    
+    <!-- <p>Testing : {{day| date: "w"}}</p> -->
      <app-data></app-data>
     <!-- Add Content Here -->
     

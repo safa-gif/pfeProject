@@ -65,12 +65,8 @@ exports.display = async (req, res, next) => {
    Retards = [];
     Retards = tab.filter((el) =>{
   
-     
     
    })
-//    console.log("tableau tab longuer : ",tab.length);
-//    console.log("tableau tab contenu : ",tab);
-
    console.log("tableau d longuer : ",Retards.length);
 
     res.send(tab);

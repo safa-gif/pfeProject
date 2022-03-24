@@ -10,13 +10,13 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface DataItem {
 
   item_number: string;
-  item_name: string;
+  // item_name: string;
   planning_date: Date;
   semaine_prod: number;
   semaine_cmd: number;
   BesoinBrut : number,
   BesoinNet: number,
-  on_hand_balance: number;
+  // on_hand_balance: number;
 }
 
 // TODO: replace this with real data from your application
@@ -95,14 +95,14 @@ export class DataDataSource extends DataSource<DataItem> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'item_number': return compare(a.item_number, b.item_number, isAsc);
-        case 'item_name': return compare(a.item_name, b.item_name, isAsc);
+        // case 'item_name': return compare(a.item_name, b.item_name, isAsc);
         // case 'planning_date': return compare(a.planning_date, b.planning_date, isAsc);
         case 'semaine_cmd': return compare(+a.semaine_cmd, +b.semaine_cmd, isAsc);
         case 'BesoinNet': return compare(+a.BesoinNet, +b.BesoinNet, isAsc);
         case 'BesoinBrut': return compare(+a.BesoinBrut, +b.BesoinBrut, isAsc);
 
         case 'seamine_prod': return compare(+a.semaine_prod, +b.semaine_prod, isAsc);
-        case 'on_hand_balance': return compare(+a.on_hand_balance, +b.on_hand_balance, isAsc);
+        // case 'on_hand_balance': return compare(+a.on_hand_balance, +b.on_hand_balance, isAsc);
  
         default: return 0;
       }

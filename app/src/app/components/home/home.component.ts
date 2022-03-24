@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +15,13 @@ export class HomeComponent {
       map(result => result.matches),
       shareReplay()
     );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+   
+  constructor(private breakpointObserver: BreakpointObserver, private toastr: ToastrService) {}
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+   day = new Date();
+  //   oneJ = new Date(d.getFullYear(),0,1);
+  //  numDay = Math.floor((d - oneJ)/ (24*60*60*1000));
+  //  out = Math.ceil((d.getDay()+1+numDay/7));
 }

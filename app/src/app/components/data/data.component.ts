@@ -16,10 +16,10 @@ export class DataComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<DataItem>;
   dataSource: DataDataSource;
   // datSource = new DataDataSource();
-  donnees: DataItem []= [];
+  donnees: DataItem [] = [];
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = [ 'item_number', 'item_name','planning_date', 'semaine_cmd',
-  'semaine_prod','BesoinNet','BesoinBrut', 'on_hand_balance'];
+  displayedColumns = [ 'item_number','planning_date', 'semaine_cmd',
+  'semaine_prod','BesoinNet','BesoinBrut'];
       
   constructor(private service: DataserviceService) {
    

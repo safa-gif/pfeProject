@@ -28,6 +28,7 @@ import {MatInputModule} from '@angular/material/input';
 import {GridModule} from '@angular/flex-layout/grid';
 import {FlexModule} from '@angular/flex-layout/flex';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -61,7 +62,8 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     MatInputModule,
     GridModule,
     FlexModule,
-    MatTableExporterModule
+    MatTableExporterModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     DataserviceService
