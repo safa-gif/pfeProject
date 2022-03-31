@@ -46,3 +46,7 @@ exports.createUser = (req, res, next)=> {
         res.status(500).send({message: err.message || "there is a probleme , sorry"})
     })
 }
+
+exports.loginUser = (req,res, next) =>{
+
+}

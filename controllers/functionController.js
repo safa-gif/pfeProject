@@ -139,6 +139,6 @@ exports.all = async (req,res,next) => {
         }
     ]);
 
-    console.log(test.length)
+    // console.log(test.length)
     res.send(test)
 }
