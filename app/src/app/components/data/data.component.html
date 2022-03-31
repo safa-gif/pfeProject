@@ -6,22 +6,10 @@
   <div class="container-btn" fxLayoutAlign="right" fxLayout="row" fxLayoutGap="15px">
     <button mat-raised-button  (click)="exporter.exportTable('xlsx', {fileName:'data'})">Excel</button>
     <button mat-raised-button  (click)="exporter.exportTable('csv', {fileName:'data'})">Csv</button>
-    <!-- <button mat-raised-button  (click)="exporter.exportTable('json', {fileName:'data'})">Json</button>
-    <button mat-raised-button  (click)="exporter.exportTable('txt', {fileName:'data'})">Txt</button> -->
   </div>
  
 </div>
-<!-- <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px">
- <div fxLayoutAlign="center center">
-  <mat-form-field appearance="outline"  fxFlex="100" class="search-form">
-    <input matInput  placeholder="Filter"  id="filter" class="full-width-form">
-  </mat-form-field>
-  
- </div>
- <div fxLayoutAlign="center center">
-  <button mat-raised-button  color="primary">Search</button>
- </div>
-</div> -->
+
 <div class="mat-elevation-z8">
   <table mat-table  class="full-width-table" matTableExporter [dataSource]="donnees" matSort  [hiddenColumns]="[1]" #exporter="matTableExporter">
     <ng-container matColumnDef="item_number">
@@ -60,9 +48,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator #paginator
-      
-      [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
   </mat-paginator>
 </div>
 

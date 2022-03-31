@@ -29,6 +29,9 @@ import {GridModule} from '@angular/flex-layout/grid';
 import {FlexModule} from '@angular/flex-layout/flex';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -40,7 +43,8 @@ import { ToastrModule } from 'ngx-toastr';
     StockComponent,
     CommandeComponent,
     ProfileComponent,
-    DateComponent
+    DateComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ import { ToastrModule } from 'ngx-toastr';
     GridModule,
     FlexModule,
     MatTableExporterModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [
     DataserviceService
