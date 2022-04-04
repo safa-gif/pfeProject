@@ -73,7 +73,7 @@ export class DataDataSource extends DataSource<DataItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(donnees: DataItem[]): DataItem[] {
+    private getPagedData(donnees: DataItem[]): DataItem[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return donnees.splice(startIndex, this.paginator.pageSize);
@@ -86,7 +86,7 @@ export class DataDataSource extends DataSource<DataItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(donnees: DataItem[]): DataItem[] {
+    getSortedData(donnees: DataItem[]): DataItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return donnees;
     }

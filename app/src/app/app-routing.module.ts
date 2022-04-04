@@ -8,7 +8,7 @@ import { StockComponent } from './components/stock/stock.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  {path: '',  pathMatch: 'full', redirectTo: 'dashboard'},
+  {path: '',  pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
   {path: 'commande', component:CommandeComponent},
   {path: 'stock', component:StockComponent},

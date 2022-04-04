@@ -57,7 +57,7 @@ exports.display = async (req, res, next) => {
         item_name : el._id.item_name,
         BesoinBrut : el.BesoinBrut,
         planning_date : el._id.planning_date,
-        BesoinNet : el._id.on_hand_balance - el.BesoinBrut,
+        BesoinNet : el._id.on_hand_balance - el.BesoinBrut -20, 
 
         
     });
@@ -139,6 +139,5 @@ exports.all = async (req,res,next) => {
         }
     ]);
 
-    // console.log(test.length)
     res.send(test)
 }
