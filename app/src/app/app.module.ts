@@ -46,8 +46,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
-
-
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import { FormsModule } from '@angular/forms';
+import dayGridPlugin from '@fullcalendar/daygrid';
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
+])
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +64,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ProfileComponent,
     DateComponent,
     FooterComponent,
+    AddEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +112,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MatButtonToggleModule,
     // PortalModule,
     ScrollingModule,
+    FormsModule,
+    FullCalendarModule,
   ],
   providers: [
     DataserviceService

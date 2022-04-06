@@ -4,14 +4,18 @@ import { DateComponent } from './components/date/date.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { StockComponent } from './components/stock/stock.component';
-
+import { AddEventComponent } from './components/add-event/add-event.component';
 const routes: Routes = [
   {path: '',  pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
   {path: 'stock', component:StockComponent},
   {path: 'date', component:DateComponent},
   {path: 'profile', component:ProfileComponent},
-];
+  { path: 'add-event', component: AddEventComponent}
+
+
+
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
