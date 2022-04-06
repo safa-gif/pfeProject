@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 const info = require ('../controllers/dataController');
 
-// const db = require('../database/db.config');
-router.get('/', info.findEvery);
-router.get('/:id',info.findOne);
-router.post('/add', info.createCommande);
+router.get('/', info.display);
+// router.get('/count', information.countDistinct);
+// router.get('/all', information.all)
 
 module.exports = router;

@@ -6,7 +6,7 @@ const db = require('./database/db.config');
 const path = require('path');
 const DataRouter = require('./routes/dataroute');
 const UserRouter = require ('./routes/userroute');
-const FuncRouter = require('./routes/functionroute');
+const EventRouter = require('./routes/eventroute');
 
 //connecting to database
 app.connect(db);
@@ -24,9 +24,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //using apis 
-app.use('/api/data',DataRouter);
-app.use('/api/user',UserRouter);
-app.use('/api/funct', FuncRouter)
+app.use('/data',DataRouter);
+app.use('/user',UserRouter);
+app.use('/events',EventRouter);
 //connect backend to frontend
 app.use(cors({origin: "http://localhost:4200"}));
 

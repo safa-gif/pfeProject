@@ -21,7 +21,5 @@ export class HomeComponent {
     this.toastr.success('Hello world!', 'Toastr fun!');
   }
    day = new Date();
-  //   oneJ = new Date(d.getFullYear(),0,1);
-  //  numDay = Math.floor((d - oneJ)/ (24*60*60*1000));
-  //  out = Math.ceil((d.getDay()+1+numDay/7));
+ 
 }
