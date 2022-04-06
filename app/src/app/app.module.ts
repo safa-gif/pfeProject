@@ -45,6 +45,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     StockComponent,
     ProfileComponent,
     DateComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
