@@ -51,6 +51,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FormsModule } from '@angular/forms';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CbnComponent } from './components/cbn/cbn.component';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -65,6 +68,9 @@ FullCalendarModule.registerPlugins([
     DateComponent,
     FooterComponent,
     AddEventComponent,
+    LoginComponent,
+    RegisterComponent,
+    CbnComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,6 +120,7 @@ FullCalendarModule.registerPlugins([
     ScrollingModule,
     FormsModule,
     FullCalendarModule,
+    MatSnackBarModule,
   ],
   providers: [
     DataserviceService

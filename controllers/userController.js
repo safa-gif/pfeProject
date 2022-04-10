@@ -14,7 +14,7 @@ exports.signup = (req, res, next) => {
     .then((doc)=>{
         res.status(201).json(doc);
     })
-    .catch(function(err){
+    .catch((err) => {
         return res.status(501).json({message: 'Error registering user.'})
       })
 }

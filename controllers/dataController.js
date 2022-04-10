@@ -98,7 +98,7 @@ exports.display = async (req, res, next) => {
     const out = Math.ceil((date.getDay()+1+numDay/7));
     
     const data = await infos.aggregate(
-        [    {$project: 
+        [    { "$project" : 
                 {
                     "semaine_prod": "$semaine_prod",
                     "semaine_cmd" : "$semaine_cmd",
@@ -111,7 +111,7 @@ exports.display = async (req, res, next) => {
                           
                 }
             },
-            {$group: 
+            { "$group": 
                 {"_id": 
                 {
                  semaine_cmd: "$semaine_cmd", 
@@ -138,7 +138,7 @@ exports.display = async (req, res, next) => {
            }
         ]
     );
-   console.log("aggregate function",data.length)
+//    console.log("aggregate function",data.length)
    let tab = [];
    data.forEach((el)=> {
     tab.push({
@@ -154,12 +154,12 @@ exports.display = async (req, res, next) => {
         
     });
    })
-   Retards = [];
-    Retards = tab.filter((el) =>{
+//    Retards = [];
+//     Retards = tab.filter((el) =>{
   
     
-   })
-   console.log("tableau d longuer : ",Retards.length);
+//    })
+//    console.log("tableau d longuer : ",Retards.length);
 
     res.send(tab);
 }
@@ -171,39 +171,96 @@ exports.countDistinct = async (req, res, next) =>  {
     var oneJ = new Date(date.getFullYear(),0,1);
     var numDay = Math.floor((date - oneJ)/ (24*60*60*1000));
     const out = Math.ceil((date.getDay()+1+numDay/7));
-    console.log(`Today's date is  (${date}) in weeks:  ${out}`);
+   
     const calcul = await  infos.aggregate([
          { 
-             $project : { 
-                 "semaine_prod" : "$semaine_prod",
+             "$project" : { 
+                //  "semaine_prod" : "$semaine_prod",
                  "semaine_cmd" : "$semaine_cmd",
                  "on_hand_balance" : "$on_hand_balance",
-                 "planning_date": "$planning_date",
-                 "item_number": "$item_number"
+                //  "planning_date": "$planning_date",
+                 "item_number": "$item_number",
+                 "StatusCommande": {
+                     "$cond" : {
+                         if:
+                         {
+                             "$lt": [ "semaine_cmd", out]
+                         },
+                         then : "Retard",
+                         else : "A temps"
+                     }
+                 }
              }
             },
              {
 
-              $group : {
+              "$group" : 
+              {
                   "_id" : {
-                    "item_number" : "$item_number",
-                    "planning_date" : "$planning_date"
+                    item_number : "$item_number",
+                    on_hand_balance : "son_hand_balance",
+                    semaine_cmd : "$semaine_cmd"
                   },
-                  "BesoinParItemDistinct" : {
-                      "$sum" : 1
-                     },
+                "BesoinParSemaine": {
+                    "$sum": 1
+                }
               }
          },
          {
              $sort : {
-                 BesoinParItemDistinct: -1
+                 BesoinParSemaine: -1
              }
          }
     ]);
-   
-  console.log("d'apres fonction calcul",calcul.length)
-    res.send(calcul);
+    
+ let tab2 = [];
+    calcul.forEach((x)=> {
+        tab2.push({
+            semaine_cmd: x._id.semaine_cmd,
+            on_hand_balance: x._id.on_hand_balance,
+            item_number: x._id.item_number,
+            BesoinParSemaine : x.BesoinParSemaine
+    
+            
+        });
+    })
+    res.send(tab2);
+}
+exports.test = async (req, res, next) =>  {
+    const date = new Date();
+    var oneJ = new Date(date.getFullYear(),0,1);
+    var numDay = Math.floor((date - oneJ)/ (24*60*60*1000));
+    const out = Math.ceil((date.getDay()+1+numDay/7));
+    const elm = infos.aggregate([
+        {
+            "$project" : {
+                "item_number": "$item_number",
+                "semaine_cmd": "$semaine_cmd",
+                "on_hand_balance": "$on_hand_balance",
+            }
+        }
+        ,
+        {
 
+         "$group" : {
+             "_id" : {
+               "item_number" : "$item_number",
+             },
+
+           "StatusCommande": {
+               "$sum": 1
+           }
+         },
+         
+    },
+    {
+        $sort : {
+            item_number: -1
+        }
+    }
+]);
+console.log(elm);
+res.send(elm)
 }
 // exports.all = async (req,res,next) => {
 //     const test = await infos.aggregate([

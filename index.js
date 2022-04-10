@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require ("cors");
+const morgan = require("morgan");
 const bodyParser = require('body-parser');
 const  app = express();
 const db = require('./database/db.config');
@@ -29,7 +30,8 @@ app.use('/user',UserRouter);
 app.use('/events',EventRouter);
 //connect backend to frontend
 app.use(cors({origin: "http://localhost:4200"}));
-
+app.use(morgan("dev")); 
+// configire morgan
 const port =  process.env.port ||  2000;
 
 //server listening on port

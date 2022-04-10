@@ -20,9 +20,11 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.3",
     "mongoose-type-email": "^1.1.2",
+    "mongoose-unique-validator": "^3.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "xlsx": "^0.18.5"
   }
 }

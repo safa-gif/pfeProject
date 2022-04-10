@@ -6,5 +6,5 @@ const user = require ('../controllers/userController');
 // router.post('register',user.createUser);
 router.post('/register',user.signup);
 router.post('/login', user.signin);
-router.get('/username', user.findUser);
+// router.get('/username', user.verifyToken, user.findUser);
 module.exports = router;
