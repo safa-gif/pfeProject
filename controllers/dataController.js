@@ -149,7 +149,7 @@ exports.display = async (req, res, next) => {
         item_name : el._id.item_name,
         BesoinBrut : el.BesoinBrut,
         planning_date : el._id.planning_date,
-        BesoinNet : el._id.on_hand_balance - el.BesoinBrut -20, 
+        BesoinNet : el._id.on_hand_balance - el.BesoinBrut - 10, 
 
         
     });

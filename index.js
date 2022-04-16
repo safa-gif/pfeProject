@@ -8,7 +8,9 @@ const path = require('path');
 const DataRouter = require('./routes/dataroute');
 const UserRouter = require ('./routes/userroute');
 const EventRouter = require('./routes/eventroute');
-
+const DateRouter =  require('./routes/dateroute');
+const CmdRouter = require ('./routes/cmdroute');
+const StockRouter = require ('./routes/stockroute');
 //connecting to database
 app.connect(db);
 
@@ -28,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/data',DataRouter);
 app.use('/user',UserRouter);
 app.use('/events',EventRouter);
+app.use('/date', DateRouter);
+app.use('/cmd', CmdRouter);
+app.use('/stock', StockRouter);
 //connect backend to frontend
 app.use(cors({origin: "http://localhost:4200"}));
 app.use(morgan("dev")); 
