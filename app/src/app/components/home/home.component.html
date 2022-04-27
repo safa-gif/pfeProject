@@ -3,11 +3,13 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>Dashboard <mat-icon class="mat-icon d-flex ml-auto p-1">dashboard</mat-icon> </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/stock">Stock</a>
-      <a mat-list-item routerLink="/profile">Profile</a>
-      <a mat-list-item routerLink="/date">Date</a>
+      <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
+      <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
+      <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+      <a mat-list-item routerLink="/date"> Date   <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+      <a mat-list-item routerLink="/calendar"> Calendar  <mat-icon class="mat-icon d-flex ml-auto p-1">calendar_today</mat-icon>  </a>
 
     </mat-nav-list>
   </mat-sidenav>
@@ -24,17 +26,93 @@
       <span>ZODIAC MARINE</span>
       <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="showSuccess()">
-        <mat-icon>notifications</mat-icon>
+        <mat-icon class="mat-icon d-flex ml-auto p-1">notifications</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>account_circle</mat-icon>
+        <mat-icon class="mat-icon d-flex ml-auto p-1">account_circle</mat-icon>
       </button>
     </mat-toolbar>
     <br>
+    <div class="flex flex-row flex-wrap card-container">
+      <!-- <div class="col-4" id="statistiques-">
+         <div class="card">
+           <h2 class="card-title"></h2>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis ducimus recusandae magni eligendi dolor iste aperiam autem reprehenderit eos! Officiis quidem non eligendi eveniet!            
+          </div>
+          <p-card class="card-statics-1"></p-card>
+      </div> -->
+      <div class="col-4">
+        <mat-card class="card-statics-1" id="card-statics-1">
+          <div class="statics">
+            <h2 class="card-title"> Total des retards	
+              <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
+              <span>0%</span></h2> 
+          </div>
+          <hr>
+          <p class="text-left"> <b>Par Année</b></p> 
+        </mat-card>  
+      </div>
+      <div class="col-4">
+        <mat-card id="card-statics-2">
+          <div class="statics">
+            <h2 class="card-title">  Plus fréquent 
+              <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
+              <span>0%</span> </h2>  
+          </div>
+          <hr>
+          <p class="text-left"> <b>Par Mois</b></p>
+        </mat-card>
+      </div>
+      <div class="col-4">
+        <mat-card  id="card-statics-3">
+          <div class="statics">
+            <h2 class="card-title"> Moins fréquent 
+              <mat-icon class="d-flex ml-auto p-0">trending_down</mat-icon>
+               <span>0%</span></h2>  
+          </div>
+         <hr>
+         <p class="text-left"> <b>Par Semaine</b></p>
+        </mat-card>
+      </div>
+  </div>
+    <!-- <div class="grid-container">
+      <mat-grid-list cols="4" rowHeight="150px">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between" >       
+                
+              </mat-card>  
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
+              </mat-card>  
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
+              </mat-card>  
+          </mat-grid-tile>
+
+      </mat-grid-list>
+      
+     </div> -->
+
+
+  <div class="grid-container">
+    <mat-grid-list cols="4" rowHeight="350px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between" >       
+               <p-chart type="pie" [data]="data"></p-chart>
+            </mat-card>  
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
+              <p-chart type="pie" [data]="data"></p-chart>
+            </mat-card>  
+        </mat-grid-tile>
+        
+    </mat-grid-list>
     
-    <!-- <p>Testing : {{day| date: "w"}}</p> -->
-     <app-data></app-data>
-    <!-- Add Content Here -->
-    
+</div>
   </mat-sidenav-content>
 </mat-sidenav-container>

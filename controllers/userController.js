@@ -41,7 +41,7 @@ exports.signin =(req, res, next) => {
 
    
 }
-exports.findUser= (req,res, next) => {
+exports.verifyToken= (req,res, next) => {
     return res.status(200).json(decodedToken.username);
 }
 
@@ -57,6 +57,13 @@ function verifyToken(req,res,next){
       decodedToken = tokendata;
       next();
     }
+  })
+}
+
+exports.validateToken = (req, res, next) => {
+  logging.info(User, 'Token validated, user authorized!')
+  return res.status(200).jopn({
+    message : "Authentiifcation autherazied"
   })
 }
 // exports.findAll = (req, res, next)=> {
@@ -107,7 +114,21 @@ function verifyToken(req,res,next){
 //     })
 // }
 
-// exports.loginUser = (req,res, next) =>{
 
-// }
+exports.SignUp = (req, res, next)=> {
+  const user = new User(
+    {
+      email : req.body.email,
+      username: req.body.username,
+      password : req.body.password
+    }
+  )
+  user.save()
+  .then(result => res.status(201))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error : err})
+  })
 
+
+}

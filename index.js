@@ -20,7 +20,7 @@ app.use(cors());
 // parse requests of content-type - application/json
 app.use(bodyParser.urlencoded({extended: true}));
 
-//using middelware that allows us to pass content
+//using middelware that parses incoming JSON requests and puts the parsed data in req.body
 app.use(bodyParser.json());
 
 //Set Static Folder
@@ -36,6 +36,7 @@ app.use('/stock', StockRouter);
 //connect backend to frontend
 app.use(cors({origin: "http://localhost:4200"}));
 app.use(morgan("dev")); 
+
 // configire morgan
 const port =  process.env.port ||  2000;
 

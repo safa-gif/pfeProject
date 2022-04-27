@@ -2,7 +2,8 @@
   flex: 1 1 auto;
 }
 #toolbar {
-  background-color: rgb(50, 50, 136);
+  background-color: black;
+  color: white;
 }
 .content  {
   background-color:#CCD1E4;
@@ -65,4 +66,18 @@ tr.example-element-row:not(.example-expanded-row):active {
   margin-top: 15px;
   width: 100%;
 }
+.container {
+  background-color: lightgray;
+}
 
+#card-statics-1{
+
+  background-color: #A100FFFF;
+}
+#card-statics-2 {
+  /* background-color: #4B7BE5; */
+  background-color: #36A2EB;
+}
+#card-statics-3 {
+  background-color:#71C4FFFF;
+}

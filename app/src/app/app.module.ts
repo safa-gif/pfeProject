@@ -26,7 +26,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
@@ -49,11 +48,26 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
+import {MatGridListModule} from '@angular/material/grid-list';
+// import {FullCalendarDemo} from './fullcalendardemo';
+// import {FullCalendarDemoRoutingModule} from './fullcalendardemo-routing.module';
+import {Dialog, DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from 'primeng/tabview';
+
 import { FormsModule } from '@angular/forms';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CbnComponent } from './components/cbn/cbn.component';
+import {ChartModule} from 'primeng/chart';
+import {InplaceModule} from 'primeng/inplace';
+import {CardModule} from 'primeng/card';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CommandeComponent } from './components/commande/commande.component';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -71,6 +85,9 @@ FullCalendarModule.registerPlugins([
     LoginComponent,
     RegisterComponent,
     CbnComponent,
+    CalendarComponent,
+    CommandeComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -107,8 +124,6 @@ FullCalendarModule.registerPlugins([
     MatGridListModule,
     MatTableModule,
     MatIconModule,
-    // A11yModule,
-    // MatExpansionModule,
     MatDividerModule,
     MatDialogModule,
     MatChipsModule,
@@ -116,18 +131,25 @@ FullCalendarModule.registerPlugins([
     MatCardModule,
     MatButtonModule,
     MatButtonToggleModule,
-    // PortalModule,
     ScrollingModule,
     FormsModule,
     FullCalendarModule,
     MatSnackBarModule,
+    ChartModule,
+    InplaceModule,
+    CardModule,
+    DialogModule, 
+    CheckboxModule,
+    InplaceModule,
+    CalendarModule,
+    InputTextModule,
+    ButtonModule,
+    TabViewModule
+    // ChartsModule,
   ],
   providers: [
     DataserviceService
   ],
   bootstrap: [AppComponent],
-  // schemas : [
-  //   CUSTOM_ELEMENTS_SCHEMA
-  // ]
 })
 export class AppModule { }

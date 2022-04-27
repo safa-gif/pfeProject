@@ -1,8 +1,6 @@
 const stock = require ('../models/stock');
 exports.findStock = (req, res, next)=> {
-    stock.find({
-        'item_number' : "Z62421FF"
-    })
+    stock.find()
     .then(data => {
         res.send(data)
     })

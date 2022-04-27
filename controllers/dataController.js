@@ -105,10 +105,7 @@ exports.display = async (req, res, next) => {
                     "planning_date": "$planning_date",
                     "on_hand_balance" : "$on_hand_balance",
                     "item_number": "$item_number",
-                    "item_name": '$item_name'
-                   
-
-                          
+                    "item_name": '$item_name' 
                 }
             },
             { "$group": 
@@ -132,13 +129,13 @@ exports.display = async (req, res, next) => {
              $sort : 
                {
                 "semaine_cmd": 1,
-                "planning_date": 1
+                "planning_date": 1,
+                "item_number": 1
             
                }
            }
         ]
     );
-//    console.log("aggregate function",data.length)
    let tab = [];
    data.forEach((el)=> {
     tab.push({
@@ -149,17 +146,11 @@ exports.display = async (req, res, next) => {
         item_name : el._id.item_name,
         BesoinBrut : el.BesoinBrut,
         planning_date : el._id.planning_date,
-        BesoinNet : el._id.on_hand_balance - el.BesoinBrut - 10, 
+        BesoinNet : el._id.on_hand_balance - el.BesoinBrut, 
 
         
     });
    })
-//    Retards = [];
-//     Retards = tab.filter((el) =>{
-  
-    
-//    })
-//    console.log("tableau d longuer : ",Retards.length);
 
     res.send(tab);
 }
