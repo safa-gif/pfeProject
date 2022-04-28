@@ -68,6 +68,8 @@ import {InplaceModule} from 'primeng/inplace';
 import {CardModule} from 'primeng/card';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CommandeComponent } from './components/commande/commande.component';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -144,7 +146,9 @@ FullCalendarModule.registerPlugins([
     CalendarModule,
     InputTextModule,
     ButtonModule,
-    TabViewModule
+    TabViewModule,
+    ScrollTopModule,
+    ScrollPanelModule,
     // ChartsModule,
   ],
   providers: [

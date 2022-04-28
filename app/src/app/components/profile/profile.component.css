@@ -1,9 +1,10 @@
 .example-spacer {
     flex: 1 1 auto;
 }
-#toolbar {
-    background-color:  #2F3A8F;
-}
+/* #toolbar {
+    background-color:  black;
+    color: white;
+} */
 .content {
     padding: 16px;
     /* background-color:#CD88AF; */
@@ -13,3 +14,7 @@
 .content > mat-card{
   width: 200px;
 } 
+.card-container {
+    background-color: lightgrey;
+    color : red;
+}

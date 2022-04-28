@@ -38,7 +38,9 @@ export class HomeComponent {
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
   }
-  
+  afficher() {
+    console.log("hello")
+  }
  
   // update(event: Event) {
   //     this.data = //create new data

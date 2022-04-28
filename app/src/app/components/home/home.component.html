@@ -25,22 +25,18 @@
       </button>
       <span>ZODIAC MARINE</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="showSuccess()">
-        <mat-icon class="mat-icon d-flex ml-auto p-1">notifications</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon class="mat-icon d-flex ml-auto p-1">account_circle</mat-icon>
-      </button>
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
     </mat-toolbar>
     <br>
+    <div class="title-interface  flex justify-content-end">
+      <h2 class="card-title">
+          <button  type="button" mat-raised-button  (click)="afficher()">
+          <b class="text-bold">Reporting</b>
+        </button>
+      </h2>
+    </div>
     <div class="flex flex-row flex-wrap card-container">
-      <!-- <div class="col-4" id="statistiques-">
-         <div class="card">
-           <h2 class="card-title"></h2>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis ducimus recusandae magni eligendi dolor iste aperiam autem reprehenderit eos! Officiis quidem non eligendi eveniet!            
-          </div>
-          <p-card class="card-statics-1"></p-card>
-      </div> -->
       <div class="col-4">
         <mat-card class="card-statics-1" id="card-statics-1">
           <div class="statics">
@@ -75,31 +71,8 @@
         </mat-card>
       </div>
   </div>
-    <!-- <div class="grid-container">
-      <mat-grid-list cols="4" rowHeight="150px">
-          <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between" >       
-                
-              </mat-card>  
-          </mat-grid-tile>
-
-          <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
-              </mat-card>  
-          </mat-grid-tile>
-
-          <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
-              </mat-card>  
-          </mat-grid-tile>
-
-      </mat-grid-list>
-      
-     </div> -->
-
-
-  <div class="grid-container">
-    <mat-grid-list cols="4" rowHeight="350px">
+   <div class="grid-container">
+    <mat-grid-list cols="3" rowHeight="350px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between" >       
                <p-chart type="pie" [data]="data"></p-chart>
@@ -110,9 +83,22 @@
               <p-chart type="pie" [data]="data"></p-chart>
             </mat-card>  
         </mat-grid-tile>
-        
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
+            <p-chart type="pie" [data]="data"></p-chart>
+          </mat-card>  
+      </mat-grid-tile>
     </mat-grid-list>
-    
+    <!-- <mat-grid-list cols="4" rowHeight="50px">
+      <mat-grid-tile colspan="2" rowspan="2">A</mat-grid-tile>
+      <mat-grid-tile rowspan="2">B</mat-grid-tile>
+      <mat-grid-tile rowspan="2">C</mat-grid-tile>
+      <mat-grid-tile colspan="4">D</mat-grid-tile>     
+    </mat-grid-list> -->
+
+    <!-- <app-data></app-data> -->
 </div>
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

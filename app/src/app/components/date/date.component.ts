@@ -4,6 +4,8 @@ import{HttpClient} from '@angular/common/http';
 import { DateServiceService } from 'src/app/services/date-service.service';
 import Swal from 'sweetalert2';
 import {Events} from 'src/app/donnees/event';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-date',
   templateUrl: './date.component.html',
@@ -15,13 +17,14 @@ export class DateComponent implements OnInit {
   events: Events | undefined;
   constructor(
     public http: HttpClient,
-    private dateservice: DateServiceService
+    private dateservice: DateServiceService,
+    private router:Router
   ) { }
   handleDateClick(arg: any){
-
+    window.alert('Cliked on date '+ arg.dateStr)
   }
   onSelectx(event: any){
-    
+    // console.log('Right now i am at the point of scheduling an event')
   }
   ngOnInit(): void {
     this.getAllEvents();
@@ -29,13 +32,16 @@ export class DateComponent implements OnInit {
   deleteEvent(id: string){
     this.dateservice.deleteSingleEvent(id).subscribe((data: any)=>{})
   }
+  addEvent(){
+    this.router.navigate(['/add-event'])
+  }
   getAllEvents(){
     this.dateservice.getAllEvents().subscribe((data: any)=> {
       const self = this;
       this.calendarOptions = {
         initialView:'dayGridMonth',
-        selectable : false,
-        editable : false,
+        selectable : true,
+        editable : true,
         select: this.handleDateClick.bind(this),
         events : data,
         eventClick(eventData){

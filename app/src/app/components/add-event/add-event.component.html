@@ -1,4 +1,4 @@
-<div class="center">
+<!-- <div class="center">
     <div class="col-md-6">
       <form>
           <div class="form-group row">
@@ -21,4 +21,30 @@
               </div>
           </div>
       </form>
+    </div> -->
+
+    
+<div id="example-header-image" class="container-fluid">
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6">
+        <mat-card class="example-card">
+          <mat-card-title> 
+             <h1 class="text-center login-user"> Plannifer</h1>
+          </mat-card-title>
+         <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <mat-label>title</mat-label>
+                <input type="text" matInput placeholder="Title" value="" [(ngModel)]="event.title">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Date</mat-label>
+                <input type="date" matInput placeholder="Date" [(ngModel)]="event.date">
+              </mat-form-field>
+              <button type="button" mat-button color="primary" (click)="saveEvent()">Planifier</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
+  </div>
+  
+

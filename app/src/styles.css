@@ -1,8 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-#card-statics-1
-{
-    background-color:#A100FFFF;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap');
+html, body 
+{ 
+    height: 100%; 
 }
+
+body
+{
+   margin: 0;
+   font-family: 'Poppins', sans-serif; 
+}
+     
+.mat-simple-snackbar 
+{ 
+    color: #36A2EB;
+    font-weight: 500;
+    text-align: center;
+} 

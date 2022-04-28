@@ -8,7 +8,7 @@ import {throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class DateServiceService {
-   baseUrl = 'http://localhost:2000/events';
+   baseUrl = 'http://localhost:2000/events/';
    headers = new HttpHeaders().set('Content-Type', 'application/json');
    currentUser = {};
   window: any;

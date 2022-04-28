@@ -11,19 +11,17 @@ import { CbnComponent } from './components/cbn/cbn.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CommandeComponent } from './components/commande/commande.component';
 const routes: Routes = [
-  {path: '',  pathMatch: 'full', redirectTo: '/login'},
+  {path: '',  pathMatch: 'full', redirectTo: 'login'},
   {path: 'home', component: HomeComponent},
   {path: 'stock', component:StockComponent},
   {path: 'date', component:DateComponent},
-  {path: 'profile/id:', component:ProfileComponent},
+  {path: 'profile', component:ProfileComponent},
   {path: 'add-event', component: AddEventComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'cbn', component:CbnComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'commande', component: CommandeComponent},
-
-
 
 ]
 

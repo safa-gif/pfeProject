@@ -1,26 +1,25 @@
 <!-- <div class="row">
 <div class="col-md-6">
-    <button type="button" nbButton outline ststus="success" routerLink="/add-event">Add Event</button>
+    <button type="button" nbButton outline status="success" routerLink="/add-event">Add Event</button>
 </div>
 <hr>
 </div>
 <full-calendar [options] ="calendarOptions"></full-calendar> -->
-<mat-toolbar>
+<mat-toolbar id="toolbar">
     <mat-toolbar-row>
-        <span>Calendar Scheduler</span>
+        <span>Calendar</span> 
+        <button mat-button routerLink="/home">Home</button>
         <span class="example-spacer"></span>
-        <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
       </mat-toolbar-row>
 </mat-toolbar>
 
 <div class="flex flex-row flex-wrap card-container">
-    <div class="col-2">
-        <p-button type="button">Add event</p-button>
-    </div>
+   
     <div class="col-10">
         <full-calendar [options] ="calendarOptions"></full-calendar> 
     </div>
-    <!-- <full-calendar [options] ="calendarOptions"></full-calendar>  -->
+    <div class="col-2">
+        <button mat-raised-button color="accent" (click)="addEvent()">Add Event</button>
+    </div>
 </div>
 
