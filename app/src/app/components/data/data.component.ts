@@ -67,5 +67,8 @@ export class DataComponent implements AfterViewInit {
     this.dataSource = this.dataSource;
     
   }
+  filter(){
+   alert('filtre is working!!!')
+  }
   
 }

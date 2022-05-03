@@ -11,6 +11,9 @@ export class RegisterComponent implements OnInit {
   // public form!: FormGroup;
   // public flatlogicEmail = 'admin@flatlogic.com';
   // public flatlogicPassword = 'admin';
+  email:string | undefined;
+  password:string  | undefined;
+  username : string | undefined;
   constructor() { }
   public ngOnInit(): void {
     // this.form = new FormGroup({
@@ -19,10 +22,8 @@ export class RegisterComponent implements OnInit {
     // });
   }
 
-  // public login(): void {
-  //   if (this.form.valid) {
-  //     this.sendLoginForm.emit();
-  //   }
-  // }
+  public login(): void {
+    console.log('login works!!')
+  }
  
 }

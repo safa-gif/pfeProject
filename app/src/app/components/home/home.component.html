@@ -8,8 +8,8 @@
       <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
       <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
       <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
-      <a mat-list-item routerLink="/date"> Date   <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
-      <a mat-list-item routerLink="/calendar"> Calendar  <mat-icon class="mat-icon d-flex ml-auto p-1">calendar_today</mat-icon>  </a>
+      <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+      <!-- <a mat-list-item routerLink="/calendar"> Calendar  <mat-icon class="mat-icon d-flex ml-auto p-1">calendar_today</mat-icon>  </a> -->
 
     </mat-nav-list>
   </mat-sidenav>
@@ -29,10 +29,10 @@
       <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
     </mat-toolbar>
     <br>
-    <div class="title-interface  flex justify-content-end">
+    <div class="title-interface  flex justify-content-start mx-3">
       <h2 class="card-title">
           <button  type="button" mat-raised-button  (click)="afficher()">
-          <b class="text-bold">Reporting</b>
+          Reporting
         </button>
       </h2>
     </div>
@@ -72,7 +72,7 @@
       </div>
   </div>
    <div class="grid-container">
-    <mat-grid-list cols="3" rowHeight="350px">
+    <mat-grid-list cols="2" rowHeight="350px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between" >       
                <p-chart type="pie" [data]="data"></p-chart>
@@ -80,25 +80,17 @@
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
-              <p-chart type="pie" [data]="data"></p-chart>
+              <!-- <p-chart type="pie" [data]="data"></p-chart> -->
+
             </mat-card>  
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
-            <p-chart type="pie" [data]="data"></p-chart>
-          </mat-card>  
-      </mat-grid-tile>
     </mat-grid-list>
-    <!-- <mat-grid-list cols="4" rowHeight="50px">
-      <mat-grid-tile colspan="2" rowspan="2">A</mat-grid-tile>
-      <mat-grid-tile rowspan="2">B</mat-grid-tile>
-      <mat-grid-tile rowspan="2">C</mat-grid-tile>
-      <mat-grid-tile colspan="4">D</mat-grid-tile>     
-    </mat-grid-list> -->
 
-    <!-- <app-data></app-data> -->
 </div>
-
+<div class="col-12">
+  <!-- <app-table-d></app-table-d> -->
+  <app-data></app-data>
+</div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

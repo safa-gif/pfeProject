@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CbnComponent } from './components/cbn/cbn.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CommandeComponent } from './components/commande/commande.component';
+import { TableDComponent } from './components/tables/table-d/table-d.component';
 const routes: Routes = [
   {path: '',  pathMatch: 'full', redirectTo: 'login'},
   {path: 'home', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'cbn', component:CbnComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'commande', component: CommandeComponent},
+  {path: 'table', component: TableDComponent}
 
 ]
 

@@ -5,6 +5,13 @@ const bodyParser = require('body-parser');
 const  app = express();
 const db = require('./database/db.config');
 const path = require('path');
+const helmet = require('helmet');
+const jwt = require('jsonwebtoken');
+
+
+
+//Using routes
+const Account = require('./routes/accountroute');
 const DataRouter = require('./routes/dataroute');
 const UserRouter = require ('./routes/userroute');
 const EventRouter = require('./routes/eventroute');
@@ -26,6 +33,22 @@ app.use(bodyParser.json());
 //Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+    if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === "JWT") {
+        jwt.verify(req.headers.authorization.split(' ')[1], "Authentication", (err, decode) => {
+            if (err) req.account = undefined;
+            req.account = decode;
+            next();
+        })
+    } else {
+        req.account = undefined;
+        next();
+    }
+})
+app.use(helmet());
+
+
+
 //using apis 
 app.use('/data',DataRouter);
 app.use('/user',UserRouter);
@@ -33,15 +56,16 @@ app.use('/events',EventRouter);
 app.use('/date', DateRouter);
 app.use('/cmd', CmdRouter);
 app.use('/stock', StockRouter);
+app.use('/account', Account);
 //connect backend to frontend
-app.use(cors({origin: "http://localhost:4200"}));
+// app.use(cors({origin: "http://localhost:4200"}));
 app.use(morgan("dev")); 
 
 // configire morgan
 const port =  process.env.port ||  2000;
 
-//server listening on port
+//app listening on port
 app.listen(port, (req, res) => {
-    console.log(`Server is running and listening on http://localhost:${port} `)
+    console.log(`app is running and listening on http://localhost:${port} `)
 })
 

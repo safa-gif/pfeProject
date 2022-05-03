@@ -1,7 +1,6 @@
-// const express = require('express');
+
 const mongoose = require('mongoose');
 const Event = require ('../models/event');
-// const router = express.Router();
 
 /* Fetch all events */
 exports.getEvents = async (req, res) => {

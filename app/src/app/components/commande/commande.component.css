@@ -1,8 +1,26 @@
 mat-toolbar {
     background-color: black;
     color: white;
+    font-family: 'Poppins', sans-serif;
     
 }
 .example-spacer {
     flex: 1 1 auto;
 }
+.contenu {
+    background-color: lightgray;
+    /* background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%); */
+}
+#card-statics-1{
+
+    background-color: rgb(213, 169, 239);
+  }
+  #card-statics-2 {
+    /* background-color: #4B7BE5; */
+    background-color: #8cc6ec;
+  }
+  #card-statics-3 {
+    background-color:rgb(78, 149, 199);
+  }

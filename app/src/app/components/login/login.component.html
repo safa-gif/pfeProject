@@ -1,7 +1,7 @@
 
 <div id="example-header-image" class="container-fluid">
   <div class="d-flex justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-8">
       <mat-card class="example-card">
         <!-- <mat-card-header >
           <mat-card-title class="flex align-items-center" id="card-title"> Login </mat-card-title>
@@ -16,13 +16,13 @@
        <mat-card-content>
           <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input type="email" matInput placeholder="Email" value="" [(ngModel)]="email">
+              <input type="email" matInput placeholder="Email" value="" [(ngModel)]="email" required="true">
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
     
             <mat-form-field class="example-full-width">
               <mat-label>Password</mat-label>
-              <input type="password" matInput placeholder="Password" [(ngModel)]="password">
+              <input type="password" matInput placeholder="Password" [(ngModel)]="password" required="true">
               <mat-icon matSuffix>vpn_key</mat-icon>
             </mat-form-field>
             <button type="button" mat-button color="primary" (click)="login()">Login</button>

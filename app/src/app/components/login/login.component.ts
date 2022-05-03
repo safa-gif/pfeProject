@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   }
   login()
   {
+      
       if(this.email=="administrator@gmail.com" && this.password=="admin")
       {
         this.snackBar.open('Login Successful','',{duration:1000});

@@ -70,6 +70,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { TableDComponent } from './components/tables/table-d/table-d.component';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -89,6 +90,7 @@ FullCalendarModule.registerPlugins([
     CbnComponent,
     CalendarComponent,
     CommandeComponent,
+    TableDComponent,
   
   ],
   imports: [

@@ -17,10 +17,10 @@
   border: 1px solid #b6b6b6;
   box-sizing: content-box;
 }
-.conatiner > div {
-  height: 50px;
-  width: 50px;
-}
+/* .container > div {
+  height: 90px;
+  width: 80px;
+} */
 .container-btn {
   padding:10px;
 }

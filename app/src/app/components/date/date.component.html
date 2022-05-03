@@ -1,25 +1,29 @@
-<!-- <div class="row">
-<div class="col-md-6">
-    <button type="button" nbButton outline status="success" routerLink="/add-event">Add Event</button>
-</div>
-<hr>
-</div>
-<full-calendar [options] ="calendarOptions"></full-calendar> -->
 <mat-toolbar id="toolbar">
     <mat-toolbar-row>
         <span>Calendar</span> 
-        <button mat-button routerLink="/home">Home</button>
         <span class="example-spacer"></span>
+        <button mat-button routerLink="/home">Home</button>
+        <mat-icon>notifications</mat-icon>
+
       </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="flex flex-row flex-wrap card-container">
-   
-    <div class="col-10">
-        <full-calendar [options] ="calendarOptions"></full-calendar> 
-    </div>
-    <div class="col-2">
-        <button mat-raised-button color="accent" (click)="addEvent()">Add Event</button>
-    </div>
-</div>
+<mat-sidenav-container id="contenu">
+    <mat-sidenav-content>
+        <div class="col-lg-12 col-md-12 col-sm-12 flex justify-content-lg-between justify-content-between justify-sm-content-around">
+            <div class="col-10 col-md-10 col-sm-10">
+            <full-calendar [options] ="calendarOptions"></full-calendar> 
+            </div>
+            <div class="col-2 col-md-2 col-sm-2 flex flex-column">
+                <div class="flex align-items-center m-2">
+                    <button mat-raised-button color="accent"class="text-center" (click)="addEvent()"> Add Event  &nbsp;&nbsp;&nbsp;</button>
+                </div>
+                <div class="flex align-items-center m-2">
+                    <button mat-raised-button color="primay" (click)="search()">Search Event</button>
+                </div>              
+            </div>
+        </div>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>
 

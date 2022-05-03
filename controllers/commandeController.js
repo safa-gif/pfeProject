@@ -95,15 +95,32 @@ exports.cmdparDate = async (req, res, next) => {
 //    })
 //     res.send(tab)
 }
+ exports.getElmentById = async (req, res, next) => {
+//    var x = req.params.item_number;
+//    var condition = `{ item_number: {$regex: new RegExp(${item_number}), $options: "i" }`
+//    var ab = `${item_number}`;
 
-exports.getElmentById = async (req, res, next) => {
-   var x = req.params.item;
-//    var condition = { item_number: { $regex: new RegExp(item), $options: "i" }
-    try {
-        const test = await cmd.findById(condtion);
-        res.status(200).json(test);
-    } catch(error) {
-        res.status(404).json({ message: error.message});
-    }
+// //forcer une expression
+//     try {
+//         const test = await cmd.findById(item_number);
+//         res.status(200).json(test);
+//     } catch(error) {
+//         res.status(404).json({ message: error.message});
+//     }
+try {
+    const cmds = await cmd.findOne().where({_id: item_number.id})
+    res.status(200).json(cmds);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 
 }
+
+// exports.getSingle = catchAsyncErrors (async (req,res,next) => {
+//     try {
+//       const cmds = await cmd.findById(req.params.item_number);
+//       res.status(200).json(cmds);
+//     } catch (err) {
+//       res.status(500).json(err);
+//     }
+//   });

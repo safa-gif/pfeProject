@@ -199,7 +199,7 @@ exports.countDistinct = async (req, res, next) =>  {
          },
          {
              $sort : {
-                 BesoinParSemaine: -1
+                item_number: 1,
              }
          }
     ]);

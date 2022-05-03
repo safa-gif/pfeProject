@@ -1,10 +1,20 @@
+mat-toolbar {
+    background-color: black;
+    color: white;
+}
+.contenu{
+    background-color: lightgray;
+}
 .example-spacer {
     flex: 1 1 auto;
 }
-/* #toolbar {
-    background-color:  black;
-    color: white;
-} */
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    justify-items: center;
+    margin-right:20px;
+  }
 .content {
     padding: 16px;
     /* background-color:#CD88AF; */

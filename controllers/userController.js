@@ -66,16 +66,16 @@ exports.validateToken = (req, res, next) => {
     message : "Authentiifcation autherazied"
   })
 }
-// exports.findAll = (req, res, next)=> {
-//     User.find((error, data)=> {
-//         if (error){
-//             return next(error)
-//         }
-//         else {
-//             res.send(data)
-//         }
-//     })
-// }
+exports.findAll = (req, res, next)=> {
+    User.find((error, data)=> {
+        if (error){
+            return next(error)
+        }
+        else {
+            res.send(data)
+        }
+    })
+}
 // exports.findUser = (req, res) => {
 //     const id= req.params.id;
 //     User.findById(id)

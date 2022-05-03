@@ -35,6 +35,10 @@ export class DateComponent implements OnInit {
   addEvent(){
     this.router.navigate(['/add-event'])
   }
+  search(){
+    // this.dateservice.
+    alert('search function is operationnal:!!!')
+  }
   getAllEvents(){
     this.dateservice.getAllEvents().subscribe((data: any)=> {
       const self = this;
