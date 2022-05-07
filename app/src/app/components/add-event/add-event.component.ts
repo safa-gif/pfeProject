@@ -22,7 +22,7 @@ export class AddEventComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
+    }
    saveEvent(){
      const event = {
        title : this.event.title,

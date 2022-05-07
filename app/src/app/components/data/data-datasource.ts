@@ -10,7 +10,8 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface DataItem {
 
   item_number: string;
-  // item_name: string;
+  item_name: string;
+  order_number: number,
   planning_date: Date;
   semaine_prod: number;
   semaine_cmd: number;

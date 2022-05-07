@@ -18,9 +18,8 @@ export class DataserviceService {
     {
       return this.http.get<DataItem[]>(this.apiURL);
     }
-    
-   //
-   login() {
-
-   }
+    // baseURL = "http://localhost:2000/dim"
+    // getAll(){
+    //   return this.http.get(this.baseURl)
+    // }
 }

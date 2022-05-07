@@ -1,7 +1,7 @@
 mat-toolbar {
     background-color: black;
     color: white;
-    font-family: 'Poppins', sans-serif;
+
     
 }
 .example-spacer {
@@ -24,3 +24,15 @@ mat-toolbar {
   #card-statics-3 {
     background-color:rgb(78, 149, 199);
   }
+
+ 
+  :host ::ng-deep .custom-scrolltop{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    background-color: rgb(213, 169, 239);
+  }
+.p-scrolltop-icon {
+  font-size: 1rem;
+  color: rgb(199, 130, 239);
+}

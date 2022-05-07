@@ -7,8 +7,6 @@ import { StockComponent } from './components/stock/stock.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CbnComponent } from './components/cbn/cbn.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { TableDComponent } from './components/tables/table-d/table-d.component';
 const routes: Routes = [
@@ -20,8 +18,6 @@ const routes: Routes = [
   {path: 'add-event', component: AddEventComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'cbn', component:CbnComponent},
-  {path: 'calendar', component: CalendarComponent},
   {path: 'commande', component: CommandeComponent},
   {path: 'table', component: TableDComponent}
 

@@ -9,8 +9,8 @@ import {throwError } from 'rxjs';
 })
 export class DateServiceService {
    baseUrl = 'http://localhost:2000/events/';
-   headers = new HttpHeaders().set('Content-Type', 'application/json');
-   currentUser = {};
+  //  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  //  currentUser = {};
   window: any;
   constructor(
     private http: HttpClient,
@@ -29,7 +29,7 @@ export class DateServiceService {
           console.log(data);
           return data;
         }), catchError(error => {
-          return throwError('Something went wrong');
+          return error
         })
       );
   }

@@ -26,7 +26,7 @@ export class DataComponent implements AfterViewInit {
   // datSource = new DataDataSource();
   donnees: DataItem [] = [];
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = [ 'item_number','planning_date', 'semaine_cmd',
+  displayedColumns = [ 'item_number', 'item_name', 'order_number','planning_date', 'semaine_cmd',
   'semaine_prod','BesoinNet','BesoinBrut'];
       
   constructor(private service: DataserviceService) {
@@ -39,9 +39,6 @@ export class DataComponent implements AfterViewInit {
         this.dataSource
   }
   
-  // filterData($event: any) {
-  //   this.dataSource.filter = $event.target.value;
-  // }
   ngOnInit(): void {
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;

@@ -19,16 +19,20 @@ const dataSchema = new Schema ({
     required: true,
     },
     semaine_cmd: {
-     type: Number
+     type: Number,
+     require: true,
     },
     semiane_prod: {
-        type: Number
+        type: Number,
+        require: true,
     },
     cmd_mois: {
-        type: Number
+        type: Number,
+        require: true,
     },
     cmd_annee :{
-        type: Number
+        type: Number,
+        require: true,
     },
     customer_name: {
      type: String,

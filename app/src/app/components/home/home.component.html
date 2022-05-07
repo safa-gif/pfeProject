@@ -9,7 +9,6 @@
       <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
       <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
       <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
-      <!-- <a mat-list-item routerLink="/calendar"> Calendar  <mat-icon class="mat-icon d-flex ml-auto p-1">calendar_today</mat-icon>  </a> -->
 
     </mat-nav-list>
   </mat-sidenav>
@@ -34,6 +33,8 @@
           <button  type="button" mat-raised-button  (click)="afficher()">
           Reporting
         </button>
+         <p class="text-center mt-3">We are currently in week : {{datepipeWeek}}</p>
+        <!-- <span class="st-icon-pandora">{{datepipeWeek-1}}</span> -->
       </h2>
     </div>
     <div class="flex flex-row flex-wrap card-container">
@@ -42,7 +43,7 @@
           <div class="statics">
             <h2 class="card-title"> Total des retards	
               <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-              <span>0%</span></h2> 
+              <span>{{datepipeWeek}}</span></h2> 
           </div>
           <hr>
           <p class="text-left"> <b>Par Année</b></p> 
@@ -51,9 +52,9 @@
       <div class="col-4">
         <mat-card id="card-statics-2">
           <div class="statics">
-            <h2 class="card-title">  Plus fréquent 
+            <h2 class="card-title">  Total des retards 
               <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-              <span>0%</span> </h2>  
+              <span>{{datepipeWeek}}</span> </h2>  
           </div>
           <hr>
           <p class="text-left"> <b>Par Mois</b></p>
@@ -62,7 +63,7 @@
       <div class="col-4">
         <mat-card  id="card-statics-3">
           <div class="statics">
-            <h2 class="card-title"> Moins fréquent 
+            <h2 class="card-title"> Total des Retards
               <mat-icon class="d-flex ml-auto p-0">trending_down</mat-icon>
                <span>0%</span></h2>  
           </div>
@@ -71,24 +72,27 @@
         </mat-card>
       </div>
   </div>
-   <div class="grid-container">
-    <mat-grid-list cols="2" rowHeight="350px">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between" >       
-               <p-chart type="pie" [data]="data"></p-chart>
-            </mat-card>  
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-card class="mat-elevation-z8 card-prop cardsSatistiques d-flex flex-space-between"> 
-              <!-- <p-chart type="pie" [data]="data"></p-chart> -->
+   <div class="col-md-12 flex justify-content-around">
+     <div class="col-md-3 col-sm-6">
+      <mat-card class="mat-elevation-z8">
+       <p-chart type="pie" [data]="data"></p-chart>
 
-            </mat-card>  
-        </mat-grid-tile>
-    </mat-grid-list>
+      </mat-card>
+
+     </div>
+     <div class="col-md-6 col-sm-6">
+       <mat-card class="mat-elevation-z8">
+        <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+       </mat-card>
+     </div>
 
 </div>
+<!-- <div class="col-md-10 flex flex-column ml-auto mr-auto"> 
+  <mat-card class="mat-elevation-z8">
+    <p-chart type="bar" [data]="data2" [options]="chartOptions"></p-chart>
+  </mat-card>
+</div> -->
 <div class="col-12">
-  <!-- <app-table-d></app-table-d> -->
   <app-data></app-data>
 </div>
 

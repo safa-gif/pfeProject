@@ -1,19 +1,16 @@
 <mat-toolbar id="toolbar">
     <mat-toolbar-row>
         <span>Profile Admin</span>
+        <span class="example-spacer"></span>
         <div class="btns flex flex justify-content-center">
             <button mat-button routerLink="/home">Home</button>
             <button mat-button routerLink="/commande">Commande</button>
             <button mat-button routerLink="/stock">Stock</button>
             <button mat-button routerLink="/date">Plannifier</button>
         </div>
-        <span class="example-spacer"></span>
           <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="showSuccess()">
             <mat-icon>notifications</mat-icon>
           </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" >
-            <mat-icon>account_circle</mat-icon>
-        </button>
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container class="conteu">

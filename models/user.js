@@ -28,7 +28,19 @@ userSchema.statics.hashPassword = function hashPassword(password){
 userSchema.methods.isValid = function(hashedpassword){
     return  bcrypt.compareSync(hashedpassword, this.password);
 }
+//compare password
+userSchema.methods.comparepassword =  async function (enteredpassword) {
+    return  await  bcrypt.compare(enteredpassword,this.password)
+}
+//token 
+userSchema.methods.getJwtToken =   async function() {
+    return  await jwt.sign({id:this._id}, "SDJFOW850FJSLDFJ4095809DFJG045FGRASA45klkhsqjhsqhs12828SZ",{
+    expiresIn: "7d"
+})
 
-const User = mongoose.model('User',userSchema);
+}
+const User = mongoose.model('Users',userSchema);
 // const User = mongoose.model('User', userSchema);
+//comparepassword
+
 module.exports = User;

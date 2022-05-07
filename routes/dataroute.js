@@ -3,7 +3,7 @@ const router = express.Router();
 const info = require ('../controllers/dataController');
 
 router.get('/', info.display);
-router.get('/count', info.countDistinct);
-router.get('/all', info.test);
+router.get('/tester', info.getData);
+router.get('/counter', info.countDistinct)
 
 module.exports = router;

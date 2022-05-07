@@ -49,8 +49,6 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import {MatGridListModule} from '@angular/material/grid-list';
-// import {FullCalendarDemo} from './fullcalendardemo';
-// import {FullCalendarDemoRoutingModule} from './fullcalendardemo-routing.module';
 import {Dialog, DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
@@ -62,15 +60,14 @@ import { FormsModule } from '@angular/forms';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CbnComponent } from './components/cbn/cbn.component';
 import {ChartModule} from 'primeng/chart';
 import {InplaceModule} from 'primeng/inplace';
 import {CardModule} from 'primeng/card';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TableDComponent } from './components/tables/table-d/table-d.component';
+import { DatePipe } from '@angular/common';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -87,8 +84,6 @@ FullCalendarModule.registerPlugins([
     AddEventComponent,
     LoginComponent,
     RegisterComponent,
-    CbnComponent,
-    CalendarComponent,
     CommandeComponent,
     TableDComponent,
   
@@ -154,7 +149,8 @@ FullCalendarModule.registerPlugins([
     // ChartsModule,
   ],
   providers: [
-    DataserviceService
+    DataserviceService,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })
