@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { DateServiceService } from 'src/app/services/date-service.service';
+import { DateServiceService } from 'src/app/services/dateService/date-service.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 @Component({

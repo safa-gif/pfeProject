@@ -4,15 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
-import { DataComponent } from './components/data/data.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DataserviceService } from './services/dataservice.service';
-import { StockComponent } from './components/stock/stock.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DateComponent } from './components/date/date.component';
 import { ToastrModule } from 'ngx-toastr';
 
-//Angular Material Imports
+//Angular Material Imports + PrimeNg imports +primeFlexs
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {GridModule} from '@angular/flex-layout/grid';
 import {FlexModule} from '@angular/flex-layout/flex';
@@ -44,12 +41,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { FooterComponent } from './components/footer/footer.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {Dialog, DialogModule} from 'primeng/dialog';
+import { DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {CheckboxModule} from 'primeng/checkbox';
@@ -64,8 +60,6 @@ import {ChartModule} from 'primeng/chart';
 import {InplaceModule} from 'primeng/inplace';
 import {CardModule} from 'primeng/card';
 import { CommandeComponent } from './components/commande/commande.component';
-import { ScrollTopModule } from 'primeng/scrolltop';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TableDComponent } from './components/tables/table-d/table-d.component';
 import { DatePipe } from '@angular/common';
 import { DashboardDataComponent } from './components/tables/dashboard-data/dashboard-data.component';
@@ -82,11 +76,8 @@ FullCalendarModule.registerPlugins([
   declarations: [
     AppComponent,
     HomeComponent,
-    DataComponent,
-    StockComponent,
     ProfileComponent,
     DateComponent,
-    FooterComponent,
     AddEventComponent,
     LoginComponent,
     RegisterComponent,
@@ -106,7 +97,6 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     ToastrModule.forRoot(),
     FlexLayoutModule,
-    // MatFormFieldModule,
     GridModule,
     FlexLayoutModule,
     MatTableExporterModule,
@@ -155,14 +145,10 @@ FullCalendarModule.registerPlugins([
     InputTextModule,
     ButtonModule,
     TabViewModule,
-    ScrollTopModule,
-    ScrollPanelModule,
     ReactiveFormsModule,
     FormsModule,
-    // ChartsModule,
   ],
   providers: [
-    DataserviceService,
     DatePipe,
   ],
   bootstrap: [AppComponent],

@@ -28,21 +28,6 @@ exports.findStock = async (req, res, next)=> {
        res.status(500).send({message : error.message ||"Some error while retrieving stock data"})
     }
 }
-// //CountTotalsItemsInStock :
-// exports.countTotalItems = async(req,res,next)=> {
-//   try {
-//       const items = await stock.distinct("item_number")
-//        let qte = 0;
-//        let tab = [];
-//        items.forEach((el)=>{tab.push({el})})
-//        qte = tab.length
-//       res.status(200).send({qte})
-//   }
-//   catch(error) {
-//     res.status(500).send({message : error.message ||"Some error while retrieving the stock quantity"})
-
-//   }
-// }
 //CountItemPlusFréquent
 exports.countFrequent = async(req,res,next)=> {
     try{
@@ -106,7 +91,6 @@ exports.countFrequent = async(req,res,next)=> {
     }
 }
 
-//ItemMoinsFrequent
 //Get Total des Produuits 
 exports.totalStock = async (req,res, next) => {
     try {
@@ -122,7 +106,7 @@ exports.totalStock = async (req,res, next) => {
 
   exports.stockEmpty = async (req,res,next) => {
       try{
-        const hors_st = await stock.countDocuments({on_hand_balance: {$lt: 1}});
+        const hors_st = await stock.countDocuments({on_hand_balance: {"$lt": 1}});
         const s_hors_st = hors_st
         res.status(200).json(s_hors_st)
         s_hors_st
@@ -133,7 +117,7 @@ exports.totalStock = async (req,res, next) => {
   }
   exports.stockLoaded = async (req, res, next)=> {
       try {
-        const load= await stock.countDocuments({on_hand_balance: {$gt: 100}});
+        const load= await stock.countDocuments({on_hand_balance: {"$gt": 100}});
         const load_d = load;
         res.status(200).json(load_d)
         load_d

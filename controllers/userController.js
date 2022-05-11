@@ -18,41 +18,7 @@ exports.signup = (req, res, next) => {
         return res.status(501).json({message: 'Error registering user.'})
       })
 }
-
-
-
-// exports.loggin = async (req, res, next) => {
-
-//  try {
-//         const { email, password } = req.body;
-//         // checks if email and password is entered by user
-//         if (!email || !password) {
-//           return res.send({ status:'NOK',message:'please entre email & password'})
-//         }
-//           // finding user in database
-//         const verifuser = await User.findOne({ email: req.body.email })
-//         // .select("password")
-//         if (!verifuser) {
-//             return res.send({ status:'NOK',message:'invalid email'})
-//         }
-//           // bcrypt. 
-//         const verifpass = await bcrypt.compare(password, verifuser.password)
-//         if (!verifpass) {
-//            return res.send({ status:'NOK',message:'invalid password'})
-//          }
-       
-//           // return res.send({status: 'OKAY', message: 'Email & Password is valid'})
-          
-//         else {
-          
-//            return res.send({status:'ok',message:'valid Password && Email'})
-//         }
-//     }
-//     catch(error){
-//        res.status(500).json(error)
-//     }
-
-// }
+//login
 
 exports.login = (req, res, next) => {
     const email = req.body.email;

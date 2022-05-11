@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators,FormBuilder , } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RegisterServiceService } from 'src/app/services/authServices/register/register-service.service';
 
 @Component({
   selector: 'app-register',
@@ -7,23 +9,21 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  // @Output() sendLoginForm = new EventEmitter<void>();
-  // public form!: FormGroup;
-  // public flatlogicEmail = 'admin@flatlogic.com';
-  // public flatlogicPassword = 'admin';
   email:string | undefined;
   password:string  | undefined;
   username : string | undefined;
-  constructor() { }
+  formLogin!: FormGroup;
+  constructor(private service: RegisterServiceService) { }
   public ngOnInit(): void {
-    // this.form = new FormGroup({
-    //   email: new FormControl(this.flatlogicEmail, [Validators.required, Validators.email]),
-    //   password: new FormControl(this.flatlogicPassword, [Validators.required])
-    // });
+    this.formLogin = new FormGroup({
+      email: new FormControl(''),
+      username: new FormControl(''),
+      password: new FormControl(''),
+    });
   }
 
-  public login(): void {
-    console.log('login works!!')
+  register(): void {
+   
   }
  
 }

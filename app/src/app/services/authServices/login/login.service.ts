@@ -7,8 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
   baseUrl = "http://localhost:2000/user";
-  // headers = new HttpHeaders().set('Content-Type', 'application/json');
-  // currentUser = {};
+  
   constructor(private http: HttpClient) {
     
    }

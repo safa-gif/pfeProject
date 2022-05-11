@@ -15,7 +15,7 @@ exports.retards =async (req, res, next) => {
   const date = new Date();
     var oneJ = new Date(date.getFullYear(),0,1);
     var numDay = Math.floor((date - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((date.getDay()+1+numDay/7)) - 2;
+    const out = Math.ceil((date.getDay()+1+numDay/7)) - 4;
       try{
          const data= await dim.aggregate([
           {
@@ -35,6 +35,7 @@ exports.retards =async (req, res, next) => {
               "calendar_year":"$calendar_year",
               "item_number": "$item_number",
               "month": "$month",
+              "order_number":"$order_number",
               "planning_date":"$planning_date",
               "StatusCommande": {
                 "$cond" : {
@@ -61,6 +62,7 @@ exports.retards =async (req, res, next) => {
                 month: "$month",
                 week_prod: "$week_prod",
                StatusCommande: "$StatusCommande",
+               order_number: "$order_number"
               },
               "BesoinBrut": {
                 "$sum" : 1
@@ -85,7 +87,8 @@ exports.retards =async (req, res, next) => {
             BesoinNet: el._id.on_hand_balance - el.BesoinBrut,
             calendar_year: el._id.calendar_year,
             planning_date: el._id.planning_date,
-            week_prod: el._id.week_prod
+            week_prod: el._id.week_prod,
+            order_number:el._id.order_number
            })
          })
          let t = [];
@@ -98,21 +101,45 @@ exports.retards =async (req, res, next) => {
 }
 
 exports.RetardsSemaine = async (req, res) => {
-  const date = new Date();
-    var oneJ = new Date(date.getFullYear(),0,1);
-    var numDay = Math.floor((date - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((date.getDay()+1+numDay/7)) - 2;
+  const dates = new Date();
+    var oneJ = new Date(dates.getFullYear(),0,1);
+    var numDay = Math.floor((dates - oneJ)/ (24*60*60*1000));
+    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 4
     console.log(out)
   try{
     const rate = await dim.countDocuments({week: {"$lt": out}});
     const r = rate
-    res.send(200).json(r)
+    res.status(200).json(r)
     r
   }
   catch(error) {
      res.status(500).json(error)
   }
 }
-exports.ReatrdsAnnee = async (req, res) => {
+exports.RetardsAnnee = async (req, res) => {
+ try {
+   const  rateA = await dim.countDocuments({calendar_year: {"$lt": 2022}})
+   const ra = rateA;
+   res.status(200).json(ra)
+   ra
+ }
+ catch(error) {
+   res.status(500).json(error)
+ }
+}
+//
+exports.RetardsMois = async (req, res) => {
+  const month = ["janvier","février","mars","avril","mai","juin","juilliet","aout","september","october","november","décember"];
 
+const d = new Date();
+let name = month[d.getMonth()];
+console.log(name)
+  try {
+    const rp = await dim.countDocuments({mois: {"$neq" : "name"} }, {calendar_year: {"$lt": 2022}})
+    const rpe = rp
+    res.status(200).json(rpe)
+  }
+  catch(error){
+      res.status(500).json(error)
+  }
 }

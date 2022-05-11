@@ -16,4 +16,10 @@ export class DashboardServiceService {
   RetardsSemaine() {
     return this.http.get(this.baseUrl+'/retardsSemaine')
   }
+  RetardsAnnee() {
+    return this.http.get(this.baseUrl+'/retardsAnnee')
+  }
+  RetardsMois(){
+    return this.http.get(this.baseUrl+'/retardsMois')
+  }
 }

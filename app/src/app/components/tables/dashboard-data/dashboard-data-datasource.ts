@@ -15,7 +15,7 @@ export interface DashboardDataItem {
   planning_date: Date;
   week: number;
   week_prod: number;
-  // order_number: number;
+  order_number: number;
   // customer_name:string;
   // on_hand_balance: number;
   month: string,
@@ -100,14 +100,15 @@ export class DashboardDataDataSource extends DataSource<DashboardDataItem> {
         case 'week_prod': return compare(+a.week_prod, +b.week_prod, isAsc);
 
         case 'month': return compare(a.month, b.month, isAsc);
-        case 'week_prod': return compare(+a.week_prod, +b.week_prod, isAsc);
-        case 'BesoinNet': return compare(+a.BesoinNet, +b.BesoinNet, isAsc);
-        case 'BesoinBrut': return compare(+a.BesoinBrut, +b.BesoinBrut, isAsc);
         case 'calendar_year': return compare(+a.calendar_year, +b.calendar_year, isAsc);
+        case 'BesoinBrut': return compare(+a.BesoinBrut, +b.BesoinBrut, isAsc);
+
+        case 'BesoinNet': return compare(+a.BesoinNet, +b.BesoinNet, isAsc);
+        
         case 'StatusCommande': return compare(a.StatusCommande, b.StatusCommande, isAsc);
 
         // case 'planning_date': return compare(a.item_name, b.item_name, isAsc);
-        // case 'order_number': return compare(+a.order_number, +b.order_number, isAsc);
+        case 'order_number': return compare(+a.order_number, +b.order_number, isAsc);
 
         default: return 0;
       }

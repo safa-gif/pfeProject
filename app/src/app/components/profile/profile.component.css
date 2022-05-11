@@ -3,7 +3,9 @@ mat-toolbar {
     color: white;
 }
 .contenu{
-    background-color: lightgray;
+    /* background-color: lightgray; */
+    background-color: rgb(197, 222, 241);
+
 }
 .example-spacer {
     flex: 1 1 auto;

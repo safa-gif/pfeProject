@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Observable }     from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +21,5 @@ export class AppComponent {
       map(result => result.matches),
       shareReplay()
     );
+    
 }

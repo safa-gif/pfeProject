@@ -1,27 +1,27 @@
 const cmd = require('../models/commande');
 //GetAllCommandesWIthPaginator
 exports.retrieve = async (req, res)=> {
-    // const page =parseInt( req.query.page);
-    // const limit =parseInt( req.query.limit);
-    // const startIndex = (page - 1) * limit;
-    // const endIndex = page  * limit;
+    const page =parseInt( req.query.page);
+    const limit =parseInt( req.query.limit);
+    const startIndex = (page - 1) * limit;
+    const endIndex = page  * limit;
     try {
    const infos = await cmd.find();
-        // const results = {};
-        // if(endIndex < infos.length) {
-        //     results.next = {
-        //         page: page +1,
-        //         limit: limit
-        //     }
-        // }
+        const results = {};
+        if(endIndex < infos.length) {
+            results.next = {
+                page: page +1,
+                limit: limit
+            }
+        }
         
-        // if(startIndex > 0) {
-        //     results.previous = {
-        //         page: page - 1,
-        //         limit: limit
-        //     }
-        // }
-        // results.results = infos.slice(startIndex, endIndex);
+        if(startIndex > 0) {
+            results.previous = {
+                page: page - 1,
+                limit: limit
+            }
+        }
+        results.results = infos.slice(startIndex, endIndex);
        res.status(200).json(infos);
      }
      catch(error) {
@@ -144,21 +144,6 @@ exports.totalCmdByCode = async (req, res) => {
 
     res.status(200).send(tab2)
 }
-
-// //getCommandById
-//  exports.getElmentById = async (req, res, next) => {
-
-//         var id = req.params.id
-// try {
-//     const cmds = await cmd.findById(id);
-  
-//     res.status(200).json(cmds);
-//   } catch (err) {
-//     res.status(404).json(err);
-//   }
-
-// }
-
 
 //Get Total des Commandes 
 exports.totalCommandes = async (req,res, next) => {

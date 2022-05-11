@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const stock = require ('../controllers/stockController')
-// const paginator = require('../middlewares/functions')
 
 //getAllDataWithPaginatorAPI
 router.get('/', stock.findStock);
-
-// //getStockItems
-// router.get("/totalItems",stock.countTotalItems);
 
 //getStockItemFrequent
 router.get('/frequent', stock.countFrequent)
@@ -19,6 +15,7 @@ router.get('/totalStocks',stock.totalStock);
 router.get('/stockDanger',stock.stockEmpty);
 
 router.get('/stockLoad',stock.stockLoaded);
-// router.get('/stockDispo', stock.produitDisponible);
+
+
 
 module.exports = router;

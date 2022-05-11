@@ -25,7 +25,7 @@ export class DashboardDataComponent implements AfterViewInit {
   dataSource: DashboardDataDataSource;
    data : DashboardDataItem[]= [];
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['item_number', 'planning_date', 'week',"week_prod",'month' ,'calendar_year', 'BesoinBrut','BesoinNet','StatusCommande','month'];
+  displayedColumns = ['item_number', 'planning_date', 'week',"week_prod",'month' ,'calendar_year', 'BesoinBrut','BesoinNet','StatusCommande','order_number'];
 
   constructor(private service: DashboardServiceService) {
     this.dataSource = new DashboardDataDataSource();
@@ -42,12 +42,18 @@ export class DashboardDataComponent implements AfterViewInit {
   }
   ngOnInit() {
    this.getAllInfos();
+  //  this.service.allData().subscribe( x => {
+  //   this.data = x;
+  //   console.log(this.data)
+  // })
   }
+ 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+  
   filter() {
 
   }

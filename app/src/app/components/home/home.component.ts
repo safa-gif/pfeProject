@@ -7,7 +7,8 @@ import { AppConfigService } from 'src/app/services/chartServices/app-config.serv
 import { AppConfig } from 'src/app/donnees/AppConfig';
 import {Subscription} from 'rxjs';
 import { DatePipe } from '@angular/common';
-import { DataserviceService } from 'src/app/services/dataservice.service';
+import { DashboardServiceService } from 'src/app/services/chartServices/dashboard-service.service';
+import { DateServiceService } from 'src/app/services/dateService/date-service.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,9 +26,10 @@ export class HomeComponent {
   chartOptions: any;
   data2: any;
   datepipeWeek!: any;
-  exactWeek!:any;  
-   total2!: number;
-   total3!: number;
+  retardAnnee:any;  
+  retardMois:any;
+  totalevents: any;
+  retardSemaine: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -38,7 +40,8 @@ export class HomeComponent {
     
   constructor(private breakpointObserver: BreakpointObserver,
      private toastr: ToastrService,  private configService: AppConfigService,
-      private datePipe: DatePipe,private service: DataserviceService ) {
+      private datePipe: DatePipe, private ser: DashboardServiceService,
+      private eveneS :DateServiceService ) {
         
      this.datepipeWeek = datePipe.transform(Date.now(), 'w')
     //pie chart
@@ -128,10 +131,21 @@ export class HomeComponent {
             ]
         };
   }
-  OnInit(){
+  ngOnInit(){
       //exact week 
      this.datepipeWeek = this.datePipe.transform(Date.now(), 'w')
-     
+     this.ser.RetardsSemaine().subscribe((info: any)=> {
+         this.retardSemaine = info;
+     })
+     this.ser.RetardsAnnee().subscribe((infos: any)=> {
+        this.retardAnnee = infos;
+    })
+    this.eveneS.totalEvents().subscribe((a:any)=>{
+        this.totalevents = a;
+    })
+    this.ser.RetardsMois().subscribe((infor: any) =>{
+        this.retardMois = infor;
+    })
       //linear chart
 this.chartOptions =  {
     plugins: {
@@ -167,12 +181,6 @@ this.chartOptions =  {
       this.config = config;
       this.updateChartOptions();
   });
-  this.datepipeWeek = this.datePipe.transform(Date.now(), 'w') 
-    this.exactWeek = this.datepipeWeek - 1;
-    this.total2= 60;
-    this.total3 = 100;
-  this.exactWeek = this.datepipeWeek - 1;
-
   }
 
   updateChartOptions() {
@@ -182,16 +190,6 @@ this.chartOptions =  {
         this.applyLightTheme();
 }
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
-  afficher() {
-    
-    this.datepipeWeek = this.datePipe.transform(Date.now(), 'w') 
-    this.exactWeek = this.datepipeWeek - 1;
-    this.total2= 60;
-    this.total3 = 100;
-  }
 
  
 applyLightTheme() {

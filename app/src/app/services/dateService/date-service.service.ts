@@ -37,11 +37,22 @@ export class DateServiceService {
         map((data: any) => {
           return data;
         }), catchError(error => {
-          return throwError('Something went wrong');
+          return error
         })
       );
   }
-
+  totalEvents() {
+   return this.http.get(this.baseUrl+'total_events')
+  }
+  // modifyEvent(id:string){
+  //   return this.http.put(this.baseUrl+'modify_event',id)
+  //   .pipe(map((data: any) => {
+  //     return data;
+  //   }),
+  //   catchError(error => {
+  //     return error
+  //   }))
+  // }
 
 }
 

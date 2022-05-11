@@ -91,38 +91,9 @@ exports.modifyEvent = async (req, res, next)=> {
           });
         });
 }
-// exports.modifyEvent = async (req, res, next) => {
-//     Event.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//           title : req.body.title,
-//           date : req.body.date
-//         },
-//         { new: true }
-//       )
-//         .then((data) => {
-//           if (!data) {
-//             return res.status(404).send({
-//               title: "Message not found with id " + req.params.id,
-//             });
-//           }
-//           res.send(data);
-//         })
-//         .catch((err) => {
-//           if (err.kind === "ObjectId") {
-//             return res.status(404).send({
-//               message: "Message not found with id " + req.params.id,
-//             });
-//           }
-//           return res.status(500).send({
-//             message: "Error updating message with id " + req.params.id,
-//           });
-//         });
-// }
-
+  //Get Total des Events
 
 exports.totalEvents = async (req,res,next)=> {
-  //Get Total des Commandes 
   try {
      const qt = await Event.countDocuments();
      const qte =  qt;

@@ -2,47 +2,60 @@
   <mat-sidenav-content>
     <br>
     <div class="title-interface  flex justify-content-around">
-      <h1 class="title text-center text-bold">Reporting et Dashboard</h1>
-      <h2 class="title">
-        We are currently in week : {{this.datepipeWeek}}
-      
-      </h2>
-    
+      <h1 class="title text-center text-bold">Reporting et tableau de bord</h1>
     </div>
+  <div class="Current-week ml-3">
+    <h1 class="title">
+      Le numéro de la semaine courante est : {{this.datepipeWeek}}
+    </h1>
+  </div>
     <div class="flex flex-row flex-wrap card-container">
-      <div class="col-4">
+      <div class="col-3">
         <mat-card class="card-statics-1">
           <div class="statics">
             <h2 class="card-title"> Total des retards	
               <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-              <span>{{datepipeWeek}}</span></h2> 
+              <span>{{this.retardAnnee}}</span></h2> 
           </div>
           <hr>
           <p class="text-left"> <b>Par Année</b></p> 
         </mat-card>  
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <mat-card class="card-statics-1">
           <div class="statics">
-            <h2 class="card-title">  Total des retards 
+            <h2 class="card-title">  Total des retards
               <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-              <span>{{total2}}</span> </h2>  
+              <span>{{this.retardMois}}</span> </h2>  
           </div>
           <hr>
           <p class="text-left"> <b>Par Mois</b></p>
         </mat-card>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <mat-card  class="card-statics-1">
           <div class="statics">
             <h2 class="card-title"> Total des Retards
               <mat-icon class="d-flex ml-auto p-0">trending_down</mat-icon>
-               <span>{{total3}}</span></h2>  
+               <span>{{this.retardSemaine}}</span></h2>  
           </div>
          <hr>
          <p class="text-left"> <b>Par Semaine</b></p>
         </mat-card>
       </div>
+    
+      <div class="col-3">
+        <mat-card class="card-statics-1">
+          <div class="statics">
+            <h2 class="card-title">  Total des événements
+              <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
+              <span>{{this.totalevents}}</span> </h2>  
+          </div>
+          <hr>
+          <p class="text-left"> <b>Enregistrés</b></p>
+        </mat-card>
+      </div>
+     
   </div>
   <br>
    <div class="col-md-12 flex justify-content-around">
@@ -61,7 +74,6 @@
 
 </div>
 <div class="col-12">
-  <!-- <app-data></app-data> -->
   <app-dashboard-data></app-dashboard-data>
 </div>
 

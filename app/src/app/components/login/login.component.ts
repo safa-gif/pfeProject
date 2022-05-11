@@ -3,8 +3,6 @@ import { FormBuilder , FormGroup, FormControl} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import { Observable }     from 'rxjs';
-
-
 import {LoginService} from 'src/app/services/authServices/login/login.service'
 @Component({
   selector: 'app-login',
@@ -13,9 +11,8 @@ import {LoginService} from 'src/app/services/authServices/login/login.service'
 })
 
 export class LoginComponent implements OnInit {
-  // email:string | undefined;
-  // password:string  | undefined;
-  // datepipe: any;
+  
+  datepipe: any;
   formLogin!:FormGroup;
   submitted: boolean | undefined;
   message: any;
@@ -23,17 +20,14 @@ export class LoginComponent implements OnInit {
     , private router:Router) { }
 
   ngOnInit(): void {
-    // const timer = new Date();
-    // const weekYear = this.datepipe.transform(timer, 'w')
-    //        window.alert("this is the test"+weekYear)
     this.formLogin = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
     });
   }
  onClickSubmit(formData: { email: string; password: string; }){
-  console.log(' User Effected Patient name is : ' + formData.email);
-  console.log('Coronal Effected Patient age is : ' + formData.password);
+  console.log('Email user is : ' + formData.email);
+  console.log('Password user is : ' + formData.password);
  }
   // login()
   // {
@@ -49,26 +43,7 @@ export class LoginComponent implements OnInit {
   //       this.snackBar.open('Login error','',{duration:1000})
   //     }
   // }
-  // login() {
-  //   this.message = ''
-  //   console.log(this.formLogin.value)
-  //   this.submitted = true;
-  //   if (this.formLogin.valid) {
-  //     this.service.login(this.formLogin.value)
-      
-  //         this.res =>{
-
-  //       if (res.status === 'OK') {
-  //           this.router.navigate(['/home'])
-  //         }
-       
-  //       else {
-  //         console.log(res.message)
-  //         this.message = res.message;
-  //       }
-  //     }
-    
-  //   }
+  
   login() {
     this.message = ''
     console.log(this.formLogin.value)
@@ -94,22 +69,5 @@ export class LoginComponent implements OnInit {
     }
   }
   
-    // console.log(this.formLogin.value)
-    // this.submitted = true;
-    // if (this.formLogin.valid) {
-    //   this.serv.Login(this.formLogin.value).then(res => {
-    //     console.log(res);
-
-    //     if (res.status === 'OK') {
-    //         this.router.navigate(['/dashboard'])   
-    //     }
-    //     else {
-    //       console.log(res.message)
-    //       this.message = res.message;
-    //     }
-    //   })
-
-    // }
+    
   }
-
-// }

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { StockComponent } from './components/stock/stock.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -20,10 +19,7 @@ const routes: Routes = [
      path :'',component:LoginComponent
     },
     {
-      path : 'stock', component:StockComponent
-    },
-    {
-      path: 'stocks', component:StocksComponent
+      path: 'stock', component:StocksComponent
     },
     {path: 'commande',component:CommandeComponent
     },

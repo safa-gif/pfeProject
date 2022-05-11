@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import{HttpClient} from '@angular/common/http';
-import { DateServiceService } from 'src/app/services/date-service.service';
+import { DateServiceService } from 'src/app/services/dateService/date-service.service';
 import Swal from 'sweetalert2';
 import {Events} from 'src/app/donnees/event';
 import {Router} from '@angular/router';
@@ -37,13 +37,15 @@ export class DateComponent implements OnInit {
   deleteEvent(id: string){
     this.dateservice.deleteSingleEvent(id).subscribe((data: any)=>{})
   }
+  // modifyEvent(id: string) {
+  //   this.dateservice.modifyEvent(id).subscribe((data: any)=>{
+  //     data
+  //   })
+  // }
   addEvent(){
     this.router.navigate(['/add-event'])
   }
-  search(){
-    // this.dateservice.
-    alert('search function is operationnal:!!!')
-  }
+ 
   getAllEvents(){
     this.dateservice.getAllEvents().subscribe((data: any)=> {
       const self = this;
