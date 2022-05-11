@@ -1,93 +1,12 @@
-<mat-toolbar id="toolbar">
+<!-- <mat-toolbar id="toolbar">
   <mat-toolbar-row>
     <span>Stock </span>
     <span class="example-spacer"></span>
-    <button mat-button routerLink="/home">Home</button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>notifications</mat-icon>
       </button>
   </mat-toolbar-row>    
-</mat-toolbar>
-<!-- <div class="container-fluid content">
-   <div class="col-md-12">
-     <br>
-     <mat-card-title>Statistiques</mat-card-title>
-    <div class="flex flex-row flex-wrap card-container">
-      <div class="col-4">
-        <mat-card id="card-statics-1">
-          <div class="statics">
-            <h2 class="card-title"> Total des retards	
-              <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-              <span>0%</span></h2> 
-          </div>
-          <hr>
-          <p class="text-left"> <b>Par Année</b></p> 
-        </mat-card>  
-      </div>
-      <div class="col-4">
-        <mat-card id="card-statics-2">
-          <div class="statics">
-            <h2 class="card-title">  Plus fréquent 
-              <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-              <span>0%</span> </h2>  
-          </div>
-          <hr>
-          <p class="text-left"> <b>Par Mois</b></p>
-        </mat-card>
-      </div>
-      <div class="col-4">
-        <mat-card id="card-statics-3">
-          <div class="statics">
-            <h2 class="card-title"> Moins fréquent 
-              <mat-icon class="d-flex ml-auto p-0">trending_down</mat-icon>
-               <span>0%</span></h2>  
-          </div>
-         <hr>
-         <p class="text-left"> <b>Par Semaine</b></p>
-        </mat-card>
-      </div>
-    </div>
-
-   </div>
-
-   <div class="content-2">
-
-    <div class="mat-elevation-z8">
-      <table mat-table #outerSort="matSort" [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
-        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>
-          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-        </ng-container>
-        <ng-container matColumnDef="expandedDetail">
-          <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-            <div class="example-element-detail" *ngIf="element.addresses?.data.length" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-              <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
-                <mat-form-field>
-                  <input matInput placeholder="Filter">
-                </mat-form-field>
-                <table #innerTables mat-table #innerSort="matSort" [dataSource]="element.addresses" matSort>
-                  <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
-                    <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="innerDisplayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></tr>
-                </table>
-              </div>
-            </div>
-          </td>d
-          
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" [class.example-element-row]="element.addresses?.data.length"
-         [class.example-expanded-row]="expandedElement === element" (click)="toggleRow(element)">
-        </tr>
-        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-      </table>
-    </div>
-   </div>
-</div> -->
+</mat-toolbar> -->
 
 
 <mat-sidenav-container class="contenu">
@@ -102,7 +21,7 @@
            <div class="statics">
              <h2 class="card-title"> Totals des produits
                <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-               <span>0%</span></h2> 
+               <span>{{totalPoduit}}</span></h2> 
            </div>
   
          </mat-card>  
@@ -131,9 +50,11 @@
        </div>
      </div>
     </div>
-   <hr>
-     <div class="col-md-12">
-      <div class="mat-elevation-z8">
+    <br>
+     <div class="col-md-11 ml-6">
+       <app-stocktable></app-stocktable>
+       <!--Angular Material NestedDataTable-->
+      <!-- <div class="mat-elevation-z8">
         <table mat-table #outerSort="matSort" [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
           <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>
@@ -156,7 +77,7 @@
                   </table>
                 </div>
               </div>
-            </td>d
+            </td>
             
           </ng-container>
         
@@ -166,7 +87,8 @@
           </tr>
           <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>
-      </div>
+      </div> -->
+           <!-- <app-dashboard-data></app-dashboard-data> -->
      </div>
    
     <!-- Table data -->

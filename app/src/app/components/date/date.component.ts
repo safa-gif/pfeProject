@@ -20,6 +20,11 @@ export class DateComponent implements OnInit {
     private dateservice: DateServiceService,
     private router:Router
   ) { }
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
   handleDateClick(arg: any){
     window.alert('Cliked on date '+ arg.dateStr)
   }

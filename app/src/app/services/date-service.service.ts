@@ -9,9 +9,6 @@ import {throwError } from 'rxjs';
 })
 export class DateServiceService {
    baseUrl = 'http://localhost:2000/events/';
-  //  headers = new HttpHeaders().set('Content-Type', 'application/json');
-  //  currentUser = {};
-  window: any;
   constructor(
     private http: HttpClient,
     public router: Router,

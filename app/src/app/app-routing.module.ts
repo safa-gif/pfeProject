@@ -9,17 +9,34 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { TableDComponent } from './components/tables/table-d/table-d.component';
+import { PdpComponent } from './components/pdp/pdp.component';
+import { StocksComponent } from './components/stocks/stocks.component';
 const routes: Routes = [
-  {path: '',  pathMatch: 'full', redirectTo: 'login'},
-  {path: 'home', component: HomeComponent},
-  {path: 'stock', component:StockComponent},
-  {path: 'date', component:DateComponent},
-  {path: 'profile', component:ProfileComponent},
-  {path: 'add-event', component: AddEventComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'commande', component: CommandeComponent},
-  {path: 'table', component: TableDComponent}
+  // {path: '',  pathMatch: 'full', redirectTo: 'login'},
+  // {path: '', component: HomeComponent }, 
+  // children : [
+    {path: 'home', component:HomeComponent},
+    {
+     path :'',component:LoginComponent
+    },
+    {
+      path : 'stock', component:StockComponent
+    },
+    {
+      path: 'stocks', component:StocksComponent
+    },
+    {path: 'commande',component:CommandeComponent
+    },
+     {path: 'add-event',component:AddEventComponent 
+    },
+     {path:'profile',component:ProfileComponent 
+     },
+     {path:'pdp',component:PdpComponent
+     },
+     {path: 'date',component:DateComponent},
+  // ]
+  
+  {path: 'login', component: LoginComponent}
 
 ]
 

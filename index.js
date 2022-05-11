@@ -26,6 +26,7 @@ app.use(cors());
 // parse requests of content-type - application/json
 app.use(bodyParser.urlencoded({extended: true}));
 
+
 //using middelware that parses incoming JSON requests and puts the parsed data in req.body
 app.use(bodyParser.json());
 

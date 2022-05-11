@@ -63,7 +63,7 @@ exports.display = async (req, res, next) => {
           res.send(tabs);
         }
         catch(err){
-             res.status(500).josn({message: err.message || "Some went wrong while retrieving data"});
+             res.status(500).json({message: err.message || "Some went wrong while retrieving data"});
         }
     
 }
@@ -71,28 +71,32 @@ exports.display = async (req, res, next) => {
 
 //remarque ajouter un champ retard pour les commandes avant la date d'aujourd'hui
 exports.countDistinct = async (req, res, next) =>  {
-
     const date = new Date();
     var oneJ = new Date(date.getFullYear(),0,1);
     var numDay = Math.floor((date - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((date.getDay()+1+numDay/7));
+    const out = Math.ceil((date.getDay()+1+numDay/7)) - 2;
+    console.log(out)
    try {
     const calcul = await  infos.aggregate([
         { 
             "$project" : { 
-                "semaine_cmd" : "$semaine_cmd",
-                "on_hand_balance" : "$on_hand_balance",
-                "item_number": "$item_number",
-                "StatusCommande": {
-                    "$cond" : {
-                        if:
-                        {
-                            "$lt": [ "semaine_cmd", out]
-                        },
-                        then : "Retard",
-                        else : "A temps"
+                            "semaine_cmd" : "$semaine_cmd",
+                            "semaine_prod": "$semaine_prod",
+                             "planning_date": "$planning_date",
+                            "on_hand_balance" : "$on_hand_balance",
+                            "item_number": "$item_number",
+                            "cmd_mois": "$cmd_mois",
+                    "StatusCommande": {
+                        "$cond" : {
+                            if:
+                            {
+                                "$lt": [ "$semaine_cmd", out]
+                            },
+                            then : "Retard",
+                            else : "A temps"
+                        }
+
                     }
-                }
             }
            },
             {
@@ -100,12 +104,15 @@ exports.countDistinct = async (req, res, next) =>  {
              "$group" : 
              {
                  "_id" : {
-                   item_number : "$item_number",
-                   on_hand_balance : "$on_hand_balance",
-                   semaine_cmd : "$semaine_cmd",
-                   StatusCommande: "$StatusCommande"
+                    semaine_cmd: "$semaine_cmd", 
+                    on_hand_balance: "$on_hand_balance",
+                    planning_date: "$planning_date",
+                    item_number : "$item_number",
+                    cmd_mois: "$cmd_mois",
+                   StatusCommande: "$StatusCommande",
+
                  },
-               "BesoinParSemaine": {
+               "BesoinBrut": {
                    "$sum": 1
                }
              }
@@ -122,12 +129,12 @@ exports.countDistinct = async (req, res, next) =>  {
         calcul.forEach((x)=> {
             tab2.push({
                 semaine_cmd: x._id.semaine_cmd,
-                on_hand_balance: x._id.on_hand_balance,
+                // on_hand_balance: x._id.on_hand_balance,
+                cmd_mois:x._id.cmd_mois,
                 item_number: x._id.item_number,
-                BesoinParSemaine : x.BesoinParSemaine,
-                StatusCommande: x._id.StatusCommande
-        
-                
+                BesoinBrut : x.BesoinBrut,
+                StatusCommande: x._id.StatusCommande,
+                BesoinNet: x._id.on_hand_balance - x.BesoinBrut
             });
         })
         let tabs = tab2.sort((a,b)=>(a.semaine_cmd> b.semaine_cmd? 1: -1))

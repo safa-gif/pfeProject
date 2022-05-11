@@ -1,70 +1,71 @@
-<mat-toolbar>
-    <mat-toolbar-row>
-        <span>Commande </span>
-    <button mat-button routerLink="/home">Home</button>
-    <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>notifications</mat-icon>
-      </button>
-          </mat-toolbar-row>
-</mat-toolbar>
-<p-scrollTop></p-scrollTop>
-<mat-sidenav-container  class="contenu">
-  
-  <mat-sidenav-content >
-    <p-scrollPanel>
-      <div class="col-md-12">
+<mat-sidenav-container class="contenu">
+  <mat-sidenav-content>
+         <div class="col-md-12">
       <br>
-      <mat-card-title class="mr-auto p-2">
-        <button  type="button" mat-raised-button  (click)="afficher()">
+       <mat-card-title class="mr-auto p-2">
+           Le carnet de Commande
+        <!-- <button  type="button" mat-raised-button  (click)="afficher()">
          Statistiques
-        </button>
+        </button> -->
       </mat-card-title>
      <div class="flex flex-row flex-wrap card-container">
-       <div class="col-4">
-         <mat-card id="card-statics-1">
+       <div class="col-6">
+         <mat-card class="card-statics">
            <div class="statics">
              <h2 class="card-title"> Total des commandes
                <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-               <span> {{this.totalAnnee}} </span></h2> 
+               <span> {{this.totalAnnee}} </span></h2>
+               <hr>
+          <p class="text-left year"> <b>Stockées</b></p> 
            </div>
-           <hr>
-           <p class="text-left"> <b>Par Année</b></p> 
+  
          </mat-card>  
        </div>
-       <div class="col-4">
-         <mat-card id="card-statics-2">
+       <div class="col-6">
+         <mat-card class="card-statics">
            <div class="statics">
              <h2 class="card-title">  Total Commandes 
                <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
-               <span> </span> </h2>  
+               <span class="flex flex-end"> {{this.totalAnneem}} </span></h2> 
+               <hr>
+          <p class="text-left month"> <b>En 2022</b></p>  
            </div>
-           <hr>
-           <p class="text-left"> <b>Par Mois</b></p>
          </mat-card>
        </div>
-       <div class="col-4">
-         <mat-card id="card-statics-3">
+       <!-- <div class="col-4">
+         <mat-card class="card-statics">
            <div class="statics">
-             <h2 class="card-title"> Total Commandes
+             <h2 class="card-title">Total Commandes
                <mat-icon class="d-flex ml-auto p-0">trending_down</mat-icon>
-                <span> </span></h2>  
+               <span> {{this.totalAnnees }}</span></h2>  
+               <hr>
+          <p class="text-left semaine"> <b>Par Semaine</b></p>
            </div>
-          <hr>
-          <p class="text-left"> <b>Par Semaine</b></p>
+       
          </mat-card>
-       </div>
+       </div> -->
      </div>
     </div>
-    <hr>
-    <div class="col-md-11 ml-6">
-      <!-- <app-table-d></app-table-d> -->
-    </div>
-      <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>   
-    </p-scrollPanel>
-   
-  </mat-sidenav-content>
+   <br><br>
+     <div class="col-md-11 ml-6">
   
+           <app-table-d></app-table-d>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+     </div>
+   
+    
+  </mat-sidenav-content>
 </mat-sidenav-container>
-
-

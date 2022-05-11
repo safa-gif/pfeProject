@@ -34,7 +34,7 @@ export class DataComponent implements AfterViewInit {
     this.dataSource = new DataDataSource();
     this.service.getAllData().subscribe( x => {
       this.donnees =x;
-      console.log(this.donnees)
+      // console.log(this.donnees)
         })
         this.dataSource
   }

@@ -1,0 +1,92 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  #toolbar {
+    color: white;
+    background-color:black;
+  }
+ 
+  #card-container {
+    background-color: #8fbcdb;
+    color: white;
+  }
+  .contenu {
+    background-color: lightgray;
+
+  }
+/*   
+  table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: #777;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+  
+  .inner-table {
+    width: 100%;
+  }
+  
+  .inner-table mat-form-field {
+    margin-top: 15px;
+    width: 100%;
+  } */
+  .container {
+    background-color: lightgray;
+  }
+  
+  #card-statics-1{
+  
+    background-color: rgb(213, 169, 239);
+  }
+  #card-statics-2 {
+   
+    background-color: #8cc6ec;
+  }
+  #card-statics-3 {
+    background-color:rgb(78, 149, 199);
+  }
+ 
+  p.text-center {
+    font-weight:600;
+  }

@@ -14,30 +14,30 @@ const dim_dateSchema = new Schema ({
             calendar_year:{
                  type: Number
                 },
-    week:{
-    type: Number,
-    
-    },
-    week_prod: {
-     type: Number,
-     
-    },
-   month: {
-        type: String,
+        week:{
+        type: Number,
         
-    },
-    on_hand_balance : {
-        type: String,
-    },
-    item_name : {
-        type: String
-    },
-    customer_name : {
-        type: String
-    },
-    besoin : {
-        type: Number
-    }
+        },
+        week_prod: {
+        type: Number,
+        
+        },
+        month: {
+            type: String,
+            
+        },
+        on_hand_balance : {
+            type: String,
+        },
+        item_name : {
+            type: String
+        },
+        customer_name : {
+            type: String
+        },
+        besoin : {
+            type: Number
+        }
 
 })
 const DateDimModel = mongoose.model('dim_stock_date_cmd', dim_dateSchema);

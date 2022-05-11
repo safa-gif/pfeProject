@@ -119,4 +119,18 @@ exports.modifyEvent = async (req, res, next)=> {
 //           });
 //         });
 // }
-// export default router;
+
+
+exports.totalEvents = async (req,res,next)=> {
+  //Get Total des Commandes 
+  try {
+     const qt = await Event.countDocuments();
+     const qte =  qt;
+     res.status(200).json(qte)
+     qt
+  }
+  catch(error) {
+       res.status(500).json(err)
+  }
+
+}

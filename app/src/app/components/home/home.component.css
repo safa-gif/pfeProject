@@ -45,19 +45,6 @@
   width: 100%;
   height:100%;
 }
-#card-statics-1{
-
-  /* background-color: #A100FFFF; */
-  background-color: rgb(213, 169, 239);
-
-}
-#card-statics-2 {
-  /* background-color: #4B7BE5; */
-  /* background-color: #36A2EB; */
-  background-color: #8cc6ec;
-}
-#card-statics-3 {
-  /* background-color:#71C4FFFF; */
-  background-color:rgb(78, 149, 199);
-
+.card-statics{
+  background-color: rgb(213, 196, 224);
 }

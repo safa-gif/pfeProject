@@ -1,0 +1,61 @@
+
+<mat-sidenav-container class="contenu">
+    <mat-sidenav-content>
+       <!-- Staistiques cards -->
+       <div class="col-md-12">
+        <br>
+        <mat-card-title class="mr-auto p-2">Statistiques</mat-card-title>
+       <div class="flex flex-row flex-wrap card-container">
+         <div class="col-4">
+           <mat-card class="card-statics">
+             <div class="statics">
+               <h2 class="card-title"> Totals des produits disponible
+                 <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon> 
+                 <span>{{totalProduit}}</span></h2> 
+                 <hr>
+                 <p class="text-center">En Stock</p>
+             </div>
+    
+           </mat-card>  
+         </div>
+         <div class="col-4">
+           <mat-card class="card-statics">
+             <div class="statics">
+               <h2 class="card-title">  Total des produits en rupture
+                 <mat-icon class="d-flex ml-auto p-0">trending_down</mat-icon> 
+                 <span>{{produitsDanger}}</span> </h2>  
+                 <hr>
+                 <p class="text-center">Du stock</p>
+             </div>
+            
+           </mat-card>
+         </div>
+         <div class="col-4">
+           <mat-card class="card-statics">
+             <div class="statics">
+               <h2 class="card-title">Total des produits les plus
+                 <mat-icon class="d-flex ml-auto p-0">trending_up</mat-icon>
+                  <span>{{produitplusDi}}</span></h2>  
+                  <hr>
+                  <p class="text-center">En Stock</p>
+             </div>
+          
+           </mat-card>
+         </div>
+       </div>
+      </div>
+      <br>
+       <div class="col-md-11 ml-6">
+         <app-stocktable></app-stocktable>
+       </div>
+     
+     
+      
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  
+  
+  
+  

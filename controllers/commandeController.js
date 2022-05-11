@@ -1,28 +1,28 @@
 const cmd = require('../models/commande');
 //GetAllCommandesWIthPaginator
 exports.retrieve = async (req, res)=> {
-    const page =parseInt( req.query.page);
-    const limit =parseInt( req.query.limit);
-    const startIndex = (page - 1) * limit;
-    const endIndex = page  * limit;
+    // const page =parseInt( req.query.page);
+    // const limit =parseInt( req.query.limit);
+    // const startIndex = (page - 1) * limit;
+    // const endIndex = page  * limit;
     try {
    const infos = await cmd.find();
-        const results = {};
-        if(endIndex < infos.length) {
-            results.next = {
-                page: page +1,
-                limit: limit
-            }
-        }
+        // const results = {};
+        // if(endIndex < infos.length) {
+        //     results.next = {
+        //         page: page +1,
+        //         limit: limit
+        //     }
+        // }
         
-        if(startIndex > 0) {
-            results.previous = {
-                page: page - 1,
-                limit: limit
-            }
-        }
-        results.results = infos.slice(startIndex, endIndex);
-       res.status(200).json(results);
+        // if(startIndex > 0) {
+        //     results.previous = {
+        //         page: page - 1,
+        //         limit: limit
+        //     }
+        // }
+        // results.results = infos.slice(startIndex, endIndex);
+       res.status(200).json(infos);
      }
      catch(error) {
       res.status(500).json(error)
@@ -103,7 +103,8 @@ exports.totalCmdByCode = async (req, res) => {
             "customer_name": "$customer_name",
             "item_number": "$item_number",
             "besoin": "$besoin",
-            "customer_name": "$customer_name"
+            "customer_name": "$customer_name",
+            "week_prod":"$week_prod",
           }
         },
         {
@@ -111,7 +112,7 @@ exports.totalCmdByCode = async (req, res) => {
                 "_id": {
                     "order_number": "$order_number",
                     "item_number": "$item_number",
-                    // "calendar_year": "$calendar_year",
+                    "calendar_year": "$calendar_year",
                     
                 },
                 "TotalCmdIds":{
@@ -143,37 +144,46 @@ exports.totalCmdByCode = async (req, res) => {
 
     res.status(200).send(tab2)
 }
-//getTotalCommandesByCustomer 
 
-//getCommandById
- exports.getElmentById = async (req, res, next) => {
-//    var x = req.params.item_number;
-//    var condition = `{ item_number: {$regex: new RegExp(${item_number}), $options: "i" }`
-//    var ab = `${item_number}`;
+// //getCommandById
+//  exports.getElmentById = async (req, res, next) => {
 
-// //forcer une expression
-//     try {
-//         const test = await cmd.findById(item_number);
-//         res.status(200).json(test);
-//     } catch(error) {
-//         res.status(404).json({ message: error.message});
-//     }
-        var id = req.params.id
-try {
-    const cmds = await cmd.findById(id);
+//         var id = req.params.id
+// try {
+//     const cmds = await cmd.findById(id);
   
-    res.status(200).json(cmds);
-  } catch (err) {
-    res.status(404).json(err);
-  }
+//     res.status(200).json(cmds);
+//   } catch (err) {
+//     res.status(404).json(err);
+//   }
 
+// }
+
+
+//Get Total des Commandes 
+exports.totalCommandes = async (req,res, next) => {
+
+  try {
+     const qt = await cmd.countDocuments();
+     const qte =  qt;
+     res.status(200).json(qte)
+     qt
+  }
+  catch(error) {
+       res.status(500).json(error)
+  }
+}
+//Total des documents en 2022
+exports.totalcmdAnnee = async (req, res, next)=> {
+  try {
+     
+      const calcul = await cmd.countDocuments({calendar_year: {$gt: 2021}})
+      const test = calcul
+      res.status(200).json(test)
+       test
+  }
+  catch(error) {
+    res.status(500).json(error)
+  }
 }
 
-// exports.getSingle = async (req,res) => {
-//     try {
-//       const cmds = await cmd.findById(req.params.item_number);
-//       res.status(200).json(cmds);
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   }

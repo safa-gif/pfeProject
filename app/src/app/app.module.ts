@@ -68,6 +68,12 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TableDComponent } from './components/tables/table-d/table-d.component';
 import { DatePipe } from '@angular/common';
+import { DashboardDataComponent } from './components/tables/dashboard-data/dashboard-data.component';
+import { PdptableDataComponent } from './components/tables/pdptable-data/pdptable-data.component';
+import { StocktableComponent } from './components/tables/stocktable/stocktable.component';
+import { PdpComponent } from './components/pdp/pdp.component';
+import {  ReactiveFormsModule } from '@angular/forms';
+import { StocksComponent } from './components/stocks/stocks.component';
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -86,6 +92,11 @@ FullCalendarModule.registerPlugins([
     RegisterComponent,
     CommandeComponent,
     TableDComponent,
+    DashboardDataComponent,
+    PdptableDataComponent,
+    StocktableComponent,
+    PdpComponent,
+    StocksComponent,
   
   ],
   imports: [
@@ -146,6 +157,8 @@ FullCalendarModule.registerPlugins([
     TabViewModule,
     ScrollTopModule,
     ScrollPanelModule,
+    ReactiveFormsModule,
+    FormsModule,
     // ChartsModule,
   ],
   providers: [

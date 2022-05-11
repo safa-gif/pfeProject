@@ -25,20 +25,22 @@ export class HomeComponent {
   chartOptions: any;
   data2: any;
   datepipeWeek!: any;
-   
+  exactWeek!:any;  
+   total2!: number;
+   total3!: number;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
     
+    
   constructor(private breakpointObserver: BreakpointObserver,
      private toastr: ToastrService,  private configService: AppConfigService,
       private datePipe: DatePipe,private service: DataserviceService ) {
         
-
-
-    //  this.datepipeWeek = datePipe.transform(Date.now(), 'w')
+     this.datepipeWeek = datePipe.transform(Date.now(), 'w')
     //pie chart
     this.data = {
       labels: ['A','B','C'],
@@ -127,6 +129,9 @@ export class HomeComponent {
         };
   }
   OnInit(){
+      //exact week 
+     this.datepipeWeek = this.datePipe.transform(Date.now(), 'w')
+     
       //linear chart
 this.chartOptions =  {
     plugins: {
@@ -162,6 +167,11 @@ this.chartOptions =  {
       this.config = config;
       this.updateChartOptions();
   });
+  this.datepipeWeek = this.datePipe.transform(Date.now(), 'w') 
+    this.exactWeek = this.datepipeWeek - 1;
+    this.total2= 60;
+    this.total3 = 100;
+  this.exactWeek = this.datepipeWeek - 1;
 
   }
 
@@ -177,15 +187,12 @@ this.chartOptions =  {
   }
   afficher() {
     
-    this.datepipeWeek = this.datePipe.transform(Date.now(), 'w')
-    
+    this.datepipeWeek = this.datePipe.transform(Date.now(), 'w') 
+    this.exactWeek = this.datepipeWeek - 1;
+    this.total2= 60;
+    this.total3 = 100;
   }
-//   totalRetard(){
-         
-//   }
-//   filterData() {
 
-//   }
  
 applyLightTheme() {
   this.basicOptions = {

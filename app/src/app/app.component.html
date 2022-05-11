@@ -1,3 +1,34 @@
 
-<router-outlet></router-outlet>
-<!-- <app-login></app-login> -->
+<mat-sidenav-container id="sidenav-container" class="sidenav-container">
+    <mat-sidenav #drawer id="sidenavbar" class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu <mat-icon class="mat-icon d-flex ml-auto p-1">menu</mat-icon> </mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">Dashboard  <mat-icon class="mat-icon d-flex ml-auto p-1">dashboard</mat-icon> </a>
+
+        <a mat-list-item routerLink="/stocks">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
+        <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
+        <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+        <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+        <a mat-list-item routerLink="/pdp"> PDP <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+         
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar id="toolbar" color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>ZODIAC MARINE</span>
+        <span class="example-spacer"></span>
+        <!-- <button mat-button routerLink="/login">Login</button> -->
+        <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
+      </mat-toolbar>
+      <router-outlet></router-outlet>

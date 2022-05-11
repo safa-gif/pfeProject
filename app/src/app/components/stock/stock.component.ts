@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit , ViewChild, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { StockserviceService } from 'src/app/services/stockService/stockservice.service';
 
 @Component({
   selector: 'app-stock',
@@ -28,12 +29,16 @@ export class StockComponent implements OnInit {
   columnsToDisplay = ['name', 'email', 'phone'];
   innerDisplayedColumns = ['street', 'zipCode', 'city'];
   expandedElement!: User | null;
-
-  constructor( private cd: ChangeDetectorRef) { 
+     totalPoduit: any;
+  constructor( private cd: ChangeDetectorRef, private service: StockserviceService) { 
     
   }
 
   ngOnInit(): void {
+    this.service.totalStocks().subscribe((info: any)=> {
+      this.totalPoduit = info;
+    })
+    
     USERS.forEach(user => {
       if (user.addresses && Array.isArray(user.addresses) && user.addresses.length) {
         this.usersData = [...this.usersData, {...user, addresses: new MatTableDataSource(user.addresses)}];

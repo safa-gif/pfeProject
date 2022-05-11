@@ -1,4 +1,4 @@
-<mat-toolbar id="toolbar">
+<!-- <mat-toolbar id="toolbar">
     <mat-toolbar-row>
         <span>Calendar</span> 
         <span class="example-spacer"></span>
@@ -6,11 +6,22 @@
         <mat-icon>notifications</mat-icon>
 
       </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> -->
 
 <mat-sidenav-container id="contenu">
     <mat-sidenav-content>
-        <div class="col-lg-12 col-md-12 col-sm-12 flex justify-content-lg-between justify-content-between justify-sm-content-around">
+       <div class="row">
+        <div class="interface-title flex justify-content-around">
+            <h1 class="title">Calendrier</h1>
+            <!-- <span class="example-spacer"></span> -->
+             <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+    <!-- Include text description of the icon's meaning for screen-readers -->
+    <span class="cdk-visually-hidden">
+      Example with a home icon with overlaid badge showing the number 15
+    </span>
+        </div>
+       </div>
+        <div class="col-12 col-md-12 col-sm-12 flex justify-content-lg-between justify-content-between justify-sm-content-around">
             <div class="col-10 col-md-10 col-sm-10">
             <full-calendar [options] ="calendarOptions"></full-calendar> 
             </div>
@@ -19,7 +30,8 @@
                     <button mat-raised-button color="accent"class="text-center" (click)="addEvent()"> Add Event  &nbsp;&nbsp;&nbsp;</button>
                 </div>
                 <div class="flex align-items-center m-2">
-                    <button mat-raised-button color="primay" (click)="search()">Search Event</button>
+                    <!-- <button mat-raised-button color="primay" (click)="search()">Search Event</button> -->
+                    <div class=""></div>
                 </div>              
             </div>
         </div>
