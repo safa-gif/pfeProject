@@ -42,10 +42,10 @@ export class DashboardDataComponent implements AfterViewInit {
   }
   ngOnInit() {
    this.getAllInfos();
-  //  this.service.allData().subscribe( x => {
-  //   this.data = x;
-  //   console.log(this.data)
-  // })
+   this.service.allData().subscribe( x => {
+    this.data = x;
+    console.log(this.data)
+  })
   }
  
   ngAfterViewInit(): void {
@@ -54,7 +54,5 @@ export class DashboardDataComponent implements AfterViewInit {
     this.table.dataSource = this.dataSource;
   }
   
-  filter() {
-
-  }
+  
 }

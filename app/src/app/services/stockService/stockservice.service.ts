@@ -26,7 +26,7 @@ export class StockserviceService {
   stockLoaded(){
     return this.http.get(this.baseUrl+'/stockLoad')
   }
-  produitDisponible(){
-    return this.http.get(this.baseUrl+'/stockDispo')
-  }
+  // produitDisponible(){
+  //   return this.http.get(this.baseUrl+'/stockDispo')
+  // }
 }

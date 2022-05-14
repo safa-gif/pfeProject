@@ -32,6 +32,7 @@ export class TableDDataSource extends DataSource<TableDItem> {
   data: TableDItem[] = EXAMPLE_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
+  // filter: string;
 
   constructor() {
     super();

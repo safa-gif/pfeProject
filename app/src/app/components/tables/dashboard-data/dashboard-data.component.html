@@ -1,13 +1,17 @@
-<div class="container flex layput">
+<div class="container flex layout">
   <!-- <mat-form-field appearance="outline"  class="search-form">
     <mat-label>Filter</mat-label>
     <input matInput id="Filter" placeholder="Ex. ium">
   </mat-form-field> -->
-  <mat-form-field class="example-full-width">
-        <!-- <mat-label>Filtrer</mat-label> -->
-      <input matInput id="Filter" placeholder="Ex. ium">
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="filter()">Filtrer</button>
+  <div class="row">
+    <div class="col-lg-10 flex justify-content-between">
+      <!-- <mat-form-field>
+        <input mat-input (keyup)="applyFilter($event.target.value)" type="text" class="form-control" id="Filtrer" placeholder="Filtrer"/> 
+      </mat-form-field> -->
+
+    </div>
+  </div>
+  <!-- <button mat-raised-button color="primary" (click)="filter()">Filtrer</button> -->
   <div class="container-btn" fxLayoutAlign="right" fxLayout="row" fxLayoutGap="15px">
     <!-- <button mat-raised-button  (click)="exporter.exportTable('xlsx', {fileName:'data'})">Excel</button>
     <button mat-raised-button  (click)="exporter.exportTable('csv', {fileName:'data'})">Csv</button> -->

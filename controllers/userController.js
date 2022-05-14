@@ -1,6 +1,8 @@
 const User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
+// const mongoose = require('mongoose');
+
 //register
 exports.signup = (req, res, next) => {
     var user = new User(
@@ -49,7 +51,6 @@ exports.login = (req, res, next) => {
                 token: token,
                 // status: "Ok"
             })
-            // return res.send({status: "Ok",token: token})
         })
        
         .catch(err => {
@@ -59,24 +60,69 @@ exports.login = (req, res, next) => {
 
     }
 
-
+exports.updateUser = async (req, res, next)=> {
+    User.findByIdAndUpdate(
+        req.params.id,
+        {
+            username : req.body.username,
+            email: req.body.email
+          },
+          { new: true }
+    )
+    .then((data) => {
+        if (!data) {
+          return res.status(404).send({
+            message: "User  not found with id " + req.params.id,
+          });
+        }
+        res.send(data);
+      })
+      .catch((err) => {
+        if (err.kind === "ObjectId") {
+          return res.status(404).send({
+            message: "User not found with id " + req.params.id,
+          });
+        }
+        return res.status(500).send({
+          message: "Error updating message with id " + req.params.id,
+        });
+      });
+  
+       
+    
+}
 
 //getAllUsers
 exports.findAll = async (req, res, next)=> {
-    const users = await User.find((error, data)=> {
-        if (error){
-            return next(error)
-        }
-        else {
-            res.send(users)
-        }
-    })
+    
+    try {
+          const users = await User.find()
+        res.status(200).json(users)
+    }
+    catch(error){
+      res.status(500).json(error)
+    }
 }
 
 exports.count = async (req, res) => {
- const usercomptes = await User.countDocuments();
- res.status(200).json(usercomptes);
- usercomptes
+    try{
+        const usercomptes = await User.countDocuments();
+        const qtu =usercomptes;
+        res.status(200).json(qtu);
+      qtu
+    }
+   catch(error) {
+       res.status(500).json(error)
+   }
 }
 
 
+// exports.deleteUser = async (req, res) => {
+//     const { id } = req.params;
+
+//     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
+
+//     await User.findByIdAndRemove(id);
+
+//     res.json({ message: "User has been  deleted successfully." });
+// }

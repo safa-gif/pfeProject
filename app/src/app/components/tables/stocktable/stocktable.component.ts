@@ -30,7 +30,7 @@ export class StocktableComponent implements AfterViewInit {
     // let res = this.service.retrieveStock();
     let res = this.service.countFrequent();
     res.subscribe(r => this.dataSource.data = r as StocktableItem[] );
-
+      console.log(res)
   }
   ngOnInit() : void {
    this.allinfos();

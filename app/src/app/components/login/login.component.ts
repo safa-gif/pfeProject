@@ -25,23 +25,17 @@ export class LoginComponent implements OnInit {
       password: new FormControl(''),
     });
   }
- onClickSubmit(formData: { email: string; password: string; }){
-  console.log('Email user is : ' + formData.email);
-  console.log('Password user is : ' + formData.password);
- }
+//  onClickSubmit(formData: { email: string; password: string; }){
+//   console.log('Email user is : ' + formData.email);
+//   console.log('Password user is : ' + formData.password);
+//  }
   // login()
   // {
-      
   //     if(this.email=="administrator@gmail.com" && this.password=="admin")
-  //     {
-  //       this.snackBar.open('Login Successful','',{duration:1000});
-  //       this.router.navigate(['/home']);
-
-  //     }
+  //     {this.snackBar.open('Login Successful','',{duration:1000});
+  //       this.router.navigate(['/home']);}
   //     else
-  //     {
-  //       this.snackBar.open('Login error','',{duration:1000})
-  //     }
+  //     { this.snackBar.open('Login error','',{duration:1000})}
   // }
   
   login() {

@@ -1,20 +1,51 @@
 
-<mat-sidenav-container id="contenu">
-    <mat-sidenav-content>
-       <div class="row mt-3">
+
+<mat-sidenav-container id="contenu" class="sidenav-container">
+    <mat-sidenav #drawer id="sidenavbar" class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu <mat-icon class="mat-icon d-flex ml-auto p-1">menu</mat-icon> </mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">Dashboard  <mat-icon class="mat-icon d-flex ml-auto p-1">dashboard</mat-icon> </a>
+  
+        <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
+        <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
+        <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+        <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+        <!-- <a mat-list-item routerLink="/pdp"> PDP <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a> -->
+         
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content id="sidenvar-content">
+      <mat-toolbar id="toolbar" color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>ZODIAC MARINE</span>
+        <span class="example-spacer"></span>
+        <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
+      </mat-toolbar> 
+      <div class="row mt-3">
+      </div>
+       <div class="col-12 col-md-12 col-sm-12 flex justify-content-lg-between justify-content-between justify-sm-content-around">
+           <div class="col-10 col-md-10 col-sm-10">
+           <full-calendar [options] ="calendarOptions"></full-calendar> 
+           </div>
+           <div class="col-2 col-md-2 col-sm-2 flex flex-column">
+               <div class="flex align-items-center m-2">
+                   <button mat-raised-button class="text-center" id="addEvent" (click)="addEvent()"> Add Event &nbsp;&nbsp;&nbsp;&nbsp;</button>
+               </div>
+                        
+           </div>
        </div>
-        <div class="col-12 col-md-12 col-sm-12 flex justify-content-lg-between justify-content-between justify-sm-content-around">
-            <div class="col-10 col-md-10 col-sm-10">
-            <full-calendar [options] ="calendarOptions"></full-calendar> 
-            </div>
-            <div class="col-2 col-md-2 col-sm-2 flex flex-column">
-                <div class="flex align-items-center m-2">
-                    <button mat-raised-button class="text-center" id="addEvent" (click)="addEvent()"> Add Event &nbsp;&nbsp;&nbsp;&nbsp;</button>
-                </div>
-                         
-            </div>
-        </div>
-    </mat-sidenav-content>
-    
-</mat-sidenav-container>
+      </mat-sidenav-content>
+      </mat-sidenav-container>
+
+
 

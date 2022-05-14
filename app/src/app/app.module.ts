@@ -51,7 +51,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { LoginComponent } from './components/login/login.component';
@@ -68,6 +68,10 @@ import { StocktableComponent } from './components/tables/stocktable/stocktable.c
 import { PdpComponent } from './components/pdp/pdp.component';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { StocksComponent } from './components/stocks/stocks.component';
+
+
+
+
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
@@ -88,6 +92,8 @@ FullCalendarModule.registerPlugins([
     StocktableComponent,
     PdpComponent,
     StocksComponent,
+
+
   
   ],
   imports: [
@@ -147,6 +153,7 @@ FullCalendarModule.registerPlugins([
     TabViewModule,
     ReactiveFormsModule,
     FormsModule,
+    MatFormFieldModule
   ],
   providers: [
     DatePipe,

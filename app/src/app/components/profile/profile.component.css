@@ -1,9 +1,8 @@
 mat-toolbar {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .contenu{
-    /* background-color: lightgray; */
     background-color: rgb(197, 222, 241);
 
 }
@@ -17,16 +16,131 @@ mat-toolbar {
     justify-items: center;
     margin-right:20px;
   }
-.content {
-    padding: 16px;
-    /* background-color:#CD88AF; */
-    background-color:#CCD1E4;
 
+
+#example-header-image {
+background-color: rgb(197, 222, 241);
+    width:100%;
+    height:100%;
+    }
+    .example-card {
+        max-width: 50vh;
+        max-height:60vh;
+    }
+    
+    .col-md-6 {
+      margin-top: 200px;
+      text-align: -webkit-center;
+    }
+
+    #text-center, #card-title{
+      text-align:center;
+    
+    }
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+    }
+    .example-full-width {
+        margin-top: 10px;
+        width: 100%;
+    }
+    #card-title {
+      text-align: center;
+    }
+    
+    .login-user {
+      font-size: 25px;
+      font-weight: 500;
+      color: #36A2EB;
+    }
+    .btn-register {
+      background-color: #36A2EB;
+      margin-top: 3px;
+    }
+    .md-48 {
+      font-size: 54px;
+    }
+     .container-fluid{
+       width:80vh;
+     }
+     #table-bg {
+         background-color: white;
+     }
+     #table-bg:hover{
+       background-color: rgb(223, 186, 174);
+     }
+#sidenav-container{
+   background-color: rgb(197, 222, 241);
 }
-.content > mat-card{
+.sidenav-container {
+height: 100%;}    
+.row {
+  display:flex;
+  flex-direction:row;
+}   
+.col-4{
+  height:40vh;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+#sidenav-container{
+  background-color: rgb(197, 222, 241);
+}
+.sidenav {
   width: 200px;
-} 
-.card-container {
-    background-color: lightgrey;
-    color : red;
+}
+#sidenavbar {
+  color:black;  
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+#toolbar {
+
+  background-color:black;
+  color: white;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.grid-container {
+  margin: 10px;
+}
+.cardsSatistiques{
+  border-radius: 10px;
+}
+.mat-list-item {
+  color: black;
+}
+.content{
+  background-color:lightgray;
+  width: 100%;
+  height:100%;
+}
+.card-statics{
+  background-color: rgb(213, 196, 224);
+}
+p.text-center{
+  text-align: center;
+}
+#sidenavbar {
+  background-color: #ffc1c3;
+  color:black;  
+}
+#btn_modifier{
+  margin-top: 10px;
+  width: 100%;
+  color: white;
+  height: 40px;
+  background-color: #36A2EB;
 }

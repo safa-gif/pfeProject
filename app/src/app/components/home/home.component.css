@@ -2,17 +2,13 @@
   height: 100%;
 }
 #sidenav-container{
-  /* background-size: 100% 100%;
-  background-position: 0px 0px;
-  background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%); */
-  /* background-color: lightgray; */
   background-color: rgb(197, 222, 241);
 }
 .sidenav {
   width: 200px;
 }
 #sidenavbar {
-  background-color: #36A2EB;
+  /* background-color: #36A2EB; */
   color:black;  
 }
 .sidenav .mat-toolbar {
@@ -48,4 +44,17 @@
 }
 .card-statics{
   background-color: rgb(213, 196, 224);
+}
+p.text-center{
+  text-align: center;
+}
+#week, #month,#year {
+  color:rgb(244, 115, 115);
+}
+#event{
+  color:#35c396;
+}
+#sidenavbar {
+  background-color: #ffc1c3;
+  color:black;  
 }

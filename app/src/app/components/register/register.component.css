@@ -16,9 +16,13 @@
     margin-top: 200px;
     text-align: -webkit-center;
   }
-  /* @media (min-width: 768px) {
-  
-  } */
+  .mat-button{
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    height: 40px;
+    background-color: #36A2EB;
+  }
   #text-center, #card-title{
     text-align:center;
   
@@ -32,13 +36,6 @@
       margin-top: 10px;
       width: 100%;
   }
-  .mat-button{
-      margin-top: 10px;
-      width: 100%;
-      color: white;
-      height: 40px;
-      background-color: #36A2EB;
-  }
   #card-title {
     text-align: center;
   }
@@ -48,7 +45,19 @@
     font-weight: 500;
     color: #36A2EB;
   }
+  .btn-register {
+    background-color: #36A2EB;
+    margin-top: 3px;
+  }
+  .labels {
+   margin-left: 2px;
+   margin-bottom:10px;
+   text-align: left;
+   font-weight:500px;
+  }
   .md-48 {
     font-size: 54px;
   }
-   
+   .container-fluid{
+     width:80vh;
+   }

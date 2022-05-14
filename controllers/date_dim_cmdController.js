@@ -11,12 +11,15 @@ exports.retrieve = async (req, res, next) => {
         res.status(500).json({message: erro});
       }
 }
-exports.retards =async (req, res, next) => {
-  const date = new Date();
-    var oneJ = new Date(date.getFullYear(),0,1);
-    var numDay = Math.floor((date - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((date.getDay()+1+numDay/7)) - 4;
-      try{
+exports.retards = async (req, res, next) => {
+
+  const dates = new Date();
+  var oneJ = new Date(dates.getFullYear(),0,1);
+  var numDay = Math.floor((dates - oneJ)/ (24*60*60*1000));
+  const out = Math.ceil((dates.getDay()+1+numDay/7)) - 5
+
+          try{
+          
          const data= await dim.aggregate([
           {
             "$match" : {
@@ -104,8 +107,8 @@ exports.RetardsSemaine = async (req, res) => {
   const dates = new Date();
     var oneJ = new Date(dates.getFullYear(),0,1);
     var numDay = Math.floor((dates - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 4
-    console.log(out)
+    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 5
+    // console.log(out)
   try{
     const rate = await dim.countDocuments({week: {"$lt": out}});
     const r = rate
@@ -133,7 +136,7 @@ exports.RetardsMois = async (req, res) => {
 
 const d = new Date();
 let name = month[d.getMonth()];
-console.log(name)
+// console.log(name)
   try {
     const rp = await dim.countDocuments({mois: {"$neq" : "name"} }, {calendar_year: {"$lt": 2022}})
     const rpe = rp

@@ -5,19 +5,13 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { CommandeComponent } from './components/commande/commande.component';
-import { TableDComponent } from './components/tables/table-d/table-d.component';
 import { PdpComponent } from './components/pdp/pdp.component';
 import { StocksComponent } from './components/stocks/stocks.component';
+import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
-  // {path: '',  pathMatch: 'full', redirectTo: 'login'},
-  // {path: '', component: HomeComponent }, 
-  // children : [
+  {path: '',  pathMatch: 'full', redirectTo: 'login'},
     {path: 'home', component:HomeComponent},
-    {
-     path :'',component:LoginComponent
-    },
     {
       path: 'stock', component:StocksComponent
     },
@@ -30,9 +24,9 @@ const routes: Routes = [
      {path:'pdp',component:PdpComponent
      },
      {path: 'date',component:DateComponent},
-  // ]
   
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+   {path: 'register',component:RegisterComponent}
 
 ]
 

@@ -5,7 +5,9 @@ import { DateServiceService } from 'src/app/services/dateService/date-service.se
 import Swal from 'sweetalert2';
 import {Events} from 'src/app/donnees/event';
 import {Router} from '@angular/router';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 @Component({
   selector: 'app-date',
   templateUrl: './date.component.html',
@@ -18,7 +20,8 @@ export class DateComponent implements OnInit {
   constructor(
     public http: HttpClient,
     private dateservice: DateServiceService,
-    private router:Router
+    private router:Router,
+    private breakpointObserver: BreakpointObserver
   ) { }
   hidden = false;
 
@@ -84,4 +87,9 @@ export class DateComponent implements OnInit {
       };
     });
   }
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 }

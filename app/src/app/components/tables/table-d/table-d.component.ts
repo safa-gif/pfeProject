@@ -25,7 +25,7 @@ export class TableDComponent implements AfterViewInit {
      this.data = x;
      console.log(this.data)
    })
-      this.dataSource
+      // this.dataSource
       
   }
   getAllInfos(): void {

@@ -9,7 +9,7 @@ export class RegisterServiceService {
   baseUrl = "http://localhost:2000/user"
   constructor(private http: HttpClient) { }
   signup(data: any) {
-    return this.http.post<any>(this.baseUrl+'/register',data)
+    return this.http.post<any>(this.baseUrl+'/register',data).toPromise()
 
   }
 }
