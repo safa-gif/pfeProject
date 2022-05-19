@@ -1,4 +1,4 @@
-import { Component,NgModule, ElementRef,AfterViewInit,OnDestroy,Input,Output,EventEmitter,ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component,NgModule, ElementRef,AfterViewInit,OnDestroy,Input,Output,EventEmitter,ChangeDetectionStrategy, ViewEncapsulation, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,14 +9,18 @@ import {Subscription} from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { DashboardServiceService } from 'src/app/services/chartServices/dashboard-service.service';
 import { DateServiceService } from 'src/app/services/dateService/date-service.service';
+import {Dashboard} from 'src/app/donnees/Dashboard'
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  // providers: [MessageService]
 })
 export class HomeComponent {
   data: any;
+  datas: any;
   //linear chart
   basicData: any;
   basicOptions: any;
@@ -25,114 +29,94 @@ export class HomeComponent {
   //combor chart
   chartOptions: any;
   data2: any;
+  data1:any;
   datepipeWeek!: any;
   retardAnnee:any;  
   retardMois:any;
   totalevents: any;
   retardSemaine: any;
-
+//   item = {
+//     _id: '',
+//     item_number: '',
+//     calendar_year:'',
+//     planning_date:'' ,
+//     week:'',
+//     week_prod:'',
+//     order_number:'',
+//     month:'',
+//     StatusCommande:'',
+//     BesoinBrut: '',
+//     BesoinNet:'',
+//     OrderNumber: ''
+//   }
+  Items :Dashboard[] | undefined 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+    postData: any;
     
-    
-  constructor(private breakpointObserver: BreakpointObserver,
+    displayedColumns = ['item_number','item_name','calendar_year', 'planning_date','week','week_prod','month','StatusCommande', 'BesoinBrut','BesoinNet']
+    dataSource!:MatTableDataSource<any>;
+    @ViewChild('paginator')paginator!: MatPaginator;
+    @ViewChild(MatSort)matSort!: MatSort;
+    datap: any;
+    constructor(private breakpointObserver: BreakpointObserver,
      private toastr: ToastrService,  private configService: AppConfigService,
       private datePipe: DatePipe, private ser: DashboardServiceService,
-      private eveneS :DateServiceService ) {
+      private eveneS :DateServiceService) {
         
      this.datepipeWeek = datePipe.transform(Date.now(), 'w')
     //pie chart
+  
     this.data = {
-      labels: ['A','B','C'],
+      labels: ['Temps','Retards'],
+
       datasets: [
           {
-              data: [300, 50, 100],
+              data: [450, 1394],
               backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
+                //   "rgb(244, 115, 115)",
+                "#FFA726",
+                  "#42A5F5"
               ],
               hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
+                // "rgb(244, 115, 115)",
+                "#FFA726",
+                "#42A5F5"
               ]
           }]    
       }
-      //combo chart
-      this.data2 = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                type: 'line',
-                label: 'Dataset 1',
-                borderColor: '#42A5F5',
-                borderWidth: 2,
-                fill: false,
-                data: [
-                    50,
-                    25,
-                    12,
-                    48,
-                    56,
-                    76,
-                    42
-                ]
-            }, {
-                type: 'bar',
-                label: 'Dataset 2',
-                backgroundColor: '#66BB6A',
-                data: [
-                    21,
-                    84,
-                    24,
-                    75,
-                    37,
-                    65,
-                    34
-                ],
-                borderColor: 'white',
-                borderWidth: 2
-            }, {
-                type: 'bar',
-                label: 'Dataset 3',
-                backgroundColor: '#FFA726',
-                data: [
-                    41,
-                    52,
-                    24,
-                    74,
-                    23,
-                    21,
-                    32
-                ]
-            }]
-        };
+
         //linear chart
         this.basicData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
+            labels : ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juilliet', 'août','spetembre', 'octobre','novembre','décembre'],
+            datasets : [
                 {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: '#42A5F5',
-                    tension: .4
+                label : '2021',
+                data : [ 150, 2, 2, 2, 24, 2, 6, 16, 6, 6, 28, 34 ],
+                fill:false,
+                borderColor: '#42A5F5',
+                tension: 0.6
                 },
                 {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
+                    label: '2022',
+                    data : [142, 300, 448, 340, 282, 142, 34, 12, 4, 4 ,4 ,4 ],
+                    fill:false,
                     borderColor: '#FFA726',
-                    tension: .4
+                    tension:0.6
                 }
             ]
         };
+        
   }
   ngOnInit(){
-      //exact week 
+    this.ser.retards().subscribe((response: any) => {
+        this.dataSource = new MatTableDataSource(response)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.matSort;
+    })
      this.datepipeWeek = this.datePipe.transform(Date.now(), 'w')
      this.ser.RetardsSemaine().subscribe((info: any)=> {
          this.retardSemaine = info;
@@ -146,6 +130,42 @@ export class HomeComponent {
     this.ser.RetardsMois().subscribe((infor: any) =>{
         this.retardMois = infor;
     })
+    this.configService.late().subscribe((datax)=>{
+        this.data1 = [], this.data2 = []
+            for(const i of Object.values(datax)) {
+               if((i.calendar_year) == 2021) {
+                this.data1.push({
+                    calendar_year: i.calendar_year,
+                    Besoin:i.Besoin,
+                    month:i.month
+                })
+               }
+               else {
+                  
+                   this.data2.push({
+                       calendar_year: i.calendar_year,
+                       month:i.month,
+                       Besoin:i.Besoin
+                })
+                console.log(this.data2)
+                }
+            }
+            console.log('the data is here 2021 out ',this.data1)
+            console.log('the data is here 2022 out ',this.data2)
+
+            
+        } );
+        this.configService.latepie().subscribe((dataR)=> {
+            this.datap = []
+           for (const i of Object.values(dataR)) {
+               
+               this.datap.push({
+                   StatusCommande : i.StatusCommande,
+                   BesoinStatus : i.BesoinStatus
+               })
+           }
+           console.log(this.datap)
+        });
       //linear chart
 this.chartOptions =  {
     plugins: {
@@ -174,6 +194,7 @@ this.chartOptions =  {
         }
     }
 };
+ 
 // linear chart & combo chart
   this.config = this.configService.config;
   this.updateChartOptions();
@@ -181,8 +202,11 @@ this.chartOptions =  {
       this.config = config;
       this.updateChartOptions();
   });
+  
   }
-
+  filterData($event: any) {
+    this.dataSource.filter = $event.target.value;
+  }
   updateChartOptions() {
     if (this.config.dark)
         this.applyDarkTheme();
@@ -253,4 +277,6 @@ applyDarkTheme() {
 
  
 }
+// 
+
 }

@@ -1,27 +1,9 @@
 const stock = require ('../models/stock');
 exports.findStock = async (req, res, next)=> {
-    // const page =parseInt( req.query.page);
-    // const limit =parseInt( req.query.limit);
-    // const startIndex = (page - 1) * limit;
-    // const endIndex = page  * limit;
-   
+
     try {
         const stocks = await stock.find()
-        // const results = {};
-        // if(endIndex < stocks.length) {
-        //     results.next = {
-        //         page: page +1,
-        //         limit: limit
-        //     }
-        // }
-        
-        // if(startIndex > 0) {
-        //     results.previous = {
-        //         page: page - 1,
-        //         limit: limit
-        //     }
-        // }
-        // results.results = stocks.slice(startIndex, endIndex);
+       
         res.status(200).json(stocks)
     }
     catch(error ){
@@ -31,7 +13,7 @@ exports.findStock = async (req, res, next)=> {
 //CountItemPlusFréquent
 exports.countFrequent = async(req,res,next)=> {
     try{
-       const secu = 1;
+       const secu = 0 || 1;
        const items = await stock.aggregate([
            {"$project": 
                       {
@@ -81,7 +63,7 @@ exports.countFrequent = async(req,res,next)=> {
            })
        })
        let t = [];
-       t = tab.sort((a,b)=>(a.item_number>b.item_number))
+       t = tab.sort((a,b)=>(a.on_hand_balance>b.on_hand_balance))
        res.send(t)
     //    res.status(200).json(item)
     }

@@ -13,7 +13,7 @@ router.get('/totalCmds', cmd.cmdparYear);
 router.get('/total', cmd.totalCommandes);
 //TotalCommandeByIdOrderumner:
 router.get('/totalCmdId',cmd.totalCmdByCode);
-
+router.get('/getelement',cmd.getElementById)
 //totalCommandesAnnetest
 router.get('/totalByYear',cmd.totalcmdAnnee)
 module.exports = router;

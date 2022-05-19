@@ -1,27 +1,9 @@
 const cmd = require('../models/commande');
-//GetAllCommandesWIthPaginator
+
 exports.retrieve = async (req, res)=> {
-    const page =parseInt( req.query.page);
-    const limit =parseInt( req.query.limit);
-    const startIndex = (page - 1) * limit;
-    const endIndex = page  * limit;
+
     try {
-   const infos = await cmd.find();
-        const results = {};
-        if(endIndex < infos.length) {
-            results.next = {
-                page: page +1,
-                limit: limit
-            }
-        }
-        
-        if(startIndex > 0) {
-            results.previous = {
-                page: page - 1,
-                limit: limit
-            }
-        }
-        results.results = infos.slice(startIndex, endIndex);
+     const infos = await cmd.find();
        res.status(200).json(infos);
      }
      catch(error) {
@@ -172,3 +154,13 @@ exports.totalcmdAnnee = async (req, res, next)=> {
   }
 }
 
+exports.getElementById = async (req, res, next) => {
+    try { 
+        // let cond = `item_number:{$regex:"Z$"}`
+        const item = await cmd.find({item_number:{'$regex':/^Z$/i}})
+        res.status(200).json(item)
+    }
+    catch(error) {
+        res.status(500).json(error)
+    }
+}

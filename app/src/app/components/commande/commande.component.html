@@ -32,7 +32,7 @@
     </mat-toolbar> 
     <div class="col-md-12">
       <br>
-       <mat-card-title class="mr-auto p-2 ml-2">
+       <mat-card-title class="mr-auto p-3 ml-3">
            Les commandes
       </mat-card-title>
      <div class="flex flex-row flex-wrap card-container">
@@ -62,12 +62,101 @@
        
      </div>
     </div>
-   <br><br>
-     <div class="col-md-11 ml-6">
-  
-           <app-table-d></app-table-d>      
-     </div>
-  
-    
+  <br>
+
+     <!-- <div class="col-12">
+      <mat-card>
+        <mat-card-content>
+          <br>
+         <mat-card-title class="text-center">La Liste  des commandes   </mat-card-title>
+         <br>
+          <div class="mat-elevation-z-8">
+            <table  class="table table-responsive" width="100%">
+              <thead class="table-head">
+                <tr class="flex justify-content-between ml-7">
+                  <th class="col-md-3" >Item Number</th>
+                  <th class="col-md-3">Item Name</th>
+                  <th class="col-md-3">Calendar Year </th>
+                  <th class="col-md-3">Planning Date</th>
+                  <th class="col-md-3">Order Number </th>
+                  <th class="col-md-3">Customer Name</th>
+                </tr>
+              </thead>
+              <tbody  class="tbody">
+                  <tr class="flex justify-content-between ml-7"
+                   *ngFor="let cmd of Commandes  | slice: pageSize | slice: 0:itemsPerPage">
+                  <td class="col-md-3">{{cmd?.item_number}}</td>
+                  <td class="col-md-3">{{cmd?.item_name}}</td>
+                   <td class="col-md-3">{{cmd?.calendar_year}}</td>
+                  <td class="col-md-3">{{cmd?.planning_date | date : 'shortDate'}}</td>
+                  <td class="col-md-3">{{cmd?.order_number}}</td>
+                  <td class="col-md-3">{{cmd?.customer_name}}</td>
+                </tr>    
+              </tbody>
+              <div class="paginator-table flex row justify-content-center" id="paginator-table">
+               <mat-paginator [length]="Commandes?.length" [pageSize]="itemsPerPage" [pageSizeOptions]="pageSizeOptions"
+               (page)="handlePageEvent($event)" aria-label="Select page">
+               </mat-paginator>
+              </div>
+       
+            </table>
+          </div>
+          <br>
+        </mat-card-content>
+      </mat-card>
+     </div> -->
+
+
+     <div class="container">
+
+      <div class="search-container">
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="search"  autocomplete="off" (keyup)='filterData($event)' />
+        </mat-form-field>
+      </div>
+
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+       <ng-container  matColumnDef="item_number">
+         <th mat-header-cell  mat-sort-header *matHeaderCellDef> Item Number  </th>
+         <td mat-cell *matCellDef="let element"> {{element.item_number}} </td>
+       </ng-container>
+       <ng-container matColumnDef="item_name">
+         <th mat-header-cell  mat-sort-header  *matHeaderCellDef> Item Name </th>
+         <td mat-cell *matCellDef="let element"> {{element.item_name}} </td>
+       </ng-container>
+       <ng-container matColumnDef="besoin">
+         <th mat-header-cell  mat-sort-header *matHeaderCellDef> Besoin </th>
+         <td mat-cell *matCellDef="let element"> {{element.besoin}} </td>
+       </ng-container>
+       <ng-container matColumnDef="calendar_year">
+         <th mat-header-cell  mat-sort-header *matHeaderCellDef> Calendar Year </th>
+         <td mat-cell *matCellDef="let element"> {{element.calendar_year}} </td>
+       </ng-container>
+       <ng-container matColumnDef="planning_date">
+        <th mat-header-cell  mat-sort-header *matHeaderCellDef> Planning Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.planning_date |date: 'shortDate'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="status_order">
+        <th mat-header-cell  mat-sort-header *matHeaderCellDef> Status Order</th>
+        <td mat-cell *matCellDef="let element"> {{element.status_order}} </td>
+      </ng-container>
+      <ng-container matColumnDef="order_number">
+        <th mat-header-cell  mat-sort-header *matHeaderCellDef> Order Number</th>
+        <td mat-cell *matCellDef="let element"> {{element.order_number}} </td>
+      </ng-container>
+      <ng-container matColumnDef="customer_name">
+        <th mat-header-cell  mat-sort-header *matHeaderCellDef> Customer Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
+      </ng-container>
+       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+     </table>
+     <mat-paginator #paginator
+     [pageSize]="10"
+     [pageSizeOptions]="[5, 10, 20, 30]">
+     </mat-paginator>
+    </div>
+    <br>
     </mat-sidenav-content>
     </mat-sidenav-container>

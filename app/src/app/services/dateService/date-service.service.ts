@@ -44,16 +44,7 @@ export class DateServiceService {
   totalEvents() {
    return this.http.get(this.baseUrl+'total_events')
   }
-  // modifyEvent(id:string){
-  //   return this.http.put(this.baseUrl+'modify_event',id)
-  //   .pipe(map((data: any) => {
-  //     return data;
-  //   }),
-  //   catchError(error => {
-  //     return error
-  //   }))
-  // }
-
+  
 }
 
   

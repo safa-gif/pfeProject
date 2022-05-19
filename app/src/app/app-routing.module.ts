@@ -6,7 +6,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { LoginComponent } from './components/login/login.component';
 import { CommandeComponent } from './components/commande/commande.component';
-import { PdpComponent } from './components/pdp/pdp.component';
+// import { PdpComponent } from './components/pdp/pdp.component';
 import { StocksComponent } from './components/stocks/stocks.component';
 import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
@@ -21,8 +21,8 @@ const routes: Routes = [
     },
      {path:'profile',component:ProfileComponent 
      },
-     {path:'pdp',component:PdpComponent
-     },
+    //  {path:'pdp',component:PdpComponent
+    //  },
      {path: 'date',component:DateComponent},
   
   {path: 'login', component: LoginComponent},

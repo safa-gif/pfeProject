@@ -1,6 +1,6 @@
 
 
-<mat-sidenav-container  class="sidenav-container">
+<mat-sidenav-container  class="sidenav-container" id="sidenav-container">
   <mat-sidenav #drawer id="sidenavbar" class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -8,13 +8,11 @@
     <mat-toolbar>Menu <mat-icon class="mat-icon d-flex ml-auto p-1">menu</mat-icon> </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home">Dashboard  <mat-icon class="mat-icon d-flex ml-auto p-1">dashboard</mat-icon> </a>
-
       <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
       <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
       <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
       <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
-      <a mat-list-item routerLink="/pdp"> PDP <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
-       
+            
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content id="sidenvar-content">
@@ -31,67 +29,88 @@
       <span class="example-spacer"></span>
       <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
     </mat-toolbar>
-    <mat-sidenav-container class="sidenav-container" id="sidenav-container">
-      <mat-sidenav-content>
-         <!-- Staistiques cards -->
-         <div class="col-md-12">
-          <br>
-          <mat-card-title class="mr-auto p-2 ml-2">
-            Le stock</mat-card-title>
-         <div class="flex flex-row flex-wrap card-container">
-           <div class="col-4">
-             <mat-card class="card-statics">
-               <div class="statics">
-                 <h2 class="card-title"> Totals des produits disponible
-                   <mat-icon class="d-flex ml-auto p-0 good">trending_up</mat-icon> 
-                   <span>{{totalProduit}}</span></h2> 
-                   <hr>
-                   <p class="text-center">En Stock</p>
-               </div>
-      
-             </mat-card>  
+    <div class="col-md-12">
+      <br>
+      <mat-card-title class="mr-auto p-2 ml-2">
+        Le stock</mat-card-title>
+     <div class="flex flex-row flex-wrap card-container">
+       <div class="col-4">
+         <mat-card class="card-statics">
+           <div class="statics">
+             <h2 class="card-title"> Totals des produits disponible
+               <mat-icon class="d-flex ml-auto p-0 good">trending_up</mat-icon> 
+               <span>{{totalProduit}}</span></h2> 
+               <hr>
+               <p class="text-center">En Stock</p>
            </div>
-           <div class="col-4">
-             <mat-card class="card-statics">
-               <div class="statics">
-                 <h2 class="card-title">  Total des produits en rupture
-                   <mat-icon class="d-flex ml-auto p-0 bad">trending_down</mat-icon> 
-                   <span>{{produitsDanger}}</span> </h2>  
-                   <hr>
-                   <p class="text-center">Du stock</p>
-               </div>
-              
-             </mat-card>
+  
+         </mat-card>  
+       </div>
+       <div class="col-4">
+         <mat-card class="card-statics">
+           <div class="statics">
+             <h2 class="card-title">  Total des produits en rupture
+               <mat-icon class="d-flex ml-auto p-0 bad">trending_down</mat-icon> 
+               <span>{{produitsDanger}}</span> </h2>  
+               <hr>
+               <p class="text-center">Du stock</p>
            </div>
-           <div class="col-4">
-             <mat-card class="card-statics">
-               <div class="statics">
-                 <h2 class="card-title">Total des produits les plus
-                   <mat-icon class="d-flex ml-auto p-0 stock">trending_up</mat-icon>
-                    <span>{{produitplusDi}}</span></h2>  
-                    <hr>
-                    <p class="text-center ">En Stock</p>
-               </div>
-            
-             </mat-card>
+          
+         </mat-card>
+       </div>
+       <div class="col-4">
+         <mat-card class="card-statics">
+           <div class="statics">
+             <h2 class="card-title">Total des produits les plus
+               <mat-icon class="d-flex ml-auto p-0 stock">trending_up</mat-icon>
+                <span>{{produitplusDi}}</span></h2>  
+                <hr>
+                <p class="text-center ">En Stock</p>
            </div>
-         </div>
-        </div>
-        <br>
-         <div class="col-md-11 ml-6">
-           <app-stocktable></app-stocktable>
-         </div>
-       
-       
         
-        
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-    </mat-sidenav-content>
-    </mat-sidenav-container>
+         </mat-card>
+       </div>
+     </div>
+    </div>
+    <br>
+     <div class="container">
 
-  
-  
+         <div class="search-container">
+           <mat-form-field appearance="fill">
+             <input matInput placeholder="search"  autocomplete="off" (keyup)='filterData($event)'/>
+           </mat-form-field>
+         </div>
+
+       <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container  matColumnDef="item_number">
+            <th mat-header-cell  mat-sort-header *matHeaderCellDef> Item Number  </th>
+            <td mat-cell *matCellDef="let element"> {{element.item_number}} </td>
+          </ng-container>
+          <ng-container matColumnDef="item_name">
+            <th mat-header-cell  mat-sort-header *matHeaderCellDef> Item Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.item_name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="on_hand_balance">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> On Hand Balance </th>
+            <td mat-cell *matCellDef="let element"> {{element.on_hand_balance}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Status_Produit">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Status Produit </th>
+            <td mat-cell *matCellDef="let element"> {{element.Status_Produit}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator #paginator
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20, 30]">
+        </mat-paginator>
+       </div>
+     <br>
+  </mat-sidenav-content>
+  </mat-sidenav-container>
   
   
   

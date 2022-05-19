@@ -32,7 +32,7 @@ export class DateComponent implements OnInit {
     window.alert('Cliked on date '+ arg.dateStr)
   }
   onSelectx(event: any){
-    // console.log('Right now i am at the point of scheduling an event')
+  
   }
   ngOnInit(): void {
     this.getAllEvents();
@@ -40,11 +40,7 @@ export class DateComponent implements OnInit {
   deleteEvent(id: string){
     this.dateservice.deleteSingleEvent(id).subscribe((data: any)=>{})
   }
-  // modifyEvent(id: string) {
-  //   this.dateservice.modifyEvent(id).subscribe((data: any)=>{
-  //     data
-  //   })
-  // }
+
   addEvent(){
     this.router.navigate(['/add-event'])
   }

@@ -2,13 +2,12 @@
   height: 100%;
 }
 #sidenav-container{
-  background-color: rgb(197, 222, 241);
+  background-color: rgba(221, 222, 222, 0.986);
 }
 .sidenav {
   width: 200px;
 }
 #sidenavbar {
-  /* background-color: #36A2EB; */
   color:black;  
 }
 .sidenav .mat-toolbar {
@@ -57,4 +56,19 @@ p.text-center{
 #sidenavbar {
   background-color: #ffc1c3;
   color:black;  
+}
+
+div.paginator-table,#paginator-table {
+  border: none transparent;
+  width:100vh;
+   
+}
+tbody.tbody {
+  border: none transparent;
+}
+.table-head {
+  height: 5vh;
+}
+.mat-elevation-z8{
+  width:100%
 }

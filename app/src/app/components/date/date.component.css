@@ -5,14 +5,12 @@
     flex: 1 1 auto;
 }
 .card-container, #contenu {
-    background-size: 100% 100%;
-    background-position: 0px 0px;
-    /* background-color:#71C4FFFF; */
-    background-color: rgb(197, 222, 241);
+ 
+    background-color: rgba(221, 222, 222, 0.986);
 
 }
 #addEvent {
- background-color: #ED8185;
+ background-color: #ffc1c3;
 }
 
 
@@ -25,7 +23,7 @@
 }
 #sidenav-container{
  
-  background-color: rgb(197, 222, 241);
+  background-color: rgba(221, 222, 222, 0.986);
 }
 .sidenav {
   width: 200px;

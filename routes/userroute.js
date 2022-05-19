@@ -14,7 +14,9 @@ router.get('/count',user.count);
 router.put('/updateUser/:id', user.updateUser);
 
 //delete User
-// router.delete('/deleteUser/:id',user.deleteUser);
+router.delete('/deleteUser/:id',user.deleteUser);
 
+// router.findUser('/findUser/:id',user.findUser);
 
+router.get('/getSingleUser/:id', user.getSingleUser)
 module.exports = router;

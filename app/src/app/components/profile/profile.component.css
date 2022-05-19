@@ -68,11 +68,9 @@ background-color: rgb(197, 222, 241);
      #table-bg {
          background-color: white;
      }
-     #table-bg:hover{
-       background-color: rgb(223, 186, 174);
-     }
+     
 #sidenav-container{
-   background-color: rgb(197, 222, 241);
+   background-color: rgba(221, 222, 222, 0.986);
 }
 .sidenav-container {
 height: 100%;}    
@@ -86,9 +84,6 @@ height: 100%;}
 
 .sidenav-container {
   height: 100%;
-}
-#sidenav-container{
-  background-color: rgb(197, 222, 241);
 }
 .sidenav {
   width: 200px;

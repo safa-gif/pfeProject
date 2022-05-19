@@ -19,7 +19,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
@@ -60,12 +59,8 @@ import {ChartModule} from 'primeng/chart';
 import {InplaceModule} from 'primeng/inplace';
 import {CardModule} from 'primeng/card';
 import { CommandeComponent } from './components/commande/commande.component';
-import { TableDComponent } from './components/tables/table-d/table-d.component';
+import {MatChipsModule} from '@angular/material/chips';
 import { DatePipe } from '@angular/common';
-import { DashboardDataComponent } from './components/tables/dashboard-data/dashboard-data.component';
-import { PdptableDataComponent } from './components/tables/pdptable-data/pdptable-data.component';
-import { StocktableComponent } from './components/tables/stocktable/stocktable.component';
-import { PdpComponent } from './components/pdp/pdp.component';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { StocksComponent } from './components/stocks/stocks.component';
 
@@ -86,11 +81,6 @@ FullCalendarModule.registerPlugins([
     LoginComponent,
     RegisterComponent,
     CommandeComponent,
-    TableDComponent,
-    DashboardDataComponent,
-    PdptableDataComponent,
-    StocktableComponent,
-    PdpComponent,
     StocksComponent,
 
 
@@ -132,7 +122,6 @@ FullCalendarModule.registerPlugins([
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
-    MatChipsModule,
     MatCheckboxModule,
     MatCardModule,
     MatButtonModule,
@@ -153,10 +142,11 @@ FullCalendarModule.registerPlugins([
     TabViewModule,
     ReactiveFormsModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatChipsModule
   ],
   providers: [
-    DatePipe,
+    DatePipe, ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
 })

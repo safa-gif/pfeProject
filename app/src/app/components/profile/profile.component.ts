@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -20,61 +21,70 @@ export class ProfileComponent implements OnInit {
     email : '',
     password : '',
   }
+  username :string | undefined;
+  email: string | undefined;
+  public data:any ;
+ public basicForm!:FormGroup;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
     map(result => result.matches),
     shareReplay()
   );
-  
+  utilisateur: any;
+    x!:number;
+    Users :User[] | undefined 
+    id!: string
   constructor(private toastr: ToastrService, private service: LoginService,
-    private breakpointObserver: BreakpointObserver,private snackBar:MatSnackBar,private router:Router) { }
-    utilisateur:any;
-   Users = [];
-    x:any;
+    private formbuilder:FormBuilder,
+    private breakpointObserver: BreakpointObserver,
+    private snackBar:MatSnackBar,private router:Router) { }
+    
   ngOnInit(): void {
     this.findAll();
     this.service.count().subscribe((dta: any)=> {
       this.utilisateur = dta;
-      console.log(dta)
      })
-     this.modifier();
+    //  let button=document.getElementById(btnAlter);
+    //  this.onupdate(id:string);
   }
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+  
   findAll() {
     const res = this.service.findAll();
      res.subscribe((data: any)=> {
        console.log(data)
-       data.forEach((x: any)=> {
-         return this.user = x
+       let t: any[] | undefined = []
+       data.forEach((el: any)=>{
+         Object(t).push(el)
        })
-       data.map((el: never[])=> {
-         this.Users = el
-       })
-       this.Users = data
-       console.log(this.Users)
+       this.Users = t;
      })
-     
+          
   }
   
-  modifier(){
-    this.x = 3;
-    if(this.x == 5)
-        {this.snackBar.open('Modification réalisé avec succés','',{duration:1000});
-         
-        }
-        else
-        { 
-          this.snackBar.open('Modification échouée','',{duration:1000})
-      }
-  //  this.service.updateUser().subscribe()
-  }
-  // count(){
-  //   this.service.count().subscribe((data: any)=> {
-  //    this.utilisateur = data;
-  //    console.log(data)
-  //   })
-  // }
 
+ onupdate(id: string): void {
+  this.data ={
+   username : this.basicForm.value.username,
+   email : this.basicForm.value.email,
+    }
+    console.log(id)
+    // console.log(data)
+ 
+   this.service.updateUser(id,this.data).subscribe(response =>{
+    console.log(response);
+    console.log("response ",response);
+  
+  })
 }
+getIdUser(id:string) {
+   this.service.getSingleUser(this.id).subscribe(response => {
+    console.log(response);
+    console.log("response ",response)
+     console.log(id)
+   })
+}
+
+  
+}
+
+

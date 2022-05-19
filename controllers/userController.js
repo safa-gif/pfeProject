@@ -117,12 +117,56 @@ exports.count = async (req, res) => {
 }
 
 
-// exports.deleteUser = async (req, res) => {
-//     const { id } = req.params;
+exports.deleteUser = async (req, res) => {
+    // const { id } = req.params;
 
-//     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
+    // if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with id: ${id}`);
 
-//     await User.findByIdAndRemove(id);
+    // await User.findByIdAndRemove(id);
 
-//     res.json({ message: "User has been  deleted successfully." });
+    // res.json({ message: "User has been  deleted successfully." });
+
+    User.deleteOne({_id: req.params.id}).then(
+      () => {
+        res.status(200).json({
+          message: 'User has been Deleted!'
+        });
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+}
+
+// exports.findUser = (res, req, next) => {
+
+//       User.findById(req.params.id).then(
+//         (data)=>{
+//           if(!data){
+//             return res.status(404).send({
+//              message: "User not found  with id " + req.params.id,
+//             })   
+//           }
+//           res.send(data);
+//       }
+//       )
+//       .catch((err)=> {
+//         return res.status(500).json({
+//           message: "Error retrieving User with id" + req.params.id,
+//         })
+//       })
+  
 // }
+
+
+exports.getSingleUser = async (req,res,next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
