@@ -40,7 +40,5 @@ userSchema.methods.getJwtToken =   async function() {
 
 }
 const User = mongoose.model('Users',userSchema);
-// const User = mongoose.model('User', userSchema);
-//comparepassword
 
 module.exports = User;

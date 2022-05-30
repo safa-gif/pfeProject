@@ -1,0 +1,41 @@
+.example-spacer {
+    flex: 1 1 auto;
+
+}
+.sidenav-container {
+    height: 100%;
+  }
+  #sidenav-container{
+   
+    background-color: rgba(221, 222, 222, 0.986);
+  }
+  .sidenav {
+    width: 200px;
+  }
+  #sidenavbar {
+    background-color: #ffc1c3;
+    color:black;  
+  }
+  .sidenav-container {
+    height: 100%;
+  }
+  #sidenav-container{
+     
+    background-color: rgba(221, 222, 222, 0.986);
+  }
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  #toolbar {
+  
+    background-color:black;
+    color: white;
+  }
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .btn-success, .btn-danger{
+     margin-left:60px;
+  } 

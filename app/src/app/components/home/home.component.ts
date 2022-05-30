@@ -278,5 +278,7 @@ applyDarkTheme() {
  
 }
 // 
-
+logout() {
+    
+}
 }

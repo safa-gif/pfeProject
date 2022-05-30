@@ -3,7 +3,8 @@ import { FormBuilder , FormGroup, FormControl} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import { Observable }     from 'rxjs';
-import {LoginService} from 'src/app/services/authServices/login/login.service'
+import {LoginService} from 'src/app/services/authServices/login/login.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,21 +26,8 @@ export class LoginComponent implements OnInit {
       password: new FormControl(''),
     });
   }
-//  onClickSubmit(formData: { email: string; password: string; }){
-//   console.log('Email user is : ' + formData.email);
-//   console.log('Password user is : ' + formData.password);
-//  }
-  // login()
-  // {
-  //     if(this.email=="administrator@gmail.com" && this.password=="admin")
-  //     {this.snackBar.open('Login Successful','',{duration:1000});
-  //       this.router.navigate(['/home']);}
-  //     else
-  //     { this.snackBar.open('Login error','',{duration:1000})}
-  // }
-  
   login() {
-    this.message = ''
+    // this.message = ''
     console.log(this.formLogin.value)
     this.submitted = true;
     if (this.formLogin.valid) {
@@ -47,7 +35,7 @@ export class LoginComponent implements OnInit {
       .then(res => {
         console.log(res);
 
-        if (res.message == 'User Logged') {
+        if (res.status = 200) {
             this.snackBar.open('Login Successful','',{duration:1000});
             this.router.navigate(['/home'])
           }

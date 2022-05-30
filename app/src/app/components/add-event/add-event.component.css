@@ -2,7 +2,8 @@
 
   /* background-size: 100% 100%;
   background-position: 0px 0px; */
-  background-color: rgb(197, 222, 241);
+  /* background-color: rgb(197, 222, 241); */
+  background-color: rgba(221, 222, 222, 0.986);
   width:100%;
   height:100%;
   }
@@ -17,7 +18,7 @@
   }
   #text-center, #card-title{
     text-align:center;
-  
+    
   }
   .example-form {
       min-width: 150px;
@@ -31,7 +32,12 @@
   .mat-button{
       margin-top: 10px;
       width: 100%;
-      color: white;
+      color: black;
       height: 40px;
       background-color: #36A2EB;
+  }
+  .login-user {
+    color: #438fc6;
+    font-size: 25px;
+  font-weight: 500;
   }

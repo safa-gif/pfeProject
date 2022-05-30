@@ -10,9 +10,10 @@
 
       <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
       <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
-      <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
-      <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
-      <!-- <a mat-list-item routerLink="/pdp"> PDP <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a> -->
+      <!-- <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a> -->
+      <a mat-list-item routerLink="/users">Compte 	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+     
+      <a mat-list-item routerLink="/date"> Calendrier <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
        
     </mat-nav-list>
   </mat-sidenav>
@@ -28,7 +29,7 @@
       </button>
       <span>ZODIAC MARINE</span>
       <span class="example-spacer"></span>
-      <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
+      <button mat-button routerLink="/login"><mat-icon>logout</mat-icon></button>
     </mat-toolbar> 
     <div class="col-md-12">
       <br>
@@ -63,49 +64,6 @@
      </div>
     </div>
   <br>
-
-     <!-- <div class="col-12">
-      <mat-card>
-        <mat-card-content>
-          <br>
-         <mat-card-title class="text-center">La Liste  des commandes   </mat-card-title>
-         <br>
-          <div class="mat-elevation-z-8">
-            <table  class="table table-responsive" width="100%">
-              <thead class="table-head">
-                <tr class="flex justify-content-between ml-7">
-                  <th class="col-md-3" >Item Number</th>
-                  <th class="col-md-3">Item Name</th>
-                  <th class="col-md-3">Calendar Year </th>
-                  <th class="col-md-3">Planning Date</th>
-                  <th class="col-md-3">Order Number </th>
-                  <th class="col-md-3">Customer Name</th>
-                </tr>
-              </thead>
-              <tbody  class="tbody">
-                  <tr class="flex justify-content-between ml-7"
-                   *ngFor="let cmd of Commandes  | slice: pageSize | slice: 0:itemsPerPage">
-                  <td class="col-md-3">{{cmd?.item_number}}</td>
-                  <td class="col-md-3">{{cmd?.item_name}}</td>
-                   <td class="col-md-3">{{cmd?.calendar_year}}</td>
-                  <td class="col-md-3">{{cmd?.planning_date | date : 'shortDate'}}</td>
-                  <td class="col-md-3">{{cmd?.order_number}}</td>
-                  <td class="col-md-3">{{cmd?.customer_name}}</td>
-                </tr>    
-              </tbody>
-              <div class="paginator-table flex row justify-content-center" id="paginator-table">
-               <mat-paginator [length]="Commandes?.length" [pageSize]="itemsPerPage" [pageSizeOptions]="pageSizeOptions"
-               (page)="handlePageEvent($event)" aria-label="Select page">
-               </mat-paginator>
-              </div>
-       
-            </table>
-          </div>
-          <br>
-        </mat-card-content>
-      </mat-card>
-     </div> -->
-
 
      <div class="container">
 

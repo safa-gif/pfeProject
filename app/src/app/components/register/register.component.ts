@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators,FormBuilder , } from '@angular/forms
 import { RegisterServiceService } from 'src/app/services/authServices/register/register-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -14,15 +15,6 @@ export class RegisterComponent implements OnInit {
   formRegister!:FormGroup;
   submitted: boolean | undefined;
   message: any;
-  // user = {
-  //   username : '', 
-  //   email : '',
-  //   password : '',
-  // };
-  // email:string | undefined;
-  // password:string  | undefined;
-  // username : string | undefined;
-  // formLogin!: FormGroup;
   constructor(private service: RegisterServiceService,private snackBar:MatSnackBar, private router: Router) { }
   public ngOnInit(): void {
     this.formRegister = new FormGroup({
@@ -30,7 +22,7 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(''),
       password: new FormControl(''),
     });
-    // this.register();
+    
   }
   register(): void {
     console.log(this.formRegister.value)
@@ -40,18 +32,28 @@ export class RegisterComponent implements OnInit {
      this.service.signup(this.formRegister.value)
       .then(res => {
         console.log(res);
-        if (res.message = 'Error registering user') {
-            this.snackBar.open('Login Successful','',{duration:1000});
-            this.router.navigate(['/profile'])
+        if (res.status = 201) {
+          Swal.fire({
+            position : 'center',
+              icon : 'success',
+              title : 'Your user  has been added successfully',
+              showConfirmButton: false,
+              timer: 2000
+          })
+          this.snackBar.open('Register has been  Successful','',{duration:3000});
+            this.router.navigate(['/users']) 
           }
-        else {
-          this.snackBar.open('Register has been  Successful','',{duration:1000});
-            this.router.navigate(['/profile'])
-          
-        }
       })
    } else {
-     console.log('the form is not valid!!!')
+       Swal.fire(
+         {
+          position: 'center',
+          icon: 'error',
+          title : 'Please fill the form ',
+          showConfirmButton: false,
+          timer: 2000
+         }
+       )
    }
    
   }

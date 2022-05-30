@@ -9,6 +9,7 @@ import { CommandeComponent } from './components/commande/commande.component';
 // import { PdpComponent } from './components/pdp/pdp.component';
 import { StocksComponent } from './components/stocks/stocks.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
 const routes: Routes = [
   {path: '',  pathMatch: 'full', redirectTo: 'login'},
     {path: 'home', component:HomeComponent},
@@ -21,8 +22,8 @@ const routes: Routes = [
     },
      {path:'profile',component:ProfileComponent 
      },
-    //  {path:'pdp',component:PdpComponent
-    //  },
+     {path:'users',component:ListUsersComponent
+     },
      {path: 'date',component:DateComponent},
   
   {path: 'login', component: LoginComponent},

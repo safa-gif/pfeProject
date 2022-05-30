@@ -1,0 +1,183 @@
+<mat-sidenav-container id="sidenav-container" class="sidenav-container">
+    <mat-sidenav #drawer id="sidenavbar" class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu <mat-icon class="mat-icon d-flex ml-auto p-1">menu</mat-icon> </mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">Dashboard  <mat-icon class="mat-icon d-flex ml-auto p-1">dashboard</mat-icon> </a>
+        <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
+        <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
+        <a mat-list-item routerLink="/users"> Compte 	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+        <a mat-list-item routerLink="/date"> Calendrier <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content id="sidenvar-content">
+      <mat-toolbar id="toolbar" color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>ZODIAC MARINE</span>
+        <span class="example-spacer"></span>
+        <button mat-button routerLink="/login"><mat-icon>logout</mat-icon></button>
+      </mat-toolbar>
+      <div id="example-header-image" class="container-fluid">
+        <div class="col-md-12 pt-3 flex  justify-content-between">
+            <!-- <div class="col-md-6 col-sm-6">
+                <mat-card class="example-card">
+                  <mat-card-title> 
+                     <h1 class="text-center login-user"> Edit Profile</h1>
+                  </mat-card-title>
+                  <i class="material-icons md-48">account_circle</i>
+                 <mat-card-content>
+                    <form  [formGroup]="basicForm" #form="ngForm" (ngSubmit)="onupdate(user._id)">
+                         <mat-form-field class="example-full-width">
+                            <mat-label>Username</mat-label>
+                            <input type="text" matInput placeholder="Enter votre nom utilisateur"  formControlName="username"
+                            [(ngModel)]="user.username"  value="{{ user.username}}">
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Email </mat-label>
+                            <input type="email" matInput placeholder="placer votre email"  formControlName="email"
+                            [(ngModel)]="user.email"  value="{{ user.email}}">
+                          </mat-form-field>
+                          <button type="submit" mat-button   id="btn_modifier" color="primary" (click)="modifier()"> Modifier </button>
+                    </form>
+                  </mat-card-content>
+                </mat-card>
+              </div> -->
+              <div class="col-md-4 col-sm-4">
+                <mat-card  class="example-card">
+                  <mat-card-content>
+                    <div class="statics">
+                      <h2 class="card-title"> Total des comptes</h2> 
+                        <span> <b>{{this.utilisateur}} </b></span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+                <br>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <mat-card  class="example-card">
+                  <mat-card-content>
+                    <div class="statics">
+                      <h2 class="card-title"> Ajouter compte</h2> 
+                        <span class="span-text"> <button type="submit" mat-raised-button class="btn btn-primary" id="btnAdd" (click)="addUser()">Ajouter</button></span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+                <br>
+              </div>
+        </div>
+        <br>
+        <div class="col-md-11 ml-2 mr-2 center ">
+          <table class="table table-striped table-bordered table-light">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <!-- <th scope="col">Id</th> -->
+                
+                <th colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let user of Users" id="{{user._id}}"> 
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <!-- <td>{{user._id}}</td> -->
+                <!-- <td> <button type="submit" mat-raised-button class="btn btn-primary" id="btnAdd" (click)="addUser()">Ajouter</button> </td> -->
+                <td colspan="2"> <button  class="btn btn-success" data-toggle="modal"  (click)="onupdate(user._id)" data-target="">Modifier</button>
+                  <button mat-raised-button class="btn btn-danger"  (click)="deleteUser(user._id)" >Delete</button> </td>
+                <!-- <td> <button mat-raised-button class="btn btn-danger"  (click)="deleteUser(user._id)" >Delete</button> </td> -->
+  
+              </tr>    
+            </tbody>
+          </table>
+        </div>
+        </div>
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="modal fade"  role="dialog"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+               
+                <h5 class="modal-title" id="exampleModalLabel">Modifier compte</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form  [formGroup]="basicForm" #form="ngForm" (ngSubmit)="onupdate(users._id)" novalidate>
+                 
+        
+                     <mat-form-field class="example-full-width">
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput placeholder="Enter votre nom utilisateur" 
+                         formControlName="username"
+                        [(ngModel)]="user.username" 
+                         value="{{user.username}} ">
+                      </mat-form-field>
+                      <br>
+                      &nbsp;
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Email </mat-label>
+                        <input type="email" matInput placeholder="placer votre email" 
+                         formControlName="email"
+                        [(ngModel)]="user.email" 
+                         value="{{ user.email}}">
+                      </mat-form-field>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save </button>
+                      </div>
+                   
+                </form>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </mat-sidenav-content>
+      </mat-sidenav-container>
+  
+
+
+
+      <!-- modal -->
+      <!-- Button trigger modal -->
+
+
+<!-- Modal -->

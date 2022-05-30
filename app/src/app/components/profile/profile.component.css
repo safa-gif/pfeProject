@@ -19,7 +19,7 @@ mat-toolbar {
 
 
 #example-header-image {
-background-color: rgb(197, 222, 241);
+background-color: rgba(221, 222, 222, 0.986);
     width:100%;
     height:100%;
     }

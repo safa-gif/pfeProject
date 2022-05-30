@@ -1,8 +1,6 @@
    #example-header-image {
-  background-size: 100% 100%;
-  background-position: 0px 0px;
-  /* background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%); */
-  background-color: rgb(197, 222, 241);
+  
+  background-color: rgb(229, 223, 233);
 
   width:100%;
   height:100%;
@@ -43,11 +41,12 @@
   .login-user {
     font-size: 25px;
     font-weight: 500;
-    color: #36A2EB;
+    color: #438fc6;
   }
-  .btn-register {
-    background-color: #36A2EB;
+  #btn-register {
+    background-color: #438fc6;
     margin-top: 3px;
+    color:white;
   }
   .labels {
    margin-left: 2px;

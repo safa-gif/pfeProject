@@ -9,8 +9,9 @@
 
       <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
       <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
-      <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
-      <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+      <!-- <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a> -->
+      <a mat-list-item routerLink="/users">Compte	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+      <a mat-list-item routerLink="/date"> Calendrier <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
       <!-- <a mat-list-item routerLink="/pdp"> PDP <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a> -->
        
     </mat-nav-list>
@@ -27,7 +28,7 @@
       </button>
       <span>ZODIAC MARINE</span>
       <span class="example-spacer"></span>
-      <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
+      <button mat-button routerLink="/login" (click)='logout()'><mat-icon>logout</mat-icon></button>
     </mat-toolbar>
     <!-- <app-home></app-home> -->
     <br>

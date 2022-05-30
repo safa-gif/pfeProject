@@ -8,8 +8,10 @@
       <a mat-list-item routerLink="/home">Dashboard  <mat-icon class="mat-icon d-flex ml-auto p-1">dashboard</mat-icon> </a>
       <a mat-list-item routerLink="/stock">Stock  <mat-icon class="mat-icon d-flex ml-auto p-1">bookmark_border</mat-icon> </a>
       <a mat-list-item routerLink="/commande">Commande   <mat-icon class="mat-icon d-flex ml-auto p-1">shop_two</mat-icon></a>
-      <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
-      <a mat-list-item routerLink="/date"> Scheduler <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
+      <!-- <a mat-list-item routerLink="/profile">Profile  	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a> -->
+      <a mat-list-item routerLink="/users">Compte	<mat-icon class="mat-icon d-flex ml-auto p-1">perm_identity</mat-icon> </a>
+      
+      <a mat-list-item routerLink="/date"> Calendrier <mat-icon class="mat-icon d-flex ml-auto p-1">date_range</mat-icon> </a>
       
     </mat-nav-list>
   </mat-sidenav>
@@ -25,37 +27,40 @@
       </button>
       <span>ZODIAC MARINE</span>
       <span class="example-spacer"></span>
-      <button mat-button routerLink="#"><mat-icon>logout</mat-icon></button>
+      <button mat-button routerLink="/login"><mat-icon>logout</mat-icon></button>
     </mat-toolbar>
     <div id="example-header-image" class="container-fluid">
-      <div class="col-md-12 pt-3 flex  justify-content-between">
+      <div class="col-md-12 pt-3 flex  justify-content-center">
           <div class="col-md-6 col-sm-6">
               <mat-card class="example-card">
                 <mat-card-title> 
-                   <h1 class="text-center login-user"> Edit Profile</h1>
+                   <h1 class="text-center login-user"> Modifier compte</h1>
                 </mat-card-title>
                 <i class="material-icons md-48">account_circle</i>
                <mat-card-content>
-                  <form  [formGroup]="basicForm" #form="ngForm" (ngSubmit)="onupdate(user._id)">
-                      <!-- <div id="{{user._id}}"> 
-                       
-                      </div> -->
+                  <form  >
+                    <!-- [formGroup]="basicForm" #form="ngForm" (ngSubmit)="onupdate(user._id)" -->
+    
                        <mat-form-field class="example-full-width">
                           <mat-label>Username</mat-label>
-                          <input type="text" matInput placeholder="Enter votre nom utilisateur"  formControlName="username"
-                          [(ngModel)]="user.username"  value="{{ user.username}}">
+                          <input type="text" matInput placeholder="Enter votre nom utilisateur" 
+                           formControlName="username"
+                          [(ngModel)]="user.username" 
+                           value="{{ user.username}}">
                         </mat-form-field>
                         <mat-form-field class="example-full-width">
                           <mat-label>Email </mat-label>
-                          <input type="email" matInput placeholder="placer votre email"  formControlName="email"
-                          [(ngModel)]="user.email"  value="{{ user.email}}">
+                          <input type="email" matInput placeholder="placer votre email" 
+                           formControlName="email"
+                          [(ngModel)]="user.email" 
+                           value="{{ user.email}}">
                         </mat-form-field>
-                        <button type="submit" mat-button   id="btn_modifier" color="primary"> Modifier </button>
+                        <button type="submit" mat-button   id="btn_modifier" color="primary" > Modifier </button>
                   </form>
                 </mat-card-content>
               </mat-card>
             </div>
-            <div class="col-md-6 col-sm-6">
+            <!-- <div class="col-md-6 col-sm-6">
               <mat-card  class="example-card">
                 <mat-card-content>
                   <div class="statics">
@@ -65,18 +70,17 @@
                 </mat-card-content>
               </mat-card>
               <br>
-             
-            </div>
+            </div> -->
       </div>
-      </div>
-      <div class="col-md-11 ml-2 mr-2 center mt-4">
-        <table class="table table-striped wrap" id="table-bg" width="100%">
+      <br>
+      <!-- <div class="col-md-11 ml-2 mr-2 center ">
+        <table class="table table-striped table-bordered">
           <thead>
-            <tr class="table bg-light">
+            <tr>
               <th scope="col">Username</th>
               <th scope="col">Email</th>
               <th scope="col">Id</th>
-
+               <th> Alter</th>
             </tr>
           </thead>
           <tbody >
@@ -84,11 +88,14 @@
               <td>{{user.username}}</td>
               <td>{{user.email}}</td>
               <td>{{user._id}}</td>
-              <td> <button type="submit" mat-raised-button class="btn btn-success" id="btnAlter" (click)="getIdUser(id)" [id]="user._id">Modifier</button></td>
+              <td> <button type="submit" mat-raised-button class="btn btn-success" id="btnAlter" (click)="getIdUser(id)" [id]="user._id">Modifier</button> </td>
+
             </tr>    
           </tbody>
         </table>
+      </div> -->
       </div>
+    
 
     </mat-sidenav-content>
     </mat-sidenav-container>

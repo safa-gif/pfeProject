@@ -58,6 +58,13 @@ app.use('/stock', StockRouter);
 
 app.use('/pdp', PDPRouter);
 
+app.use((req, res, next) => {
+    //res.setHeader('Access-Control-Allow-Origin', 'https://cdpn.io')
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+})
 //connect backend to frontend
 app.use(cors({origin: "http://localhost:4200"}));
 app.use(morgan("dev")); 

@@ -16,7 +16,7 @@ exports.retards = async (req, res, next) => {
   const dates = new Date();
   var oneJ = new Date(dates.getFullYear(),0,1);
   var numDay = Math.floor((dates - oneJ)/ (24*60*60*1000));
-  const out = Math.ceil((dates.getDay()+1+numDay/7)) - 5
+  const out = Math.ceil((dates.getDay()+1+numDay/7)) - 6
 
           try{
           
@@ -111,7 +111,7 @@ exports.RetardsSemaine = async (req, res) => {
   const dates = new Date();
     var oneJ = new Date(dates.getFullYear(),0,1);
     var numDay = Math.floor((dates - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 5
+    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 6
     // console.log(out)
   try{
     const rate = await dim.countDocuments({week: {"$lt": out}});
@@ -259,8 +259,8 @@ exports.latepie = async (req, res,next) => {
   const dates = new Date();
     var oneJ = new Date(dates.getFullYear(),0,1);
     var numDay = Math.floor((dates - oneJ)/ (24*60*60*1000));
-    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 5
-    console.log(out)
+    const out = Math.ceil((dates.getDay()+1+numDay/7)) - 6
+    // console.log(out)
    try {
       const pie = await dim.aggregate([
         {"$project": {
@@ -303,7 +303,6 @@ exports.latepie = async (req, res,next) => {
       let tab = []
       pie.forEach((s)=> {
         tab.push({
-          // week: s._id.week,
           StatusCommande: s._id.StatusCommande,
           BesoinStatus:s.BesoinStatus
         })
@@ -311,7 +310,7 @@ exports.latepie = async (req, res,next) => {
       let t = [];
           t = tab.sort((a,b)=>(a.StatusCommande>b.StatusCommande))
           res.send(t)
-          // console.log(t)
+
    }
    catch(error)  {
     res.status(500).json(error)

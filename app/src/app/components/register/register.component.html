@@ -1,49 +1,3 @@
-<!-- 
-
-<div id="example-header-image" class="container-fluid">
-  <div class="d-flex justify-content-center">
-    <div class="col-md-6 col-sm-8">
-      <mat-card class="example-card">
-        <mat-card-title> 
-           <h1 class="text-center login-user"> Profile User</h1>
-        </mat-card-title>
-        <i class="material-icons md-48">account_circle</i>
-       <mat-card-content>
-         
-        <form class="form-horizontal" [formGroup]="formLogin">
-          <div class="form-group">
-            <label class="control-label col-sm-2 lables" for="email">Email:</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2 lables" for="username">Username:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter your username">
-            </div>
-            </div>
-           
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default btn-register" (click)="register()">Submit</button>
-              </div>
-            </div>
-        </form>
-            
-        </mat-card-content>
-      </mat-card>
-       
-    
-    </div>
-  </div>
-</div>
-
-
-
-
-
- -->
  <div id="example-header-image" class="container-fluid">
   <div class="d-flex justify-content-center">
     <div class="col-md-6">
@@ -66,7 +20,7 @@
               <mat-label>Mot de passe : </mat-label>
               <input type="password" matInput required formControlName="password" placeholder="placer votre email" >
             </mat-form-field>
-            <button type="button" mat-button color="primary" (click)="register()"> Enregistrer </button>
+            <button type="button" mat-button id="btn-register" color="primary" (click)="register()"> Enregistrer </button>
           </form>
         </mat-card-content>
       </mat-card>

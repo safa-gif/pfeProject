@@ -8,6 +8,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,11 +18,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class ProfileComponent implements OnInit {
   user = {
-    _id: '',
+  //  _id: '',
     username : '',
     email : '',
     password : '',
   }
+
   username :string | undefined;
   email: string | undefined;
   public data:any ;
@@ -34,18 +37,23 @@ export class ProfileComponent implements OnInit {
     x!:number;
     Users :User[] | undefined 
     id!: string
+  
   constructor(private toastr: ToastrService, private service: LoginService,
     private formbuilder:FormBuilder,
     private breakpointObserver: BreakpointObserver,
     private snackBar:MatSnackBar,private router:Router) { }
+
+   
     
   ngOnInit(): void {
+   // let id = localStorage.getItem('id')
+   // console.log(id);
+
+ 
     this.findAll();
     this.service.count().subscribe((dta: any)=> {
       this.utilisateur = dta;
-     })
-    //  let button=document.getElementById(btnAlter);
-    //  this.onupdate(id:string);
+     });
   }
   
   findAll() {
@@ -58,33 +66,81 @@ export class ProfileComponent implements OnInit {
        })
        this.Users = t;
      })
+    console.log(this.Users)
           
   }
   
 
- onupdate(id: string): void {
-  this.data ={
-   username : this.basicForm.value.username,
-   email : this.basicForm.value.email,
-    }
-    console.log(id)
-    // console.log(data)
- 
-   this.service.updateUser(id,this.data).subscribe(response =>{
-    console.log(response);
-    console.log("response ",response);
+//  onupdate(): void {
+//    let id = localStorage.getItem('id')
   
-  })
-}
-getIdUser(id:string) {
-   this.service.getSingleUser(this.id).subscribe(response => {
-    console.log(response);
-    console.log("response ",response)
-     console.log(id)
-   })
-}
+//   console.log(id)
+//   this.data = {
+//    username : this.basicForm.value.username,
+//    email : this.basicForm.value.email,
+   
+//   }
+//    this.service.updateUser(id,this.data).subscribe(response =>{
+//     console.log(response);
+//     console.log("response ",response);
+  
+//   })
+// }
 
-  
+// getIdUser() {
+ 
+//   if(!true) {
+//     this.service.getSingleUser(this.id).subscribe(resp => {
+//       console.log(resp);
+//       console.log("response ",resp)
+//        console.log(id)
+//      })
+//      Swal.fire( {
+//       position : 'center',
+//       icon : 'success',
+//       title : 'Your user  has been added successfully',
+//       showConfirmButton: false,
+//       timer: 2000
+//     })
+//   }
+//   else {
+//     Swal.fire( {
+//       position : 'center',
+//       icon : 'warning',
+//       title : 'Your have a problem somewhere',
+//       showConfirmButton: true,
+//       timer: 2000
+//     })
+//   }
+   
+// }
+//  getIdUserD(id:string) {
+//    this.service.deleteUser(this.id).subscribe(res => {
+//      console.log(res)
+    
+//    })
+//  }
+//  modifier() {
+//   if(!true) {
+//      Swal.fire( {
+//       position : 'center',
+//       icon : 'success',
+//       title : 'Your  modification  has been added successfully',
+//       showConfirmButton: false,
+//       timer: 2000
+//     })
+//   }
+//   else {
+//     Swal.fire( {
+//       position : 'center',
+//       icon : 'warning',
+//       title : 'Your have a problem somewhere',
+//       showConfirmButton: false,
+//       timer: 2000
+//     })
+//   }
+   
+//  }
 }
 
 

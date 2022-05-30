@@ -63,6 +63,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { DatePipe } from '@angular/common';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { StocksComponent } from './components/stocks/stocks.component';
+import { ListUsersComponent } from './components/list-users/list-users.component';
 
 
 
@@ -82,6 +83,7 @@ FullCalendarModule.registerPlugins([
     RegisterComponent,
     CommandeComponent,
     StocksComponent,
+    ListUsersComponent,
 
 
   
